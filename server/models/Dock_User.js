@@ -27,3 +27,7 @@ const dockUserSchema = new Schema({
         minlength: 5
     }
 })
+
+const Dock_User = mongoose.model('Dock_User', dockUserSchema);
+
+module.exports = Dock_User;
