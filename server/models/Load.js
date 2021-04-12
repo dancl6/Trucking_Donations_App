@@ -2,6 +2,8 @@ const mongoose = require('mongoose');
 
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+// const Trucking_User = require("./Trucking_User")
+// const Dock_User = require("./Dock_User")
 
 const loadSchema = new Schema({
     streetAddress: {
@@ -30,12 +32,13 @@ const loadSchema = new Schema({
         required: true
     },
     currentStatus: {
-        type: String
+        type: String,
+        required: true
     },
     dock: {
         type: Schema.Types.ObjectId,
         ref: 'Dock_User',
-        required: true
+        required: false
     },
     rating: {
         type: Number,
