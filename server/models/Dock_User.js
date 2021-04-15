@@ -36,7 +36,11 @@ const dockUserSchema = new Schema({
       ref: 'Load',
       required: false
   }
- ]
+ ],
+    phoneNumber : {
+        type: String,
+        required: false
+    }
 })
 
 const Dock_User = mongoose.model('Dock_User', dockUserSchema);

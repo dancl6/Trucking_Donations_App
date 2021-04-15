@@ -26,7 +26,11 @@ const truckingUserSchema = new Schema({
         ref: 'Load',
         required: false
     }
-   ]
+   ],
+       phoneNumber : {
+        type: String,
+        required: false
+    }
     });
 
     const Trucking_User = mongoose.model('Trucking_User', truckingUserSchema);
