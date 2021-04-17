@@ -2,9 +2,14 @@ const { gql } = require('apollo-server-express');
 
 const typeDefs = gql`
 
-type Auth {
+type Auth_Trucking {
     token: ID
-    user: User
+    truckingUser: Trucking_User
+}
+
+type Auth_Dock {
+    token: ID
+    dockUser: Dock_User
 }
 
 type Load {
@@ -43,8 +48,8 @@ type Query {
 }
 
 type Mutation {
-addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth
-addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth
+addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth_Trucking
+addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 }
 `;
 
