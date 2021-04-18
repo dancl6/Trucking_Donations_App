@@ -22,7 +22,7 @@ type Load {
     trucker: Trucking_User
     currentStatus: String
     dock: Dock_User
-    rating: Number
+    rating: Float
 }
 
 type Trucking_User {
@@ -30,7 +30,7 @@ type Trucking_User {
     userName: String
     phoneNumber: String
     loads: [Load]
-    phoneNumber: String
+
 }
 
 type Dock_User {
@@ -38,13 +38,14 @@ type Dock_User {
     streetAddress: String
     state: String
     zipcode: String
-    rating: Number
+    rating: Float
     loads: [Load]
     phoneNumber: String
 }
 
 type Query {
     truckingUser: Trucking_User
+    dockUser: Dock_User
 }
 
 type Mutation {
