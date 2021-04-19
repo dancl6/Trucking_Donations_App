@@ -4,7 +4,9 @@ export const ADD_DOCK_USER = gql`
   mutation addDockUser($name: String!, $streetAddress: String!, $state: String!, zipcode: String!, rating: Float, $password: String!, $phoneNumber: String) {
     addDockUser(name: $name, streetAddress: $streetAddress, state: $state, zipcode: $zipcode, rating: $rating, password: $password, phoneNumber: $phoneNumber) {
       token
-
+      dockUser {
+          _id
+      }
     }
   }
 `;
@@ -12,6 +14,17 @@ export const ADD_DOCK_USER = gql`
 export const ADD_TRUCKING_USER = gql`
   mutation addTruckingUser($userName: String!, $password: String!, $phoneNumber: String! ) {
       addTruckingUser(userName: $userName, password: $password, phoneNumber: $phoneNumber) {
+      token
+      truckingUser {
+          _id
+      }
+  }
+}
+`;
+
+export const ADD_LOAD = gql`
+  mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, donationItem: String!, trucker: String!, currentStatus: String!, dock: String! ) {
+      addLoad(userName: $userName, password: $password, phoneNumber: $phoneNumber) {
       token
 
   }

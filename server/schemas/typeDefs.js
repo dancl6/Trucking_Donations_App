@@ -34,6 +34,7 @@ type Trucking_User {
 }
 
 type Dock_User {
+    _id: ID
     name: String
     streetAddress: String
     state: String
