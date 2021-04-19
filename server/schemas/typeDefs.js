@@ -28,6 +28,7 @@ type Load {
 type Trucking_User {
     _id: ID
     userName: String
+    password: String
     phoneNumber: String
     loads: [Load]
 
@@ -40,6 +41,7 @@ type Dock_User {
     state: String
     zipcode: String
     rating: Float
+    password: String
     loads: [Load]
     phoneNumber: String
 }
@@ -52,6 +54,8 @@ type Query {
 type Mutation {
 addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth_Trucking
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
+truckingLogin(userName: String!, password: String!): Auth_Trucking
+dockLogin(name: String!, password: String!): Auth_Dock
 }
 `;
 

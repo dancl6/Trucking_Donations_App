@@ -4,10 +4,12 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 // const Load = require("./Load")
 
+
 const dockUserSchema = new Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     streetAddress: {
         type: String,

@@ -7,10 +7,11 @@ const resolvers = {
     Query: {
         truckingUser: async (parent, args, context) => {
             if (context.user) {
-              const truckingUser = await Trucking_User.findById(context.user._id).populate({
-                // path: 'orders.products',
-                // populate: 'category'
-              });
+              const truckingUser = await Trucking_User.findById(context.user._id)
+              // .populate({
+              //   path: 'orders.products',
+              //   populate: 'category'
+              // });
       
             //   truckingUser.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
       
@@ -21,10 +22,11 @@ const resolvers = {
           },
           dockUser: async (parent, args, context) => {
             if (context.user) {
-              const dockUser = await Dock_User.findById(context.user._id).populate({
-                // path: 'orders.products',
-                // populate: 'category'
-              });
+              const dockUser = await Dock_User.findById(context.user._id)
+              // .populate({
+              //   path: 'orders.products',
+              //   populate: 'category'
+              // });
       
             //   truckingUser.orders.sort((a, b) => b.purchaseDate - a.purchaseDate);
       
