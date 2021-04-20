@@ -51,9 +51,11 @@ type Query {
     dockUser: Dock_User
     truckingUsers: [Trucking_User]
     dockUsers: [Dock_User]
+    loads: [Load]
 }
 
 type Mutation {
+addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, trucker: ID!, currentStatus: String!): Load
 addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth_Trucking
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 truckingLogin(userName: String!, password: String!): Auth_Trucking

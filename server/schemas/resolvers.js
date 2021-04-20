@@ -40,6 +40,9 @@ const resolvers = {
           },
           truckingUsers: async () => {
             return await Trucking_User.find({})
+          },
+          loads: async () => {
+            return await Load.find({})
           }
     },
     Mutation: {
@@ -54,6 +57,13 @@ const resolvers = {
             const token = signToken(dockUser);
       
             return { token, dockUser };
+          },
+          addLoad: async (parent, args) => {
+            const load = await Load.create(args);
+
+            // const token = signToken(dockUser);
+      
+            return { load };
           },
     }
 
