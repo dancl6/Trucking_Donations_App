@@ -61,6 +61,7 @@ addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: Str
 truckingLogin(userName: String!, password: String!): Auth_Trucking
 dockLogin(name: String!, password: String!): Auth_Dock
 addLoadToDock(Dock_User: ID!, loadAdded: ID!) : Dock_User
+addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 }
 `;
 
