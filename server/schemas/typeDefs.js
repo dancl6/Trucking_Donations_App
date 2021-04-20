@@ -49,6 +49,8 @@ type Dock_User {
 type Query {
     truckingUser: Trucking_User
     dockUser: Dock_User
+    truckingUsers: [Trucking_User]
+    dockUsers: [Dock_User]
 }
 
 type Mutation {

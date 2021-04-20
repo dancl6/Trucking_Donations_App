@@ -35,6 +35,12 @@ const resolvers = {
       
             throw new AuthenticationError('Not logged in');
           },
+          dockUsers: async () => {
+            return await Dock_User.find({})
+          },
+          truckingUsers: async () => {
+            return await Trucking_User.find({})
+          }
     },
     Mutation: {
         addTruckingUser: async (parent, args) => {

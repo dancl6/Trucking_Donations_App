@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
-
+var uniqueValidator = require('mongoose-unique-validator');
+// const beautifyUnique = require('mongoose-beautiful-unique-validation')
 const { Schema } = mongoose;
+
 const bcrypt = require('bcrypt');
 // const Load = require("./Load")
 
@@ -9,7 +11,7 @@ const dockUserSchema = new Schema({
     name: {
         type: String,
         required: true,
-        unique: true
+        unique: 'Two users cannot share the same username ({VALUE})'
     },
     streetAddress: {
         type: String,
@@ -45,6 +47,7 @@ const dockUserSchema = new Schema({
     }
 })
 
+dockUserSchema.plugin(uniqueValidator)
 const Dock_User = mongoose.model('Dock_User', dockUserSchema);
 
 module.exports = Dock_User;
