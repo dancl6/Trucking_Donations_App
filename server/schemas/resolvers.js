@@ -69,7 +69,7 @@ const resolvers = {
             if (context.user) {
               console.log("context.user is:", context.user )
               console.log("args is :", args.loadAdded)
-              return await Dock_User.findByIdAndUpdate(context.user,  {loads: {_id: args.loadAdded}} )
+              return await Dock_User.findByIdAndUpdate(context.user,  { $addToSet: {loads: {_id: args.loadAdded}}} )
             }
           
           }
