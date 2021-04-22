@@ -62,6 +62,8 @@ truckingLogin(userName: String!, password: String!): Auth_Trucking
 dockLogin(name: String!, password: String!): Auth_Dock
 addLoadToDock(Dock_User: ID!, loadAdded: ID!) : Dock_User
 addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
+removeLoadTrucker(Trucking_User: ID!, loadRemoved: ID!) : Trucking_User
+removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 }
 `;
 

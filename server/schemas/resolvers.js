@@ -80,7 +80,30 @@ const resolvers = {
               return await Trucking_User.findByIdAndUpdate(context.user,  { $addToSet: {loads: {_id: args.loadAdded}}} )
             }
           
-          }          
+          },
+          removeLoadTrucker: async (parent, args, context) => {
+            console.log("context is :", context.user)
+            if (context.user) {
+              console.log("load removed is :", args.loadRemoved)
+              return await Trucking_User.findByIdAndUpdate(context.user, { $pull: {loads: {_id: args.loadRemoved}}})
+            }
+          },
+          truckingLogin: async (parent, { userName, password }) => {
+            const user = await Trucking_User.findOne( { userName } );
+            console.log("user is :", user)
+            if (!user) {
+              throw new AuthenticationError('Incorrect credentials');
+            }
+            console.log("password is :", password)
+            const correctPw = await user.isCorrectPassword(password);
+            console.log("correct pw is:", correctPw)
+            if (!correctPw) {
+              throw new AuthenticationError('Incorrect credentials');
+            }
+            const token = signToken(user);
+            
+            return { token, user };
+          }     
     }
 
 }
