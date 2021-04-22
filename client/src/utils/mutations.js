@@ -1,7 +1,7 @@
 import gql from 'graphql-tag';
 
 export const ADD_DOCK_USER = gql`
-  mutation addDockUser($name: String!, $streetAddress: String!, $state: String!, zipcode: String!, rating: Float, $password: String!, $phoneNumber: String) {
+  mutation addDockUser($name: String!, $streetAddress: String!, $state: String!, $zipcode: String!, $rating: Float, $password: String!, $phoneNumber: String) {
     addDockUser(name: $name, streetAddress: $streetAddress, state: $state, zipcode: $zipcode, rating: $rating, password: $password, phoneNumber: $phoneNumber) {
       token
       dockUser {
@@ -23,7 +23,7 @@ export const ADD_TRUCKING_USER = gql`
 `;
 
 export const ADD_LOAD = gql`
-  mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, donationItem: String!, trucker: String!, currentStatus: String!, dock: String! ) {
+  mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker: String!, $currentStatus: String!, $dock: String! ) {
       addLoad(userName: $userName, password: $password, phoneNumber: $phoneNumber) {
       token
 

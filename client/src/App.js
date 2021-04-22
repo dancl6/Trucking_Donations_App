@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import Nav from "./components/Nav";
+import Trucker_Signup from "./pages/Trucker_Signup"
 // import { StoreProvider } from "./utils/GlobalState";
 
 const client = new ApolloClient({
@@ -26,23 +27,11 @@ function App() {
         <div>
       {/* <StoreProvider> */}
       <Nav />
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+      <Switch>
+      <Route exact path="/trucker_signup" component={Trucker_Signup} />
+
     {/* </StoreProvider> */}
+    </Switch>
     </div>
     </Router>
     </ApolloProvider>
