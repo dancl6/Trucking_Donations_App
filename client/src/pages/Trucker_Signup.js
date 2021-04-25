@@ -4,9 +4,18 @@ import { useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { ADD_TRUCKING_USER } from "../utils/mutations";
 
-function Trucker_Signup() {
+// function Trucker_Signup() {
+const Trucker_Signup = () => {
   const [formState, setFormState] = useState({ userName: '', phoneNumber: '', password: '' });
-  const [addUser] = useMutation(ADD_TRUCKING_USER);
+  const [addUser, { error }] = useMutation(ADD_TRUCKING_USER);
+
+  const handleChange = event => {
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value
+    });
+  };
 
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -23,16 +32,10 @@ function Trucker_Signup() {
   } catch (e) {
       console.error(e);
   }
-//   console.log(error)
+  console.log(error)
   }
   
-  const handleChange = event => {
-    const { name, value } = event.target;
-    setFormState({
-      ...formState,
-      [name]: value
-    });
-  };
+
 
   return (
     <div className="container my-1">
