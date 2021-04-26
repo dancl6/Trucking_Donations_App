@@ -6,7 +6,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
 import Nav from "./components/Nav";
 import Trucker_Signup from "./pages/Trucker_Signup"
-// import { StoreProvider } from "./utils/GlobalState";
+import { StoreProvider } from "./utils/GlobalState";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -25,13 +25,15 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-      {/* <StoreProvider> */}
+
       <Nav />
+      {/* <StoreProvider> */}
       <Switch>
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
 
-    {/* </StoreProvider> */}
+
     </Switch>
+    {/* </StoreProvider> */}
     </div>
     </Router>
     </ApolloProvider>

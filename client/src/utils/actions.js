@@ -1,0 +1,1 @@
+export const CONSOLE_TEST = "CONSOLE_TEST"
