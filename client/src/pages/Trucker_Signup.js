@@ -9,6 +9,23 @@ const Trucker_Signup = () => {
   const [formState, setFormState] = useState({ userName: '', phoneNumber: '', password: '' });
   const [addUser, { error }] = useMutation(ADD_TRUCKING_USER);
 
+
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addUser({
+        variables: { ...formState }
+      });
+      
+      Auth.login(data.token);
+    } catch (e) {
+      console.error(e);
+    }
+    console.log(error)
+  }
+  
   const handleChange = event => {
     const { name, value } = event.target;
     setFormState({
@@ -16,25 +33,6 @@ const Trucker_Signup = () => {
       [name]: value
     });
   };
-
-  const handleFormSubmit = async event => {
-    event.preventDefault();
-
-   try {
-    const mutationResponse = await addUser({
-      variables: {
-        userName: formState.userName, phoneNumber: formState.phoneNumber
-        , password: formState.password
-      }
-    });
-    const token = mutationResponse.data.addUser.token;
-    Auth.login(token);
-  } catch (e) {
-      console.error(e);
-  }
-  console.log(error)
-  }
-  
 
 
   return (
