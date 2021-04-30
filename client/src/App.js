@@ -27,13 +27,13 @@ function App() {
         <div>
 
       <Nav />
-      {/* <StoreProvider> */}
+      <StoreProvider>
       <Switch>
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
 
 
     </Switch>
-    {/* </StoreProvider> */}
+    </StoreProvider>
     </div>
     </Router>
     </ApolloProvider>
