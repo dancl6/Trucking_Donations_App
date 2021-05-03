@@ -28,7 +28,7 @@ type Load {
 type Trucking_User {
     _id: ID
     userName: String
-    password: String
+
     phoneNumber: String
     loads: [Load]
 
@@ -45,6 +45,40 @@ type Dock_User {
     loads: [Load]
     phoneNumber: String
 }
+
+type Category {
+    _id: ID
+    name: String
+  }
+
+type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    quantity: Int
+    price: Float
+    category: Category
+  }
+
+type Auth {
+    token: ID
+    user: User
+  }
+
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
+
+type User {
+    _id: ID
+    firstName: String
+    lastName: String
+    email: String
+    orders: [Order]
+  }
 
 type Query {
     truckingUser: Trucking_User
@@ -64,6 +98,7 @@ addLoadToDock(Dock_User: ID!, loadAdded: ID!) : Dock_User
 addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadTrucker(Trucking_User: ID!, loadRemoved: ID!) : Trucking_User
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
+addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 }
 `;
 

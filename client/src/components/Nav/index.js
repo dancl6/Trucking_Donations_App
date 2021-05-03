@@ -44,6 +44,11 @@ function Nav() {
                   Dock Login
                 </Link>
               </li>
+              <li className="mx-1">
+                <Link to="/signup">
+                  Signup
+                </Link>
+              </li>
             </ul>
           );
         }
