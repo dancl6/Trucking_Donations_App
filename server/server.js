@@ -34,7 +34,7 @@ app.get('*', (req, res) => {
 // server.start({port: 3000, endpoint:'/graphql'})
 
 db.once('open', () => {
-  app.listen(PORT, () => {
+  app.listen({port: PORT}, () => {
     console.log(`API server running on port ${PORT}!`);
     console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);
   });

@@ -2,12 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ApolloProvider } from '@apollo/react-hooks';
-import ApolloClient from 'apollo-boost';
+import { ApolloProvider, InMemoryCache } from '@apollo/client';
+import { ApolloClient } from '@apollo/client';
 import Nav from "./components/Nav";
 import Trucker_Signup from "./pages/Trucker_Signup"
 import { StoreProvider } from "./utils/GlobalState";
 import Signup from "./pages/Signup";
+import { addTypenameToDocument } from '@apollo/client/utilities';
+// import { cache } from './cache'
+
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -19,6 +22,7 @@ const client = new ApolloClient({
     })
   },
   uri: '/graphql',
+  cache: new InMemoryCache()
 })
 
 function App() {
