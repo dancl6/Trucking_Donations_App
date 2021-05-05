@@ -22,6 +22,10 @@ const loadSchema = new Schema({
         type: String,
         required: true
     },
+    number: {
+        type: Number,
+        required: true
+    },
     comments: {
         type: String,
         required: false

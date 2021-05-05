@@ -18,6 +18,7 @@ type Load {
     state: String
     zipcode: String
     donationItem: String
+    number: Int
     comments: String
     trucker: Trucking_User
     currentStatus: String

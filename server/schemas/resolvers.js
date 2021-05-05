@@ -52,12 +52,6 @@ const resolvers = {
       
             return { token, truckingUser };
           },
-          addUser: async (parent, args) => {
-            const user = await User.create(args);
-            const token = signToken(user);
-      
-            return { token, user };
-          },
           addDockUser: async (parent, args) => {
             const dockUser = await Dock_User.create(args);
             const token = signToken(dockUser);

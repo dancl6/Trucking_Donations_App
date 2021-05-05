@@ -7,7 +7,7 @@ import { ApolloClient } from '@apollo/client';
 import Nav from "./components/Nav";
 import Trucker_Signup from "./pages/Trucker_Signup"
 import { StoreProvider } from "./utils/GlobalState";
-import Signup from "./pages/Signup";
+
 import { addTypenameToDocument } from '@apollo/client/utilities';
 // import { cache } from './cache'
 
@@ -35,7 +35,7 @@ function App() {
       <StoreProvider>
       <Switch>
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
-      <Route exact path="/signup" component={Signup} />
+      {/* <Route exact path="/signup" component={Signup} /> */}
 
     </Switch>
     </StoreProvider>
