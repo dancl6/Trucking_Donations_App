@@ -85,7 +85,7 @@ const resolvers = {
             console.log("context is :", context.user)
             if (context.user) {
               console.log("load removed is :", args.loadRemoved)
-              return await Trucking_User.findByIdAndUpdate(context.user, { $pull: {loads: {_id: args.loadRemoved}}})
+              return await Trucking_User.findByIdAndUpdate(context.user, { $pull: {loads: {_id: args.loadRemoved}}, new: true})
             }
           },
           truckingLogin: async (parent, { userName, password }) => {

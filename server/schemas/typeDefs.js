@@ -29,7 +29,7 @@ type Load {
 type Trucking_User {
     _id: ID
     userName: String
-
+    password: String
     phoneNumber: String
     loads: [Load]
 
