@@ -5,7 +5,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { ApolloProvider, InMemoryCache } from '@apollo/client';
 import { ApolloClient } from '@apollo/client';
 import Nav from "./components/Nav";
-import Trucker_Signup from "./pages/Trucker_Signup"
+import  Trucker_Signup from "./pages/Trucker_Signup"
+import  Dock_Signup from "./pages/Dock_Signup"
 import { StoreProvider } from "./utils/GlobalState";
 
 import { addTypenameToDocument } from '@apollo/client/utilities';
@@ -35,7 +36,7 @@ function App() {
       <StoreProvider>
       <Switch>
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
-      {/* <Route exact path="/signup" component={Signup} /> */}
+      <Route exact path="/dock_signup" component={Dock_Signup} />
 
     </Switch>
     </StoreProvider>
