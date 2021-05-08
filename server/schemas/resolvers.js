@@ -1,6 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Trucking_User, Dock_User, Load, User } = require('../models');
-const { signToken } = require('../utils/auth');
+const { signTokenTrucker, signTokenDock } = require('../utils/auth');
 
 const resolvers = {
 
@@ -48,13 +48,13 @@ const resolvers = {
     Mutation: {
         addTruckingUser: async (parent, args) => {
             const truckingUser = await Trucking_User.create(args);
-            const token = signToken(truckingUser);
+            const token = signTokenTrucker(truckingUser);
       
             return { token, truckingUser };
           },
           addDockUser: async (parent, args) => {
             const dockUser = await Dock_User.create(args);
-            const token = signToken(dockUser);
+            const token = signTokenDock(dockUser);
       
             return { token, dockUser };
           },
@@ -100,7 +100,7 @@ const resolvers = {
             if (!correctPw) {
               throw new AuthenticationError('Incorrect credentials');
             }
-            const token = signToken(user);
+            const token = signTokenTrucker(user);
             
             return { token, user };
           }     
