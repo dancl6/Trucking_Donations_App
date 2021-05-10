@@ -6,6 +6,7 @@ import { ApolloProvider, InMemoryCache } from '@apollo/client';
 import { ApolloClient } from '@apollo/client';
 import Nav from "./components/Nav";
 import  Trucker_Signup from "./pages/Trucker_Signup"
+import  Trucker_Login from "./pages/Trucker_Login"
 import  Dock_Signup from "./pages/Dock_Signup"
 import { StoreProvider } from "./utils/GlobalState";
 
@@ -37,6 +38,7 @@ function App() {
       <Switch>
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
       <Route exact path="/dock_signup" component={Dock_Signup} />
+      <Route exact path="/trucker_login" component={Trucker_Login} />
 
     </Switch>
     </StoreProvider>
