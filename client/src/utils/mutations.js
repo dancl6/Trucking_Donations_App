@@ -47,9 +47,7 @@ export const LOGIN_TRUCKER = gql`
   mutation truckingLogin($userName: String!, $password: String!) {
     truckingLogin(userName: $userName, password: $password) {
       token
-      user {
-        _id
-      }
+
     }
   }
 `;

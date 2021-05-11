@@ -9,7 +9,7 @@ const Trucker_Login = (props) => {
   // update state based on form input changes
 
 // submit form
-const handleFormSubmit = async event => {
+  const handleFormSubmit = async event => {
     event.preventDefault();
 
     try {
