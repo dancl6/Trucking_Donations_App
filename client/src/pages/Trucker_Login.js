@@ -3,21 +3,13 @@ import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_TRUCKER } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const Login = (props) => {
+const Trucker_Login = (props) => {
   const [formState, setFormState] = useState({ userName: '', password: '' });
   const [login, { error }] = useMutation(LOGIN_TRUCKER);
   // update state based on form input changes
-  const handleChange = (event) => {
-    const { name, value } = event.target;
 
-    setFormState({
-      ...formState,
-      [name]: value,
-    });
-  };
-
-  // submit form
-  const handleFormSubmit = async event => {
+// submit form
+const handleFormSubmit = async event => {
     event.preventDefault();
 
     try {
@@ -30,6 +22,17 @@ const Login = (props) => {
       console.error(e);
     }
   };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+
+    setFormState({
+      ...formState,
+      [name]: value,
+    });
+  };
+
+  
 
   return (
     <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
@@ -68,4 +71,4 @@ const Login = (props) => {
   );
 };
 
-export default Login;
+export default Trucker_Login;
