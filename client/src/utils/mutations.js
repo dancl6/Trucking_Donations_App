@@ -23,11 +23,12 @@ export const ADD_TRUCKING_USER = gql`
 `;
 
 export const ADD_LOAD = gql`
-  mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker: String!, $currentStatus: String!, $dock: String! ) {
-      addLoad(userName: $userName, password: $password, phoneNumber: $phoneNumber) {
-      token
-
-  }
+  mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $number: Float, $trucker: String!, $currentStatus: String!, $dock: String! ) {
+      addLoad(streetAddress: $streetAddress, state: $state, zipcode: $zipcode, donationItem: $donationItem, number: $number, trucker: $trucker, currentStatus: $currentStatus, dock: $dock ) {
+        load {
+          _id
+      }
+      }
 }
 `;
 
