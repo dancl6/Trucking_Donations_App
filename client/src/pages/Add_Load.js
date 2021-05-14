@@ -83,16 +83,7 @@ const Load_Added = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="number">Number:</label>
-          <input
-            placeholder="number"
-            name="number"
-            type="number"
-            id="number"
-            onChange={handleChange}
-          />
-        </div>
+
         <div className="flex-row space-between my-2">
           <label htmlFor="trucker">Trucker:</label>
           <input
@@ -120,6 +111,16 @@ const Load_Added = () => {
             name="dock"
             type="dock"
             id="dock"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="number">Number:</label>
+          <input
+            placeholder="number"
+            name="number"
+            type="number"
+            id="number"
             onChange={handleChange}
           />
         </div>
