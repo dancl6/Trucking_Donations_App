@@ -6,7 +6,7 @@ import { ADD_LOAD } from "../utils/mutations";
 
 // function Trucker_Signup() {
 const Load_Added = () => {
-  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '' , number: '', trucker: '', currentStats: '', dock: '' });
+  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '' , trucker: '', currentStats: '', number: '', dock: '' });
   const [addUser, { error }] = useMutation(ADD_LOAD);
 
 
@@ -105,16 +105,6 @@ const Load_Added = () => {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="dock">Dock:</label>
-          <input
-            placeholder="dock"
-            name="dock"
-            type="dock"
-            id="dock"
-            onChange={handleChange}
-          />
-        </div>
-        <div className="flex-row space-between my-2">
           <label htmlFor="number">Number:</label>
           <input
             placeholder="number"
@@ -124,6 +114,17 @@ const Load_Added = () => {
             onChange={handleChange}
           />
         </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="dock">Dock:</label>
+          <input
+            placeholder="dock"
+            name="dock"
+            type="dock"
+            id="dock"
+            onChange={handleChange}
+          />
+        </div>
+
         <div className="flex-row flex-end">
           <button type="submit">
             Submit
