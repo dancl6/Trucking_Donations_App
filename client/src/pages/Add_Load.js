@@ -15,11 +15,11 @@ const Load_Added = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addUser({
+       await addUser({
         variables: { ...formState }
       });
       
-      Auth.login(data.token);
+      // Auth.login(data.token);
     } catch (e) {
       console.error(e);
     }
