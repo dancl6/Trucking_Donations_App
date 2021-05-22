@@ -6,8 +6,8 @@ import { ADD_LOAD } from "../utils/mutations";
 
 // function Trucker_Signup() {
 const Load_Added = () => {
-  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '' , trucker: '', currentStats: '', number: '', dock: '' });
-  const [addUser, { error }] = useMutation(ADD_LOAD);
+  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', dock: '' });
+  const [addLoad, { error }] = useMutation(ADD_LOAD);
 
 
 
@@ -15,7 +15,7 @@ const Load_Added = () => {
     event.preventDefault();
 
     try {
-       await addUser({
+       await addLoad({
         variables: { ...formState }
       });
       
@@ -83,7 +83,16 @@ const Load_Added = () => {
             onChange={handleChange}
           />
         </div>
-
+        <div className="flex-row space-between my-2">
+          <label htmlFor="number">Number:</label>
+          <input
+            placeholder="number"
+            name="number"
+            type="number"
+            id="number"
+            onChange={handleChange}
+          />
+        </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="trucker">Trucker:</label>
           <input
@@ -104,16 +113,7 @@ const Load_Added = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
-          <label htmlFor="number">Number:</label>
-          <input
-            placeholder="number"
-            name="number"
-            type="number"
-            id="number"
-            onChange={handleChange}
-          />
-        </div>
+
         <div className="flex-row space-between my-2">
           <label htmlFor="dock">Dock:</label>
           <input

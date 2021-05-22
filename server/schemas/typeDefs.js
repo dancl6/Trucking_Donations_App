@@ -90,7 +90,7 @@ type Query {
 }
 
 type Mutation {
-addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, trucker: ID!, currentStatus: String!, number: Float!, dock:ID): Load
+addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Float!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float): Load
 addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth_Trucking
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 truckingLogin(userName: String!, password: String!): Auth_Trucking
