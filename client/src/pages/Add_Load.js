@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
-import Auth from "../utils/auth";
+// import Auth from "../utils/auth";
 import { ADD_LOAD } from "../utils/mutations";
 
 // function Trucker_Signup() {
@@ -17,6 +17,9 @@ const Load_Added = () => {
     try {
        await addLoad({
         variables: { ...formState }
+        // variables: {
+        //   streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: formState.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock
+        // }
       });
       
       // Auth.login(data.token);

@@ -1,4 +1,4 @@
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -11,7 +11,7 @@ import  Dock_Signup from "./pages/Dock_Signup"
 import  Add_Load from "./pages/Add_Load"
 import { StoreProvider } from "./utils/GlobalState";
 
-import { addTypenameToDocument } from '@apollo/client/utilities';
+// import { addTypenameToDocument } from '@apollo/client/utilities';
 // import { cache } from './cache'
 
 
