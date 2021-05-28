@@ -9,7 +9,9 @@ const Load_Added = () => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', dock: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
 
-
+  const cancelForm = async event => {
+    document.getElementById("trucker").reset();
+  }
 
   const handleFormSubmit = async event => {
     event.preventDefault();
