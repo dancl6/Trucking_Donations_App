@@ -6,7 +6,7 @@ import { ADD_LOAD } from "../utils/mutations";
 
 // function Trucker_Signup() {
 const Load_Added = () => {
-  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', dock: '' });
+  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
 
   const cancelForm = async event => {
