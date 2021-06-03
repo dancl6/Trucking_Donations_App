@@ -55,6 +55,7 @@ const Load_Added = () => {
             name="streetAddress"
             type="streetAddress"
             id="streetAddress"
+            value={formState.streetAddress}
             onChange={handleChange}
           />
         </div>
@@ -65,6 +66,7 @@ const Load_Added = () => {
             name="state"
             type="state"
             id="state"
+            value={formState.state}
             onChange={handleChange}
           />
         </div>
@@ -75,6 +77,7 @@ const Load_Added = () => {
             name="zipcode"
             type="zipcode"
             id="zipcode"
+            value={formState.zipcode}
             onChange={handleChange}
           />
         </div>
@@ -85,6 +88,7 @@ const Load_Added = () => {
             name="donationItem"
             type="donationItem"
             id="donationItem"
+            value={formState.donationItem}
             onChange={handleChange}
           />
         </div>
@@ -95,6 +99,7 @@ const Load_Added = () => {
             name="number"
             type="number"
             id="number"
+            value={formState.number}
             onChange={handleChange}
           />
         </div>
@@ -105,6 +110,7 @@ const Load_Added = () => {
             name="trucker"
             type="trucker"
             id="trucker"
+            value={formState.trucker}
             onChange={handleChange}
           />
         </div>
@@ -115,6 +121,7 @@ const Load_Added = () => {
             name="currentStatus"
             type="currentStatus"
             id="currentStatus"
+            value={formState.currentStatus}
             onChange={handleChange}
           />
         </div>
@@ -126,6 +133,7 @@ const Load_Added = () => {
             name="dock"
             type="dock"
             id="dock"
+            value={formState.dock}
             onChange={handleChange}
           />
         </div>
