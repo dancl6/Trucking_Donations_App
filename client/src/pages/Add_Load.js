@@ -98,7 +98,7 @@ const Load_Added = () => {
             placeholder="number"
             name="number"
             type="number"
-            id="number"
+            id="number" 
             value={formState.number}
             onChange={handleChange}
           />
