@@ -9,9 +9,9 @@ const Load_Added = () => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
 
-  const cancelForm = async event => {
-    document.getElementById("trucker").reset();
-  }
+  // const cancelForm = async event => {
+  //   document.getElementById("trucker").reset();
+  // }
 
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -134,6 +134,18 @@ const Load_Added = () => {
             type="dock"
             id="dock"
             value={formState.dock}
+            onChange={handleChange}
+          />
+        </div>
+
+        <div className="flex-row space-between my-2">
+          <label htmlFor="rating">Rating:</label>
+          <input
+            placeholder="rating"
+            name="rating"
+            type="rating"
+            id="rating"
+            value={formState.rating}
             onChange={handleChange}
           />
         </div>

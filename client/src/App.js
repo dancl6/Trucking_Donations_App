@@ -2,8 +2,11 @@
 import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import { ApolloProvider, InMemoryCache } from '@apollo/client';
-import { ApolloClient } from '@apollo/client';
+// import { ApolloProvider, InMemoryCache } from '@apollo/client';
+import ApolloClient from 'apollo-boost';
+
+import { ApolloProvider } from '@apollo/react-hooks';
+// import { ApolloClient } from '@apollo/client';
 import Nav from "./components/Nav";
 import  Trucker_Signup from "./pages/Trucker_Signup"
 import  Trucker_Login from "./pages/Trucker_Login"
@@ -25,7 +28,7 @@ const client = new ApolloClient({
     })
   },
   uri: '/graphql',
-  cache: new InMemoryCache()
+  // cache: new InMemoryCache()
 })
 
 function App() {

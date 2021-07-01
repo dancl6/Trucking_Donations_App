@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Trucking_User, Dock_User, Load, User } = require('../models');
+const { Trucking_User, Dock_User, Load } = require('../models');
 const { signTokenTrucker, signTokenDock } = require('../utils/auth');
 
 const resolvers = {
