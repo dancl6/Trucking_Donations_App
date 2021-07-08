@@ -23,7 +23,7 @@ const loadSchema = new Schema({
         required: true
     },
     number: {
-        type: String,
+        type: Number,
         required: true
     },
     comments: {
@@ -45,7 +45,7 @@ const loadSchema = new Schema({
         required: false
     },
     rating: {
-        type: String,
+        type: Number,
         required: false
     }
     

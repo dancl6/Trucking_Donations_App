@@ -3,12 +3,14 @@ import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
 // import Auth from "../utils/auth";
 import { ADD_LOAD } from "../utils/mutations";
+import { useForm } from "react-hook-form"
 
 // function Trucker_Signup() {
 const Load_Added = () => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
-
+  const { register, handleSubmit, formState: { errors },
+} = useForm();
   // const cancelForm = async event => {
   //   document.getElementById("trucker").reset();
   // }
@@ -94,12 +96,23 @@ const Load_Added = () => {
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="number">Number:</label>
-          <input
+          <input {...register(
+                  "number",
+                  {       
+                    transformValue: (value => parseFloat(value)       
+       
+                )} )}
             placeholder="number"
             name="number"
             type="number"
-            id="number" 
-            value={formState.number}
+            id="number"
+            // ref={
+            //   register({
+            //     validate: v =>
+            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
+            //   })
+            // }
+
             onChange={handleChange}
           />
         </div>
@@ -140,12 +153,17 @@ const Load_Added = () => {
 
         <div className="flex-row space-between my-2">
           <label htmlFor="rating">Rating:</label>
-          <input
+          <input {...register(
+                  "rating",
+            {       
+              transformValue: (value => parseFloat(value)       
+ 
+          )} )}
             placeholder="rating"
             name="rating"
-            type="rating"
+            type="number"
             id="rating"
-            value={formState.rating}
+
             onChange={handleChange}
           />
         </div>
