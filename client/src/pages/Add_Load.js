@@ -4,10 +4,6 @@ import { useMutation } from '@apollo/react-hooks';
 // import Auth from "../utils/auth";
 import { ADD_LOAD } from "../utils/mutations";
 import { useForm } from "react-hook-form"
-import { RHFInput } from 'react-hook-form-input'
-import Select from 'react-select'
-import { yupResolver } from 'react-hook-form-resolvers'
-import { Input } from 'react-input-component'
 
 // function Trucker_Signup() {
 const Load_Added = () => {
@@ -99,27 +95,28 @@ const Load_Added = () => {
           />
         </div>
         <div className="flex-row space-between my-2">
-          <label htmlFor="number">Number:</label>
-          {/* <input {...register(
-                  "number",
+          <label htmlFor="test">Number:</label>
+          <input onSubmit={handleSubmit}
+          type = "number" 
+          {...register(
+                  "test",
                   {       
-                    transformValue: (value => parseFloat(value)       
+                    setValueAs: v => parseInt(v)       
        
-                )} )}
-            placeholder="number"
-            name="number"
-            type="number"
-            id="number"
-
+                  })} 
+            // placeholder="number"
+            // name="number"
+            // type="number"
+            // id="number"
+            // ref={
+            //   register({
+            //     validate: v =>
+            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
+            //   })
+            // }
 
             onChange={handleChange}
-          /> */}
-          <RHFInput
-              as = {<Input />}
-              name = "number"
-              type = "number"
-              onChangeEvent={(value) => ({ value: parseFloat(value[0])})}
-              />
+          />
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="trucker">Trucker:</label>
