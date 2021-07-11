@@ -6,8 +6,13 @@ import { ADD_LOAD } from "../utils/mutations";
 import { useForm } from "react-hook-form"
 // import { useAsyncTask } from 'react-hooks-async'
 
+// type FormData = {
+//   streetAddress: String;
+
+// }
+
 // function Trucker_Signup() {
-const Load_Added = () => {
+const Load_Added = (props) => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, errors
@@ -16,8 +21,24 @@ const Load_Added = () => {
   //   document.getElementById("trucker").reset();
   // }
 
+
+
   const onSubmit = data => {
     console.log(data)
+    async(data) => {
+      // const response =     
+         await addLoad({
+        variables: { ...data }
+        // variables: {
+        //   streetAddress: formData.streetAddress, state: formData.state, zipcode: formData.zipcode, donationItem: formData.donationItem, number: formData.number, trucker: formData.trucker, currentStatus: formData.currentStatus, dock: formData.dock
+        // }
+      })
+        
+        
+      // const data = await response.json();
+      // console.log(data, "server data")
+    // })
+    
   }
 
   const handleFormSubmit = async event => {
@@ -47,6 +68,7 @@ const Load_Added = () => {
     });
   };
 
+  console.log(errors, "Errors")
 
   return (
     <div className="container my-1">
