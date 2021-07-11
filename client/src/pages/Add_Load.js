@@ -12,7 +12,7 @@ import { useForm } from "react-hook-form"
 // }
 
 // function Trucker_Signup() {
-const Load_Added = (props) => {
+const Load_Added = () => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, errors
@@ -23,15 +23,16 @@ const Load_Added = (props) => {
 
 
 
-  const onSubmit = data => {
-    console.log(data)
-    async(data) => {
+  const onSubmit = async(data) => {
+    console.log(data.number)
+    // async(data) => {
       // const response =     
-         await addLoad({
-        variables: { ...data }
-        // variables: {
-        //   streetAddress: formData.streetAddress, state: formData.state, zipcode: formData.zipcode, donationItem: formData.donationItem, number: formData.number, trucker: formData.trucker, currentStatus: formData.currentStatus, dock: formData.dock
-        // }
+     
+      await addLoad({
+        // variables: { ...data }
+        variables: {
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock, rating: data.rating
+        }
       })
         
         
@@ -78,17 +79,21 @@ const Load_Added = (props) => {
 
       <h2>Add Load</h2>
       {/* <form onSubmit=   {handleSubmit(onSubmit)}> */}
-      <form onSubmit = {handleSubmit(async(formData) => {
-          // const response =     
-             await addLoad({
-            variables: { ...formData }
-            // variables: {
-            //   streetAddress: formData.streetAddress, state: formData.state, zipcode: formData.zipcode, donationItem: formData.donationItem, number: formData.number, trucker: formData.trucker, currentStatus: formData.currentStatus, dock: formData.dock
-            // }
-          });
-          // const data = await response.json();
-          // console.log(data, "server data")
-        })}>
+      <form onSubmit = {handleSubmit(onSubmit)}
+        
+        
+        // async(formData) => {
+        
+        //      await addLoad({
+        //     variables: { ...formData }
+        //     // variables: {
+        //     //   streetAddress: formData.streetAddress, state: formData.state, zipcode: formData.zipcode, donationItem: formData.donationItem, number: formData.number, trucker: formData.trucker, currentStatus: formData.currentStatus, dock: formData.dock
+        //     // }
+        //   });
+        //   // const data = await response.json();
+        //   // console.log(data, "server data")
+        // })}
+        >
         <div className="flex-row space-between my-2">
           <label htmlFor="streetAddress">Street Address:</label>
           <input
@@ -226,6 +231,7 @@ const Load_Added = (props) => {
     </div>
   );
 
-}
+  }
+
 
 export default Load_Added;
