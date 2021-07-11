@@ -15,7 +15,7 @@ import { useForm } from "react-hook-form"
 const Load_Added = () => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
-  const { register, handleSubmit, errors
+  const { register, handleSubmit,
 } = useForm();
   // const cancelForm = async event => {
   //   document.getElementById("trucker").reset();
@@ -24,7 +24,7 @@ const Load_Added = () => {
 
 
   const onSubmit = async(data) => {
-    console.log(data.number)
+    console.log(data.number, formState.streetAddress)
     // async(data) => {
       // const response =     
      
@@ -69,7 +69,7 @@ const Load_Added = () => {
     });
   };
 
-  console.log(errors, "Errors")
+  // console.log(errors, "Errors")
 
   return (
     <div className="container my-1">
@@ -101,7 +101,7 @@ const Load_Added = () => {
             name="streetAddress"
             type="streetAddress"
             id="streetAddress"
-            value={formState.streetAddress}
+            // value={formState.streetAddress}
             onChange={handleChange}
           />
         </div>
@@ -112,7 +112,7 @@ const Load_Added = () => {
             name="state"
             type="state"
             id="state"
-            value={formState.state}
+            // value={formState.state}
             onChange={handleChange}
           />
         </div>
@@ -123,7 +123,7 @@ const Load_Added = () => {
             name="zipcode"
             type="zipcode"
             id="zipcode"
-            value={formState.zipcode}
+            // value={formState.zipcode}
             onChange={handleChange}
           />
         </div>
@@ -134,18 +134,18 @@ const Load_Added = () => {
             name="donationItem"
             type="donationItem"
             id="donationItem"
-            value={formState.donationItem}
+            // value={formState.donationItem}
             onChange={handleChange}
           />
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="number">Number:</label>
           <input
-          type = "number" 
+          // type = "number" 
           {...register(
                   "number",
                   {       
-                    setValueAs: v => parseInt(v)       
+                    setValueAs: v => parseFloat(v)       
        
                   })} 
             // placeholder="number"
@@ -169,7 +169,7 @@ const Load_Added = () => {
             name="trucker"
             type="trucker"
             id="trucker"
-            value={formState.trucker}
+            // value={formState.trucker}
             onChange={handleChange}
           />
         </div>
@@ -180,7 +180,7 @@ const Load_Added = () => {
             name="currentStatus"
             type="currentStatus"
             id="currentStatus"
-            value={formState.currentStatus}
+            // value={formState.currentStatus}
             onChange={handleChange}
           />
         </div>
@@ -192,7 +192,7 @@ const Load_Added = () => {
             name="dock"
             type="dock"
             id="dock"
-            value={formState.dock}
+            // value={formState.dock}
             onChange={handleChange}
           />
         </div>
@@ -200,7 +200,7 @@ const Load_Added = () => {
         <div className="flex-row space-between my-2">
         <label htmlFor="rating">Rating:</label>
           <input 
-          type = "rating" 
+          // type = "rating" 
           {...register(
                   "rating",
                   {       
