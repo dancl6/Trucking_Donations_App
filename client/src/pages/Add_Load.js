@@ -56,15 +56,16 @@ const Load_Added = () => {
 
       <h2>Add Load</h2>
       {/* <form onSubmit=   {handleSubmit(onSubmit)}> */}
-      <form onSubmit = {handleSubmit(async(formState) => {
-          const response =        await addLoad({
-            variables: { ...formState }
+      <form onSubmit = {handleSubmit(async(formData) => {
+          // const response =     
+             await addLoad({
+            variables: { ...formData }
             // variables: {
-            //   streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: formState.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock
+            //   streetAddress: formData.streetAddress, state: formData.state, zipcode: formData.zipcode, donationItem: formData.donationItem, number: formData.number, trucker: formData.trucker, currentStatus: formData.currentStatus, dock: formData.dock
             // }
           });
-          const data = await response.json();
-          console.log(data, "server data")
+          // const data = await response.json();
+          // console.log(data, "server data")
         })}>
         <div className="flex-row space-between my-2">
           <label htmlFor="streetAddress">Street Address:</label>
@@ -73,7 +74,7 @@ const Load_Added = () => {
             name="streetAddress"
             type="streetAddress"
             id="streetAddress"
-            // value={formState.streetAddress}
+            value={formState.streetAddress}
             onChange={handleChange}
           />
         </div>
@@ -84,7 +85,7 @@ const Load_Added = () => {
             name="state"
             type="state"
             id="state"
-            // value={formState.state}
+            value={formState.state}
             onChange={handleChange}
           />
         </div>
@@ -95,7 +96,7 @@ const Load_Added = () => {
             name="zipcode"
             type="zipcode"
             id="zipcode"
-            // value={formState.zipcode}
+            value={formState.zipcode}
             onChange={handleChange}
           />
         </div>
@@ -106,7 +107,7 @@ const Load_Added = () => {
             name="donationItem"
             type="donationItem"
             id="donationItem"
-            // value={formState.donationItem}
+            value={formState.donationItem}
             onChange={handleChange}
           />
         </div>
@@ -141,7 +142,7 @@ const Load_Added = () => {
             name="trucker"
             type="trucker"
             id="trucker"
-            // value={formState.trucker}
+            value={formState.trucker}
             onChange={handleChange}
           />
         </div>
@@ -152,7 +153,7 @@ const Load_Added = () => {
             name="currentStatus"
             type="currentStatus"
             id="currentStatus"
-            // value={formState.currentStatus}
+            value={formState.currentStatus}
             onChange={handleChange}
           />
         </div>
@@ -164,7 +165,7 @@ const Load_Added = () => {
             name="dock"
             type="dock"
             id="dock"
-            // value={formState.dock}
+            value={formState.dock}
             onChange={handleChange}
           />
         </div>
