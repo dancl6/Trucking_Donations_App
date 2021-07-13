@@ -6,6 +6,7 @@
   "dependencies": {
     "@apollo/client": "^3.3.16",
     "@apollo/react-hooks": "^4.0.0",
+    "@hookform/error-message": "^2.0.0",
     "@hookform/resolvers": "^0.1.0",
     "@testing-library/jest-dom": "^5.11.10",
     "@testing-library/react": "^11.2.6",

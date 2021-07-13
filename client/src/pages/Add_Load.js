@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_LOAD } from "../utils/mutations";
 import { useForm } from "react-hook-form"
 // import { useAsyncTask } from 'react-hooks-async'
-
+import { ErrorMessage } from '@hookform/error-message'
 // type FormData = {
 //   streetAddress: String;
 
@@ -15,8 +15,10 @@ import { useForm } from "react-hook-form"
 const Load_Added = () => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
-  const { register, handleSubmit,
+  const { register, handleSubmit, formState: { errors }
 } = useForm();
+
+console.log("errors", ErrorMessage)
   // const cancelForm = async event => {
   //   document.getElementById("trucker").reset();
   // }
@@ -161,6 +163,7 @@ const Load_Added = () => {
 
             onChange={handleChange}
           />
+          <ErrorMessage errors={errors} name="number" />
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="trucker">Trucker:</label>
@@ -204,7 +207,9 @@ const Load_Added = () => {
           {...register(
                   "rating",
                   {       
-                    setValueAs: v => parseFloat(v)       
+                    setValueAs: v => parseFloat(v)   ,
+                    min: 1,
+                    max: 5    
        
                   })} 
             // placeholder="number"
@@ -220,6 +225,12 @@ const Load_Added = () => {
 
             onChange={handleChange}
           />
+           <ErrorMessage errors={errors} name="rating" />
+            <ErrorMessage className = "Error"
+              errors={errors}
+              name="rating"
+              render={({ message }) => <p>{message}</p>}
+            />
         </div>
 
         <div className="flex-row flex-end">
