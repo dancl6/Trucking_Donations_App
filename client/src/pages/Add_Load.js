@@ -18,7 +18,7 @@ const Load_Added = () => {
   const { register, handleSubmit, formState: { errors }
 } = useForm();
 
-console.log("errors", ErrorMessage)
+// console.log("errors", errors.rating.message)
   // const cancelForm = async event => {
   //   document.getElementById("trucker").reset();
   // }
@@ -163,7 +163,7 @@ console.log("errors", ErrorMessage)
 
             onChange={handleChange}
           />
-          <ErrorMessage errors={errors} name="number" />
+            {errors.number ? <div>{errors.number.message}</div> : null}
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="trucker">Trucker:</label>
@@ -208,8 +208,8 @@ console.log("errors", ErrorMessage)
                   "rating",
                   {       
                     setValueAs: v => parseFloat(v)   ,
-                    min: 1,
-                    max: 5    
+                    min: { value: 1, message: "Rating must not be less than 1"},
+                    max: { value: 5, message: "Rating must not be greater than 5"},    
        
                   })} 
             // placeholder="number"
@@ -225,12 +225,13 @@ console.log("errors", ErrorMessage)
 
             onChange={handleChange}
           />
-           <ErrorMessage errors={errors} name="rating" />
-            <ErrorMessage className = "Error"
+
+            {/* <ErrorMessage className = "Error"
               errors={errors}
               name="rating"
               render={({ message }) => <p>{message}</p>}
-            />
+            /> */}
+            {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
 
         <div className="flex-row flex-end">
