@@ -4,6 +4,7 @@ import { useMutation } from '@apollo/react-hooks';
 // import Auth from "../utils/auth";
 import { ADD_LOAD } from "../utils/mutations";
 import { useForm } from "react-hook-form"
+import { onError } from "apollo-link-error"
 // import { useAsyncTask } from 'react-hooks-async'
 import { ErrorMessage } from '@hookform/error-message'
 // type FormData = {
@@ -18,7 +19,19 @@ const Load_Added = () => {
   const { register, handleSubmit, formState: { errors }
 } = useForm();
 
-// console.log("errors", errors.rating.message)
+const link = onError(({ graphQLErrors, networkError }) => {
+  if (graphQLErrors)
+    graphQLErrors.map(({ message, locations, path }) =>
+      console.log(
+        `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+      ),
+    );
+
+  if (networkError) console.log(`[Network error]: ${networkError}`);
+});
+
+console.log("error:", link)
+
   // const cancelForm = async event => {
   //   document.getElementById("trucker").reset();
   // }
@@ -30,13 +43,16 @@ const Load_Added = () => {
     // async(data) => {
       // const response =     
      
+    try {
       await addLoad({
         // variables: { ...data }
         variables: {
           streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock, rating: data.rating
         }
       })
-        
+    } catch (e) {
+      console.error(e);
+    }
         
       // const data = await response.json();
       // console.log(data, "server data")
@@ -58,6 +74,8 @@ const Load_Added = () => {
       // Auth.login(data.token);
     } catch (e) {
       console.error(e);
+      // {e ? <div>{e}</div> : null}
+      
     }
     console.log(error)
   }
