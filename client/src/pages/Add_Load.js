@@ -19,6 +19,8 @@ const Load_Added = () => {
   const { register, handleSubmit, formState: { errors }
 } = useForm();
 
+let test
+
 const link = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.map(({ message, locations, path }) =>
@@ -52,6 +54,8 @@ console.log("error:", link)
       })
     } catch (e) {
       console.error(e);
+      let test = e
+      console.log("testing error is:", error)
     }
         
       // const data = await response.json();
@@ -74,8 +78,9 @@ console.log("error:", link)
       // Auth.login(data.token);
     } catch (e) {
       console.error(e);
+  
       // {e ? <div>{e}</div> : null}
-      
+
     }
     console.log(error)
   }
@@ -182,6 +187,8 @@ console.log("error:", link)
             onChange={handleChange}
           />
             {errors.number ? <div>{errors.number.message}</div> : null}
+            {test ? <div>{test}</div> : null}
+
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="trucker">Trucker:</label>
