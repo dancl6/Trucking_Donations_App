@@ -5,6 +5,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { ADD_LOAD } from "../utils/mutations";
 import { useForm } from "react-hook-form"
 import { onError } from "apollo-link-error"
+import { createHttpLink } from "apollo-link-http";
 // import { useAsyncTask } from 'react-hooks-async'
 import { ErrorMessage } from '@hookform/error-message'
 // type FormData = {
@@ -21,18 +22,28 @@ const Load_Added = () => {
 
 let test
 
-const link = onError(({ graphQLErrors, networkError }) => {
+const requestLink = createHttpLink({
+  uri: 'http//api.githunt.com/graphql',
+})
+
+const errorLink = onError(({ graphQLErrors, networkError }) => {
   if (graphQLErrors)
     graphQLErrors.map(({ message, locations, path }) =>
+    
       console.log(
         `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
       ),
+
     );
+    let test = graphQLErrors
 
   if (networkError) console.log(`[Network error]: ${networkError}`);
 });
 
-console.log("error:", link)
+const link = errorLink.concat(requestLink)
+
+
+console.log("link", link)
 
   // const cancelForm = async event => {
   //   document.getElementById("trucker").reset();
