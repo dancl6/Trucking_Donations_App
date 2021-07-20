@@ -59,11 +59,23 @@ const resolvers = {
             return { token, dockUser };
           },
           addLoad: async (parent, args) => {
-            const load = await Load.create(args);
+            await Load.create(args);
 
+            await Dock_User.findByIdAndUpdate(
+              {_id: args.dock},
+              { $addToSet: {loads: {_id: context.load._id}}},
+              {new: true, upsert: true}
+            // }
+            )
+
+            await Trucking_User.findByIdAndUpdate(
+              {_id: args.trucker},
+              { $addToSet: { loads: {_id: context.load._id}}},
+              {new: true, upsert: true}
+            )
             // const token = signToken(dockUser);
       
-            return { load };
+            // return { load };
           },
           addLoadToDock: async (parent, args, context) => {
             if (context.user) {
