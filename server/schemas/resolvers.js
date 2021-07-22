@@ -58,19 +58,22 @@ const resolvers = {
       
             return { token, dockUser };
           },
-          addLoad: async (parent, args) => {
-            await Load.create(args);
-
+          addLoad: async (parent, args, context) => {
+            // console.log("context is :", context)
+            const loadOne = await Load.create(args);
+            // console.log("load one is:", loadOne)
+            // let loadAdded =   await Load.findById()
+            console.log("load one is again:", loadOne)
             await Dock_User.findByIdAndUpdate(
               {_id: args.dock},
-              { $addToSet: {loads: {_id: context.load._id}}},
+              { $addToSet: {loads: {_id: loadOne._id}}},
               {new: true, upsert: true}
             // }
             )
 
             await Trucking_User.findByIdAndUpdate(
               {_id: args.trucker},
-              { $addToSet: { loads: {_id: context.load._id}}},
+              { $addToSet: { loads: {_id: loadOne._id}}},
               {new: true, upsert: true}
             )
             // const token = signToken(dockUser);
