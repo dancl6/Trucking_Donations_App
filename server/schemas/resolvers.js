@@ -84,7 +84,7 @@ const resolvers = {
             if (context.user) {
               console.log("context.user is:", context.user )
               console.log("args is :", args.loadAdded)
-              return await Dock_User.findByIdAndUpdate(context.user,  { $addToSet: {loads: {_id: args.loadAdded}}} )
+              return await Dock_User.findByIdAndUpdate(context.user,  { $addToSet: {loads: {_id: args.loadAdded}}},   {new: true, upsert: true} )
             }
           
           },
@@ -97,10 +97,10 @@ const resolvers = {
           
           },
           removeLoadTrucker: async (parent, args, context) => {
-            console.log("context is :", context.user)
+            console.log("context is :", context.user._id)
             if (context.user) {
               console.log("load removed is :", args.loadRemoved)
-              return await Trucking_User.findByIdAndUpdate(context.user, { $pull: {loads: {_id: args.loadRemoved}}, new: true, upsert: true})
+              return await Trucking_User.findByIdAndUpdate(context.user._id, { $pull: {loads: {_id: args.loadRemoved}}, new: true, upsert: true})
             }
           },
           truckingLogin: async (parent, { userName, password }) => {
