@@ -21,3 +21,8 @@ code {
   width: 100%;
   
 }
+
+.text_over_image {
+  position: absolute;
+  bottom: 2rem;
+}
