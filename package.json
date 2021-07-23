@@ -23,7 +23,9 @@
   "homepage": "https://github.com/dancl6/Trucking_Donations_App#readme",
   "dependencies": {
     "apollo-link-error": "^1.1.13",
-    "if-env": "^1.0.4"
+    "bootstrap": "^5.0.2",
+    "if-env": "^1.0.4",
+    "react-bootstrap": "^1.6.1"
   },
   "devDependencies": {
     "concurrently": "^6.0.1"

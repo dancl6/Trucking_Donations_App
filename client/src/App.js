@@ -36,7 +36,7 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-
+        <img src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />
       <Nav />
       <StoreProvider>
       <Switch>

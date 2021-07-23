@@ -15,3 +15,9 @@ code {
 .Error {
   background-color: black;
 }
+
+.image {
+  position: relative;
+  width: 100%;
+  
+}
