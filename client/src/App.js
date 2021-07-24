@@ -36,8 +36,9 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-        <img src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />
+
       <Nav />
+      <img src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />
       <StoreProvider>
       <Switch>
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
