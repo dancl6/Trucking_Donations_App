@@ -37,9 +37,9 @@ const Trucker_Signup = () => {
 
   return (
     <div className="container my-1">
-      <Link to="/trucker_login">
+      {/* <Link to="/trucker_login">
         ← Go to Login
-      </Link>
+      </Link> */}
 
       <h2 className = "center_text">Trucker Signup</h2>
       <form onSubmit={handleFormSubmit}>
