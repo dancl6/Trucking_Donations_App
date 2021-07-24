@@ -51,3 +51,12 @@ export const LOGIN_TRUCKER = gql`
     }
   }
 `;
+
+export const LOGIN_DOCK = gql`
+  mutation  dockLogin($name: String!, $password: String!) {
+    dockLogin(name: $name, password: $password) {
+      token
+
+    }
+  }
+`;

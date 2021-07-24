@@ -11,6 +11,7 @@ import Nav from "./components/Nav";
 import  Trucker_Signup from "./pages/Trucker_Signup"
 import  Trucker_Login from "./pages/Trucker_Login"
 import  Dock_Signup from "./pages/Dock_Signup"
+import Dock_Login from "./pages/Dock_Login"
 import  Add_Load from "./pages/Add_Load"
 import { StoreProvider } from "./utils/GlobalState";
 
@@ -43,6 +44,7 @@ function App() {
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
       <Route exact path="/dock_signup" component={Dock_Signup} />
       <Route exact path="/trucker_login" component={Trucker_Login} />
+      <Route exact path="/dock_login" component={Dock_Login} />
       <Route exact path="/add_load" component={Add_Load} />
 
     </Switch>

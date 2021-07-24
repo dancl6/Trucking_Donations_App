@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
-import { LOGIN_TRUCKER } from '../utils/mutations';
+import { LOGIN_DOCK } from '../utils/mutations';
 import Auth from '../utils/auth';
 
-const Trucker_Login = (props) => {
-  const [formState, setFormState] = useState({ userName: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN_TRUCKER);
+const Dock_Login = (props) => {
+  const [formState, setFormState] = useState({ name: '', password: '' });
+  const [login, { error }] = useMutation(LOGIN_DOCK);
   // update state based on form input changes
 
 // submit form
@@ -38,7 +38,7 @@ const Trucker_Login = (props) => {
     <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
       <div className='col-12 col-md-6 '>
         <div className='card'>
-          <h4 className='card-header'>Trucker Login</h4>
+          <h4 className='card-header'>Dock Login</h4>
           <div className='card-body'>
             <form onSubmit={handleFormSubmit}>
               <input
@@ -71,4 +71,4 @@ const Trucker_Login = (props) => {
   );
 };
 
-export default Trucker_Login;
+export default Dock_Login;
