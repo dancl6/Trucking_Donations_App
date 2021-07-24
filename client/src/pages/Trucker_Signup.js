@@ -41,9 +41,9 @@ const Trucker_Signup = () => {
         ← Go to Login
       </Link>
 
-      <h2>Trucker Signup</h2>
+      <h2 className = "center_text">Trucker Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="userName">Username:</label>
           <input
             placeholder="Username"
@@ -53,7 +53,7 @@ const Trucker_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="phoneNumber">Phone Number:</label>
           <input
             placeholder="Phone Number"
@@ -73,7 +73,7 @@ const Trucker_Signup = () => {
             onChange={handleChange}
           />
         </div> */}
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="password">Password:</label>
           <input
             placeholder="******"
@@ -83,7 +83,7 @@ const Trucker_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row flex-end">
+        <div className="flex-row flex-end center_text">
           <button type="submit">
             Submit
           </button>

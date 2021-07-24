@@ -41,9 +41,9 @@ const Dock_Signup = () => {
         ← Go to Login
       </Link>
 
-      <h2>Dock Signup</h2>
+      <h2 className =" center_text">Dock Signup</h2>
       <form onSubmit={handleFormSubmit}>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="name">Name:</label>
           <input
             placeholder="name"
@@ -53,7 +53,7 @@ const Dock_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="streetAddress">Street Address:</label>
           <input
             placeholder="Street Address"
@@ -63,7 +63,7 @@ const Dock_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="state">State:</label>
           <input
             placeholder="youremail@test.com"
@@ -73,7 +73,7 @@ const Dock_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="zipcode">Zipcode:</label>
           <input
             placeholder="******"
@@ -83,7 +83,7 @@ const Dock_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="password">Password:</label>
           <input
             placeholder="******"
@@ -93,7 +93,7 @@ const Dock_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 center_text">
           <label htmlFor="phoneNumber">Phone Number:</label>
           <input
             placeholder="******"
@@ -103,7 +103,7 @@ const Dock_Signup = () => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row flex-end">
+        <div className="flex-row flex-end center_text">
           <button type="submit">
             Submit
           </button>
