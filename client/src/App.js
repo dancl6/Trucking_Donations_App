@@ -38,7 +38,6 @@ function App() {
         <div>
 
       <Nav />
-      <img src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />
       <StoreProvider>
       <Switch>
       <Route exact path="/trucker_signup" component={Trucker_Signup} />
@@ -47,6 +46,9 @@ function App() {
       <Route exact path="/add_load" component={Add_Load} />
 
     </Switch>
+      <img src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />
+
+
     </StoreProvider>
     </div>
     </Router>

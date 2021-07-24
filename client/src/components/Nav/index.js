@@ -80,8 +80,8 @@ function Nav() {
       return (
         <header className="flex-row px-1">
           <h1>
-            <Link to="/">
-              <span role="img" aria-label="shopping bag">💪❤️</span>
+            <Link className = "center_text" to="/">
+              <span  role="img" aria-label="shopping bag">💪❤️</span>
               Trucker Donations
             </Link>
           </h1>

@@ -26,3 +26,10 @@ code {
   position: absolute;
   bottom: 2rem;
 }
+
+.center_text {
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
