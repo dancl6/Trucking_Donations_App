@@ -38,11 +38,11 @@ const Trucker_Login = (props) => {
     <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
       <div className='col-12 col-md-6 '>
         <div className='card'>
-          <h4 className='card-header'>Trucker Login</h4>
-          <div className='card-body'>
+          <h4 className='card-header center_text'>Trucker Login</h4>
+          <div className='card-body center_text'>
             <form onSubmit={handleFormSubmit}>
               <input
-                className='form-input mb-1'
+                className='form-input mb-1 center_text'
                 placeholder='Username'
                 name='userName'
                 type='userName'
@@ -51,7 +51,7 @@ const Trucker_Login = (props) => {
                 onChange={handleChange}
               />
               <input
-                className='form-input'
+                className='form-input center_text'
                 placeholder='Password'
                 name='password'
                 type='password'
