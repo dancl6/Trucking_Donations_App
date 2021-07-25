@@ -36,12 +36,15 @@ const Trucker_Signup = () => {
 
 
   return (
-    <div className="container my-1">
+    <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
+      <div className='col-12 col-md-6 '>
+        <div className='card'>
       {/* <Link to="/trucker_login">
         ← Go to Login
       </Link> */}
 
-      <h2 className = "center_text">Trucker Signup</h2>
+      <h4 className='card-header center_text'>Trucker Signup</h4>
+      <div className='card-body center_text'>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="userName">Username:</label>
@@ -76,7 +79,7 @@ const Trucker_Signup = () => {
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="password">Password:</label>
           <input
-            placeholder="******"
+            placeholder="Password"
             name="password"
             type="password"
             id="password"
@@ -90,6 +93,9 @@ const Trucker_Signup = () => {
         </div>
       </form>
     </div>
+    </div>
+    </div>
+    </main>
   );
 
 }

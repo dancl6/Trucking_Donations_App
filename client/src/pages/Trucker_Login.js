@@ -59,9 +59,11 @@ const Trucker_Login = (props) => {
                 value={formState.password}
                 onChange={handleChange}
               />
-              <button className='btn d-block w-100' type='submit'>
+              <div className="flex-row flex-end center_text">
+              <button  type='submit'>
                 Submit
               </button>
+              </div>
             </form>
             {error && <div>Login failed</div>}
           </div>

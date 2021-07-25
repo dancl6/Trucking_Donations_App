@@ -36,17 +36,19 @@ const Dock_Signup = () => {
 
 
   return (
-    <div className="container my-1">
+    <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
+      <div className='col-12 col-md-6 '>
+        <div className='card'>
       {/* <Link to="/trucker_login">
         ← Go to Login
       </Link> */}
 
-      <h2 className =" center_text">Dock Signup</h2>
+      <h4 className='card-header center_text'>Dock Signup</h4>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="name">Name:</label>
           <input
-            placeholder="name"
+            placeholder="Name"
             name="name"
             type="name"
             id="name"
@@ -76,7 +78,7 @@ const Dock_Signup = () => {
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="zipcode">Zipcode:</label>
           <input
-            placeholder="******"
+            placeholder="Zipcode"
             name="zipcode"
             type="zipcode"
             id="zipcode"
@@ -86,7 +88,7 @@ const Dock_Signup = () => {
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="password">Password:</label>
           <input
-            placeholder="******"
+            placeholder="Password"
             name="password"
             type="password"
             id="password"
@@ -96,7 +98,7 @@ const Dock_Signup = () => {
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="phoneNumber">Phone Number:</label>
           <input
-            placeholder="******"
+            placeholder="Phone Number"
             name="phoneNumber"
             type="phoneNumber"
             id="phoneNumber"
@@ -110,6 +112,8 @@ const Dock_Signup = () => {
         </div>
       </form>
     </div>
+    </div>
+    </main>
   );
 
 }
