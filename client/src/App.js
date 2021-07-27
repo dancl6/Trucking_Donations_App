@@ -45,7 +45,7 @@ function App() {
       <Route exact path="/dock_signup" component={Dock_Signup} />
       <Route exact path="/trucker_login" component={Trucker_Login} />
       <Route exact path="/dock_login" component={Dock_Login} />
-      <Route exact path="/add_load" component={Add_Load} />
+      {/* <Route exact path="/add_load" component={Add_Load} /> */}
 
     </Switch>
       <img src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />

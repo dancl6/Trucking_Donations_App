@@ -1,5 +1,6 @@
 const { AuthenticationError } = require('apollo-server-express');
 const { Trucking_User, Dock_User, Load } = require('../models');
+const { findById } = require('../models/Dock_User');
 const { signTokenTrucker, signTokenDock } = require('../utils/auth');
 
 const resolvers = {
@@ -100,7 +101,8 @@ const resolvers = {
             console.log("context is :", context.user._id)
             if (context.user) {
               console.log("load removed is :", args.loadRemoved)
-              return await Trucking_User.findByIdAndUpdate(context.user._id, { $pull: {loads: {_id: args.loadRemoved}}, new: true})
+              let load1 = Load.findById(args.loadRemoved)
+              return await Trucking_User.findByIdAndUpdate(context.user._id, { $pull: {loads: {_id: load1._id}}, new: true, upsert: true})
             }
           },
           truckingLogin: async (parent, { userName, password }) => {

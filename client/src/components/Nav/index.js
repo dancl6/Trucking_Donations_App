@@ -7,6 +7,7 @@ function Nav() {
 
     function showNavigation() {
         if (Auth.loggedIn()) {
+          console.log("auth is :", Auth)
           return (
             <ul className="flex-row">
               <li className="mx-1">
@@ -61,13 +62,13 @@ function Nav() {
                 </Link>
               </li>
               </Col>
-              <Col>
+              {/* <Col>
               <li className="mx-1">
                 <Link to="/add_load">
                   Add Load
                 </Link>
               </li>
-              </Col>
+              </Col> */}
               </Row>
             </ul>
 
