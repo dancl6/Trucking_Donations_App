@@ -1,5 +1,6 @@
 import React from "react";
-import Auth from "../../utils/auth";
+import Auth  from "../../utils/auth";
+import getToken from "../../utils/auth"
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap"
 
@@ -7,7 +8,9 @@ function Nav() {
 
     function showNavigation() {
         if (Auth.loggedIn()) {
-          console.log("auth is :", Auth)
+          // let test = {}
+          let test = localStorage.getItem('id_token')
+          console.log("get profile is :", test)
           return (
             <ul className="flex-row">
               <li className="mx-1">

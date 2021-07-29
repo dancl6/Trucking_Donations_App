@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useMutation } from '@apollo/react-hooks';
 import { LOGIN_TRUCKER } from '../utils/mutations';
-import Auth from '../utils/auth';
+import Auth_Trucking from '../utils/auth';
 
 const Trucker_Login = (props) => {
   const [formState, setFormState] = useState({ userName: '', password: '' });
@@ -17,7 +17,7 @@ const Trucker_Login = (props) => {
         variables: { ...formState }
       });
     
-      Auth.login(data.token);
+      Auth_Trucking.login(data.token);
     } catch (e) {
       console.error(e);
     }
