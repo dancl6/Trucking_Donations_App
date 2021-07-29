@@ -118,7 +118,7 @@ const resolvers = {
               throw new AuthenticationError('Incorrect credentials');
             }
             const token = signTokenTrucker(user);
-            
+            console.log("token is now:", token)
             return { token, user };
           }     
     }

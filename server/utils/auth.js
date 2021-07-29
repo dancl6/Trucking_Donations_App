@@ -36,8 +36,8 @@ module.exports = {
   // signToken: function ({ firstName, email, _id }) {
   //   const payload = { firstName, email, _id };
 
-  signTokenTrucker: function ({ userName,  _id }) {
-    const payload = { userName,  _id };
+  signTokenTrucker: function ({ userName, email,  _id }) {
+    const payload = { userName, email,  _id };
 
     return jwt.sign(
       { data: payload },
@@ -46,8 +46,8 @@ module.exports = {
     );
   },
 
-  signTokenDock: function ({ name,  _id }) {
-    const payload = { name,  _id };
+  signTokenDock: function ({ name, email,  _id }) {
+    const payload = { name, email,  _id };
 
     return jwt.sign(
       { data: payload },
