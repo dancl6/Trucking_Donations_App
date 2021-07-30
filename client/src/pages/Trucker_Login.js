@@ -5,23 +5,8 @@ import Auth_Trucking from '../utils/auth';
 import Auth from '../utils/auth'
 const Trucker_Login = (props) => {
   const [formState, setFormState] = useState({ userName: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN_TRUCKER);
+  const [truckingLogin, { error }] = useMutation(LOGIN_TRUCKER);
   // update state based on form input changes
-
-// submit form
-  const handleFormSubmit = async event => {
-    event.preventDefault();
-
-    try {
-      const { data } = await login({
-        variables: { ...formState }
-      });
-    
-      Auth_Trucking.login(data.login.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -31,6 +16,23 @@ const Trucker_Login = (props) => {
       [name]: value,
     });
   };
+
+// submit form
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      const { data } = await truckingLogin({
+        variables: { ...formState }
+      });
+    
+      Auth.login(data.login.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
 
   
 
