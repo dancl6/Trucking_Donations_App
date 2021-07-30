@@ -5,7 +5,7 @@ import Auth from '../utils/auth';
 
 const Dock_Login = (props) => {
   const [formState, setFormState] = useState({ name: '', password: '' });
-  const [login, { error }] = useMutation(LOGIN_DOCK);
+  const [dockLogin, { error }] = useMutation(LOGIN_DOCK);
   // update state based on form input changes
 
 // submit form
@@ -13,11 +13,11 @@ const Dock_Login = (props) => {
     event.preventDefault();
 
     try {
-      const { data } = await login({
+      const { data } = await dockLogin({
         variables: { ...formState }
       });
     
-      Auth.login(data.token);
+      Auth.login(data.dockLogin.token);
     } catch (e) {
       console.error(e);
     }

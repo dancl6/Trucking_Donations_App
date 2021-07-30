@@ -120,7 +120,23 @@ const resolvers = {
             const token = signTokenTrucker(user);
             console.log("token is now:", token)
             return { token, user };
-          }     
+          },
+          dockLogin: async (parent, { name, password }) => {
+            const user = await Dock_User.findOne( { name } );
+            console.log("user is :", user)
+            if (!user) {
+              throw new AuthenticationError('Incorrect credentials');
+            }
+            console.log("password is :", password)
+            const correctPw = await user.isCorrectPassword(password);
+            console.log("correct pw is:", correctPw)
+            if (!correctPw) {
+              throw new AuthenticationError('Incorrect credentials');
+            }
+            const token = signTokenDock(user);
+            console.log("token is now:", token)
+            return { token, user };
+          }          
     }
 
 }

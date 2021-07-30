@@ -7,25 +7,8 @@ import { ADD_DOCK_USER } from "../utils/mutations";
 // function Trucker_Signup() {
 const Dock_Signup = () => {
   const [formState, setFormState] = useState({ name: '', streetAddress: '', state: '' , zipcode: '' , password: '' , phoneNumber: '' });
-  const [addUser, { error }] = useMutation(ADD_DOCK_USER);
+  const [addDockUser, { error }] = useMutation(ADD_DOCK_USER);
 
-
-
-  const handleFormSubmit = async event => {
-    event.preventDefault();
-
-    try {
-      const { data } = await addUser({
-        variables: { ...formState }
-      });
-      
-      Auth.login(data.token);
-    } catch (e) {
-      console.error(e);
-    }
-    console.log(error)
-  }
-  
   const handleChange = event => {
     const { name, value } = event.target;
     setFormState({
@@ -33,6 +16,23 @@ const Dock_Signup = () => {
       [name]: value
     });
   };
+
+
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      const { data } = await addDockUser({
+        variables: { ...formState }
+      });
+      
+      Auth.login(data.addDockUser.token);
+    } catch (e) {
+      console.error(e);
+    }
+    console.log(error)
+  }
+  
 
 
   return (

@@ -7,7 +7,7 @@ import { ADD_TRUCKING_USER } from "../utils/mutations";
 // function Trucker_Signup() {
 const Trucker_Signup = () => {
   const [formState, setFormState] = useState({ userName: '', phoneNumber: '', password: '' });
-  const [addUser, { error }] = useMutation(ADD_TRUCKING_USER);
+  const [addTruckingUser, { error }] = useMutation(ADD_TRUCKING_USER);
 
 
 
@@ -15,11 +15,11 @@ const Trucker_Signup = () => {
     event.preventDefault();
 
     try {
-      const { data } = await addUser({
+      const { data } = await addTruckingUser({
         variables: { ...formState }
       });
       
-      Auth.login(data.token);
+      Auth.login(data.addTruckingUser.token);
     } catch (e) {
       console.error(e);
     }
