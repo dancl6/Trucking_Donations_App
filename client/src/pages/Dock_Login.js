@@ -8,21 +8,6 @@ const Dock_Login = (props) => {
   const [dockLogin, { error }] = useMutation(LOGIN_DOCK);
   // update state based on form input changes
 
-// submit form
-  const handleFormSubmit = async event => {
-    event.preventDefault();
-
-    try {
-      const { data } = await dockLogin({
-        variables: { ...formState }
-      });
-    
-      Auth.login(data.dockLogin.token);
-    } catch (e) {
-      console.error(e);
-    }
-  };
-
   const handleChange = (event) => {
     const { name, value } = event.target;
 
@@ -31,6 +16,23 @@ const Dock_Login = (props) => {
       [name]: value,
     });
   };
+
+// submit form
+  const handleFormSubmit = async event => {
+    event.preventDefault();
+
+    try {
+      const { data } = await dockLogin({
+        variables: { ...formState }
+      });
+    console.log("new data is :", data)
+      Auth.login(data.dockLogin.token);
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+
 
   
 

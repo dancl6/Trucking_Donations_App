@@ -4,7 +4,7 @@ import { LOGIN_TRUCKER } from '../utils/mutations';
 import Auth_Trucking from '../utils/auth';
 import Auth from '../utils/auth'
 const Trucker_Login = (props) => {
-  const [formState, setFormState] = useState({ userName: '', password: '', loads: '', phoneNumber:'' });
+  const [formState, setFormState] = useState({ userName: '', password: '' });
   const [truckingLogin, { error }] = useMutation(LOGIN_TRUCKER);
   // update state based on form input changes
 
