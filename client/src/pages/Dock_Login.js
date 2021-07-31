@@ -46,10 +46,10 @@ const Dock_Login = (props) => {
               <input
                 className='form-input mb-1 center_text'
                 placeholder='Username'
-                name='userName'
-                type='userName'
-                id='userName'
-                value={formState.userName}
+                name='name'
+                type='name'
+                id='name'
+                value={formState.name}
                 onChange={handleChange}
               />
               <input
