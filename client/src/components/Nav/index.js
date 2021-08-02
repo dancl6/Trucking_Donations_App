@@ -3,13 +3,14 @@ import Auth  from "../../utils/auth";
 import getToken from "../../utils/auth"
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap"
+import decode from 'jwt-decode';
 
 function Nav() {
 
     function showNavigation() {
         if (Auth.loggedIn()) {
           // let test = {}
-          let test = localStorage.getItem('id_token')
+          let test = decode(localStorage.getItem('id_token'))
           console.log("get profile is :", test)
           return (
             <ul className="flex-row">
