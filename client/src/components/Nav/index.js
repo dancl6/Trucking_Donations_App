@@ -11,7 +11,14 @@ function Nav() {
   const {data} = useQuery(QUERY_ME);
     function showNavigation() {
       // console.log("data is here now:", data.me.trucker)
-        if (Auth.loggedIn() && data.me.trucker) {
+      const order_Html = data?.me.trucker ?  (
+        <li className="mx-1">
+        <Link to="/add_load">
+          Add Load
+        </Link>
+      </li>
+      ): null;
+        if (Auth.loggedIn()) {
           // let test = {}
           let test = decode(localStorage.getItem('id_token'))
           console.log("get profile is :", test)
@@ -22,11 +29,12 @@ function Nav() {
                   Order History
                 </Link>
               </li>
-              <li className="mx-1">
+              {order_Html}
+              {/* <li className="mx-1">
                 <Link to="/add_load">
                   Add Load
                 </Link>
-              </li>
+              </li> */}
               <li className="mx-1">
                 {/* this is not using the Link component to logout or user and then refresh the application to the start */}
                 <a href="/" onClick={() => Auth.logout()}>
