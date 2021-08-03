@@ -44,7 +44,30 @@ const resolvers = {
           },
           loads: async () => {
             return await Load.find({})
-          }
+          },
+          me: async (parent, args, context) => {
+            userId = context.user
+            console.log("user id in resolvers is :", userId)
+            const checkTruck = await Trucking_User.findById(  userId  )
+            console.log("check Truck is:", checkTruck)
+            const checkDock = await Dock_User.findById( userId)
+            console.log("check Dock is:", checkDock)
+            let docker, trucker
+            if (checkTruck) {
+              trucker = true
+            } else {
+              trucker = false
+            }
+            if (checkDock) {
+              docker = true
+            } else {
+              docker = false
+            }
+            // if (checkTruck) {
+            //   return true
+            // } else return false
+            return {docker,trucker}
+          }   
     },
     Mutation: {
         addTruckingUser: async (parent, args) => {
@@ -137,16 +160,7 @@ const resolvers = {
             console.log("token is now:", token)
             return { token, user };
           },
-          checkIfTrucker: async (parent, args, context) => {
-            userId = context._id
-            const checkTruck = await Trucking_User.findById(  userId  )
-            console.log("check Truck is:", checkTruck)
-            const checkDock = await Dock_User.findById( userId)
-            console.log("check Dock is:", checkDock)
-            if (checkTruck) {
-              return true
-            } else return false
-          }         
+      
     }
 
 }

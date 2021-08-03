@@ -80,6 +80,12 @@ type User {
     email: String
     orders: [Order]
   }
+  
+  
+type Boolean_Return {
+  trucker: Boolean
+  docker: Boolean
+}
 
 type Query {
     truckingUser: Trucking_User
@@ -87,7 +93,9 @@ type Query {
     truckingUsers: [Trucking_User]
     dockUsers: [Dock_User]
     loads: [Load]
+    me: Boolean_Return
 }
+
 
 type Mutation {
 addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float): Load
@@ -100,7 +108,7 @@ addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadTrucker(Trucking_User: ID!, loadRemoved: ID!) : Trucking_User
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-checkIfTrucker(userId: ID!): Boolean
+
 }
 `;
 

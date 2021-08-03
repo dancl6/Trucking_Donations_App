@@ -14,3 +14,13 @@ export const QUERY_TRUCKING_USERS = gql`
   }
 }
 `
+
+
+export const QUERY_ME = gql`
+{
+  me {
+    trucker
+    docker
+  }
+}
+`;

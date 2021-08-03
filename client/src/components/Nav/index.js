@@ -4,14 +4,14 @@ import getToken from "../../utils/auth"
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap"
 import decode from 'jwt-decode';
-import  { CHECK_TRUCKER }  from "../../utils/mutations";
-import { useMutation } from '@apollo/react-hooks';
+import  { QUERY_ME }  from "../../utils/queries";
+import { useQuery } from '@apollo/react-hooks';
 
 function Nav() {
-  const [checkIfTrucker, { error }] = useMutation(CHECK_TRUCKER);
+  const [me, { error }] = useQuery(QUERY_ME);
     function showNavigation() {
 
-        if (Auth.loggedIn() && checkIfTrucker) {
+        if (Auth.loggedIn() && me) {
           // let test = {}
           let test = decode(localStorage.getItem('id_token'))
           console.log("get profile is :", test)
