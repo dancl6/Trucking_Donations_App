@@ -8,10 +8,10 @@ import  { QUERY_ME }  from "../../utils/queries";
 import { useQuery } from '@apollo/react-hooks';
 
 function Nav() {
-  const [me, { error }] = useQuery(QUERY_ME);
+  const {data} = useQuery(QUERY_ME);
     function showNavigation() {
-
-        if (Auth.loggedIn() && me) {
+      // console.log("data is here now:", data.me.trucker)
+        if (Auth.loggedIn() && data.me.trucker) {
           // let test = {}
           let test = decode(localStorage.getItem('id_token'))
           console.log("get profile is :", test)
