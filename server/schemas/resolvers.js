@@ -136,7 +136,14 @@ const resolvers = {
             const token = signTokenDock(user);
             console.log("token is now:", token)
             return { token, user };
-          }          
+          },
+          checkIfTrucker: async (parent, args, context) => {
+            userId = context._id
+            const checkTruck = await Trucking_User.findById(  userId  )
+            console.log("check Truck is:", checkTruck)
+            const checkDock = await Dock_User.findById( userId)
+            console.log("check Dock is:", checkDock)
+          }         
     }
 
 }

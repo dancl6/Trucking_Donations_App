@@ -100,6 +100,7 @@ addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadTrucker(Trucking_User: ID!, loadRemoved: ID!) : Trucking_User
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
+checkIfTrucker(userId: ID!): Boolean
 }
 `;
 

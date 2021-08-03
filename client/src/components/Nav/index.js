@@ -4,11 +4,12 @@ import getToken from "../../utils/auth"
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap"
 import decode from 'jwt-decode';
+import  CHECK_TRUCKER  from "../../utils/mutations";
 
 function Nav() {
 
     function showNavigation() {
-        if (Auth.loggedIn()) {
+        if (Auth.loggedIn() && CHECK_TRUCKER) {
           // let test = {}
           let test = decode(localStorage.getItem('id_token'))
           console.log("get profile is :", test)
