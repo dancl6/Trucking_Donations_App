@@ -143,6 +143,9 @@ const resolvers = {
             console.log("check Truck is:", checkTruck)
             const checkDock = await Dock_User.findById( userId)
             console.log("check Dock is:", checkDock)
+            if (checkTruck) {
+              return true
+            } else return false
           }         
     }
 

@@ -64,7 +64,7 @@ export const LOGIN_DOCK = gql`
 export const CHECK_TRUCKER = gql`
   mutation  checkIfTrucker($userId: ID!) {
     checkIfTrucker(userId: $userId) {
-      
+      Boolean
 
     }
   }
