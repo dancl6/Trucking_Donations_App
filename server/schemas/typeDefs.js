@@ -94,6 +94,7 @@ type Query {
     dockUsers: [Dock_User]
     loads: [Load]
     me: Boolean_Return
+    loadsInAState : [Load]
 }
 
 

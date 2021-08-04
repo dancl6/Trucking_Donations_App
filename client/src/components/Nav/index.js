@@ -4,11 +4,12 @@ import getToken from "../../utils/auth"
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap"
 import decode from 'jwt-decode';
-import  { QUERY_ME }  from "../../utils/queries";
+import  { QUERY_ME, QUERY_LOADS_STATE }  from "../../utils/queries";
 import { useQuery } from '@apollo/react-hooks';
 
 function Nav() {
   const {data} = useQuery(QUERY_ME);
+  const {data2} = useQuery(QUERY_LOADS_STATE)
     function showNavigation() {
       // console.log("data is here now:", data.me.trucker)
       const order_Html = data?.me.trucker ?  (
@@ -20,6 +21,7 @@ function Nav() {
       ): null;
         if (Auth.loggedIn()) {
           // let test = {}
+          console.log("data 2 is:", data2?.state)
           let test = decode(localStorage.getItem('id_token'))
           console.log("get profile is :", test)
           return (

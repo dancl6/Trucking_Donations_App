@@ -67,8 +67,16 @@ const resolvers = {
             //   return true
             // } else return false
             return {docker,trucker}
-          }   
-    },
+          },   
+          loadsInAState : async (parent, args, context) => {
+            console.log("hello")
+            let state_US = args.state
+            let allLoads =  await Load.find({})
+            console.log("all loads length is:", allLoads)
+          }
+          },
+    
+       
     Mutation: {
         addTruckingUser: async (parent, args) => {
             const truckingUser = await Trucking_User.create(args);
