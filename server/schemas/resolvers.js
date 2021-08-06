@@ -85,6 +85,14 @@ const resolvers = {
             ,["Rhode Island", "RI"],["South Carolina", "SC"],["South Dakota", "SD"],["Tennessee", "TN"],["Texas", "TX"],["Utah", "UT"]
             ,["Vermont", "VT"],["Virginia", "VA"],["Washington", "WA"],["West Virginia", "WV"],["Wisconsin", "WI"]
             ,["Wyoming", "WY"]]
+              let newStateArray = []
+            for ( let i = 0 ; i < allLoads.length; i ++ ) {
+              if (allLoads[i].state === state_US) {
+                  newStateArray.push(allLoads[i].state)
+              }
+            }
+            console.log("new state array is:", newStateArray)
+
           }
           },
     
