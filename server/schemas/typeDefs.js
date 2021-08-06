@@ -26,6 +26,20 @@ type Load {
     rating: Float
 }
 
+type LoadForQueries {
+  _id: ID
+  streetAddress: String
+  state: String
+  zipcode: String
+  donationItem: String
+  number: Float
+  comments: String
+  trucker: Trucking_User
+  currentStatus: String
+  dock: Dock_User
+  rating: Float
+}
+
 type Trucking_User {
     _id: ID
     userName: String
@@ -92,7 +106,7 @@ type Query {
     dockUser: Dock_User
     truckingUsers: [Trucking_User]
     dockUsers: [Dock_User]
-    loads: [Load]
+    loads: [LoadForQueries]
     me: Boolean_Return
     loadsInAState (state: String!) : [Load]
 }
