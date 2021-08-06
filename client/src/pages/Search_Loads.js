@@ -1,13 +1,13 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import { useMutation } from '@apollo/react-hooks';
-// import Auth from "../utils/auth";
-// import { ADD_TRUCKING_USER } from "../utils/mutations";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { useQuery } from '@apollo/react-hooks';
+import Auth from "../utils/auth";
+import { LOAD_QUERY } from "../utils/queries";
 
 // // function Trucker_Signup() {
-// const Search_Loads = () => {
+const Search_Loads = () => {
 //   const [formState, setFormState] = useState({ userName: '', phoneNumber: '', password: '' });
-//   const [addTruckingUser, { error }] = useMutation(ADD_TRUCKING_USER);
+const {data} = useQuery  (LOAD_QUERY);
 
 
 
@@ -98,6 +98,6 @@
 //     </main>
 //   );
 
-// }
+}
 
-// export default Search_Loads;
+export default Search_Loads;

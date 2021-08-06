@@ -25,11 +25,20 @@ export const QUERY_ME = gql`
 }
 `;
 
-export const QUERY_LOADS_STATE = gql`
+export const LOAD_QUERY = gql`
 {
-  loadsInAState {
-    _id
-    state
+	loads {
+_id 
+ number
+state
+    donationItem
+    rating
+trucker {
+  _id
+}
+    dock {
+      _id
+    }
   }
 }
 `;
