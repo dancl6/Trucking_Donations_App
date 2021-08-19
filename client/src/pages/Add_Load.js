@@ -15,7 +15,7 @@ import { ErrorMessage } from '@hookform/error-message'
 
 // function Trucker_Signup() {
 const Load_Added = () => {
-  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '' });
+  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '',comments:'', dock: '', rating: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
@@ -239,7 +239,7 @@ console.log("link", link)
         <div className="flex-row space-between my-2">
         <label htmlFor="rating">Rating:</label>
           <input 
-          // type = "rating" 
+          type = "number" 
           {...register(
                   "rating",
                   {       
@@ -269,7 +269,105 @@ console.log("link", link)
             /> */}
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
+        <div className="flex-row space-between my-2">
+        <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
+          <input 
+          type = "number" 
+          {...register(
+                  "dateStart",
+                  {       
+                    setValueAs: v => parseFloat(v)   ,
+                    // min: { value: 1, message: "Rating must not be less than 1"},
+                    // max: { value: 5, message: "Rating must not be greater than 5"},    
+       
+                  })} 
+            // placeholder="number"
+            // name="number"
+            // type="number"
+            // id="number"
+            // ref={
+            //   register({
+            //     validate: v =>
+            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
+            //   })
+            // }
 
+            onChange={handleChange}
+          />
+
+            {/* <ErrorMessage className = "Error"
+              errors={errors}
+              name="rating"
+              render={({ message }) => <p>{message}</p>}
+            /> */}
+            {errors.rating ? <div>{errors.rating.message}</div> : null}
+        </div>
+        <div className="flex-row space-between my-2">
+        <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
+          <input 
+          type = "number" 
+          {...register(
+                  "timeStart",
+                  {       
+                    setValueAs: v => parseFloat(v)   ,
+                    // min: { value: 1, message: "Rating must not be less than 1"},
+                    // max: { value: 5, message: "Rating must not be greater than 5"},    
+       
+                  })} 
+            // placeholder="number"
+            // name="number"
+            // type="number"
+            // id="number"
+            // ref={
+            //   register({
+            //     validate: v =>
+            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
+            //   })
+            // }
+
+            onChange={handleChange}
+          />
+
+            {/* <ErrorMessage className = "Error"
+              errors={errors}
+              name="rating"
+              render={({ message }) => <p>{message}</p>}
+            /> */}
+            {errors.rating ? <div>{errors.rating.message}</div> : null}
+        </div>
+        <div className="flex-row space-between my-2">
+        <label htmlFor="timeDuration">Time Interval for Drop Off:</label>
+          <input 
+          // type = "rating" 
+          {...register(
+                  "timeDuration",
+                  {       
+                    setValueAs: v => parseFloat(v)   ,
+                    // min: { value: 1, message: "Rating must not be less than 1"},
+                    // max: { value: 5, message: "Rating must not be greater than 5"},    
+       
+                  })} 
+            // placeholder="number"
+            // name="number"
+            // type="number"
+            // id="number"
+            // ref={
+            //   register({
+            //     validate: v =>
+            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
+            //   })
+            // }
+
+            onChange={handleChange}
+          />
+
+            {/* <ErrorMessage className = "Error"
+              errors={errors}
+              name="rating"
+              render={({ message }) => <p>{message}</p>}
+            /> */}
+            {errors.rating ? <div>{errors.rating.message}</div> : null}
+        </div>
         <div className="flex-row flex-end">
           <button type="submit">
             Submit

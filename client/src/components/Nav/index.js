@@ -19,6 +19,13 @@ function Nav() {
         </Link>
       </li>
       ): null;
+      const search_Loads = data?.me.docker ?  (
+        <li className="mx-1">
+        <Link to="/load_search">
+          Search Loads
+        </Link>
+      </li>
+      ): null;
         if (Auth.loggedIn()) {
           // let test = {}
           console.log("data 2 is:", data2?.state)
@@ -32,6 +39,7 @@ function Nav() {
                 </Link>
               </li>
               {order_Html}
+              {search_Loads}
               {/* <li className="mx-1">
                 <Link to="/add_load">
                   Add Load

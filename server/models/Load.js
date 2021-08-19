@@ -47,6 +47,22 @@ const loadSchema = new Schema({
     rating: {
         type: Number,
         required: false
+    },
+    confirmed: {
+        type: Boolean,
+        required: true
+    },
+    dateStart: {
+        type: Number,
+        required: true
+    },
+    timeStart: {
+        type: Number,
+        required: true
+    },
+    timeDuration: {
+        type: Number,
+        required: true
     }
     
 })
