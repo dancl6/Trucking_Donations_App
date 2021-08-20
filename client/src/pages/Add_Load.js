@@ -60,7 +60,7 @@ console.log("link", link)
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock, rating: data.rating
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock, rating: data.rating, confirmed: false, dateStart: data.dateStart, timeStart: data.timeStart, timeDuration: data.timeDuration
         }
       })
     } catch (e) {
@@ -368,6 +368,17 @@ console.log("link", link)
             /> */}
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
+        {/* <div className="flex-row space-between my-2">
+          <label htmlFor="confirmed">Confirmed?:</label>
+          <input
+            placeholder=""
+            name="confirmed"
+            type="boolean"
+            id="confirmed"
+            // value={formState.trucker}
+            onChange={handleChange}
+          />
+        </div> */}
         <div className="flex-row flex-end">
           <button type="submit">
             Submit

@@ -42,6 +42,7 @@ type LoadForQueries {
   currentStatus: String
   dock: Dock_User
   rating: Float
+  timeDuration: Float
 }
 
 type Trucking_User {
