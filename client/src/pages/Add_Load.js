@@ -214,14 +214,18 @@ console.log("link", link)
         </div>
         <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
-          <input
+          <select
             placeholder="currentStatus"
             name="currentStatus"
             type="currentStatus"
             id="currentStatus"
             // value={formState.currentStatus}
             onChange={handleChange}
-          />
+          >
+          <option value="Open">Open</option>
+          <option value= "In Progress">In Progress</option>
+          <option value= "Closed">Closed</option>
+          </select>
         </div>
 
         <div className="flex-row space-between my-2">
