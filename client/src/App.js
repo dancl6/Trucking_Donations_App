@@ -47,7 +47,7 @@ function App() {
       <Route exact path="/trucker_login" component={Trucker_Login} />
       <Route exact path="/dock_login" component={Dock_Login} />
       <Route exact path="/add_load" component={Add_Load} />
-      {/* <Route exact path="/load_search" component={Search_Loads} /> */}
+      <Route exact path="/load_search" component={Search_Loads} />
       {/* <Route exact path="/add_load" component={Add_Load} /> */}
 
     </Switch>
