@@ -106,6 +106,10 @@ type Boolean_Return {
   docker: Boolean
 }
 
+type truck_ID {
+  truck: ID
+}
+
 type Query {
     truckingUser: Trucking_User
     dockUser: Dock_User
@@ -113,7 +117,7 @@ type Query {
     dockUsers: [Dock_User]
     loads: [LoadForQueries]
     me: Boolean_Return
-
+    trucker_Id: truck_ID
 }
 
 

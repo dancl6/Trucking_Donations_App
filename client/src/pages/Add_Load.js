@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useMutation } from '@apollo/react-hooks';
+import { useMutation, useQuery } from '@apollo/react-hooks';
 // import Auth from "../utils/auth";
 import { ADD_LOAD } from "../utils/mutations";
+import { TRUCK_ID_IS } from "../utils/queries"
 import { useForm } from "react-hook-form"
 import { onError } from "apollo-link-error"
 import { createHttpLink } from "apollo-link-http";
@@ -19,6 +20,7 @@ const Load_Added = () => {
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
+  const {data2} = useQuery(TRUCK_ID_IS);
 
 let test
 
@@ -55,12 +57,12 @@ console.log("link", link)
     console.log(data.number, formState.streetAddress)
     // async(data) => {
       // const response =     
-     
+      console.log("data 2 is for truck id is:", data2?.length)
     try {
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock, rating: data.rating, confirmed: false, dateStart: data.dateStart, timeStart: data.timeStart, timeDuration: data.timeDuration
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number, trucker: data2.trucker_ID.truck, currentStatus: formState.currentStatus, dock: formState.dock, rating: data.rating, confirmed: false, dateStart: data.dateStart, timeStart: data.timeStart, timeDuration: data.timeDuration
         }
       })
     } catch (e) {
@@ -201,7 +203,7 @@ console.log("link", link)
             {test ? <div>{test}</div> : null}
 
         </div>
-        <div className="flex-row space-between my-2">
+        {/* <div className="flex-row space-between my-2">
           <label htmlFor="trucker">Trucker:</label>
           <input
             placeholder="trucker"
@@ -211,7 +213,7 @@ console.log("link", link)
             // value={formState.trucker}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
           <select
@@ -228,7 +230,7 @@ console.log("link", link)
           </select>
         </div>
 
-        <div className="flex-row space-between my-2">
+        {/* <div className="flex-row space-between my-2">
           <label htmlFor="dock">Dock:</label>
           <input
             placeholder="dock"
@@ -238,9 +240,9 @@ console.log("link", link)
             // value={formState.dock}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
 
-        <div className="flex-row space-between my-2">
+        {/* <div className="flex-row space-between my-2">
         <label htmlFor="rating">Rating:</label>
           <input 
           type = "number" 
@@ -252,27 +254,14 @@ console.log("link", link)
                     max: { value: 5, message: "Rating must not be greater than 5"},    
        
                   })} 
-            // placeholder="number"
-            // name="number"
-            // type="number"
-            // id="number"
-            // ref={
-            //   register({
-            //     validate: v =>
-            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
-            //   })
-            // }
+
 
             onChange={handleChange}
           />
 
-            {/* <ErrorMessage className = "Error"
-              errors={errors}
-              name="rating"
-              render={({ message }) => <p>{message}</p>}
-            /> */}
+   
             {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div>
+        </div> */}
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
           <input 

@@ -3,9 +3,10 @@ import { Link } from "react-router-dom";
 import { useQuery } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { LOAD_QUERY } from "../utils/queries";
-
+import { useStoreContext } from '../utils/GlobalState';
 // // function Trucker_Signup() {
 const Search_Loads = () => {
+  const [state] = useStoreContext();
   const [formState, setFormState] = useState({ state: '' });
 const {data} = useQuery(LOAD_QUERY);
 

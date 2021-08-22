@@ -43,7 +43,9 @@ const resolvers = {
             return await Trucking_User.find({})
           },
           loads: async () => {
-            return await Load.find({})
+             let load = await Load.find({})
+            console.log("all loads is :", load)
+             return load
           },
           me: async (parent, args, context) => {
             userId = context.user
@@ -68,6 +70,11 @@ const resolvers = {
             // } else return false
             return {docker,trucker}
           },   
+          trucker_Id : async (parent, args, context) => {
+            let truck = context.user._id
+            console.log("trucker id is :", truck)
+          return {truck}
+          }
           // loadsInAState : async (parent, args, context) => {
           //   console.log("hello")
           //   let state_US = args.state
@@ -115,16 +122,17 @@ const resolvers = {
             const loadOne = await Load.create(args);
             // console.log("load one is:", loadOne)
             // let loadAdded =   await Load.findById()
+            console.log("context from load is:", context._id)
             console.log("load one is again:", loadOne)
-            await Dock_User.findByIdAndUpdate(
-              {_id: args.dock},
-              { $addToSet: {loads: {_id: loadOne._id}}},
-              {new: true, upsert: true}
-            // }
-            )
+            // await Dock_User.findByIdAndUpdate(
+            //   {_id: args.dock},
+            //   { $addToSet: {loads: {_id: loadOne._id}}},
+            //   {new: true, upsert: true}
+            // // }
+            // )
 
             await Trucking_User.findByIdAndUpdate(
-              {_id: args.trucker},
+              {_id: context.id},
               { $addToSet: { loads: {_id: loadOne._id}}},
               {new: true, upsert: true}
             )
