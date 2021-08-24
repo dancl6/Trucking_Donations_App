@@ -221,10 +221,11 @@ console.log("link", link)
             id="currentStatus"
             // value={formState.currentStatus}
             onChange={handleChange}
-          />
-          <option value="Open"></option>
-          <option value= "In Progress"></option>
-          <option value= "Closed"></option>
+          >
+          <option value="Open">Open</option>
+          <option value= "In Progress">In Progress</option>
+          <option value= "Closed">Closed</option>
+          </select>
         </div>
 
         <div className="flex-row space-between my-2">
@@ -239,7 +240,7 @@ console.log("link", link)
           />
         </div>
 
-        <div className="flex-row space-between my-2">
+        {/* <div className="flex-row space-between my-2">
         <label htmlFor="rating">Rating:</label>
           <input 
           type = "number" 
@@ -251,27 +252,14 @@ console.log("link", link)
                     max: { value: 5, message: "Rating must not be greater than 5"},    
        
                   })} 
-            // placeholder="number"
-            // name="number"
-            // type="number"
-            // id="number"
-            // ref={
-            //   register({
-            //     validate: v =>
-            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
-            //   })
-            // }
+
 
             onChange={handleChange}
           />
 
-            {/* <ErrorMessage className = "Error"
-              errors={errors}
-              name="rating"
-              render={({ message }) => <p>{message}</p>}
-            /> */}
+
             {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div>
+        </div> */}
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
           <input 
