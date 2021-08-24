@@ -12,7 +12,7 @@ import  Trucker_Signup from "./pages/Trucker_Signup"
 import  Trucker_Login from "./pages/Trucker_Login"
 import  Dock_Signup from "./pages/Dock_Signup"
 import Dock_Login from "./pages/Dock_Login"
-import  Add_Load from "./pages/Add_Load"
+import  Add_Load from "./components/Add_Load"
 import Search_Loads from './pages/Search_Loads';
 import { StoreProvider } from "./utils/GlobalState";
 

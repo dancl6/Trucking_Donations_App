@@ -6,6 +6,7 @@ import { Container, Row, Col } from "react-bootstrap"
 import decode from 'jwt-decode';
 import  { QUERY_ME, LOAD_QUERY }  from "../../utils/queries";
 import { useQuery } from '@apollo/react-hooks';
+import {Add_Load} from "../../components/Add_Load";
 
 function Nav() {
   const {data} = useQuery(QUERY_ME);
