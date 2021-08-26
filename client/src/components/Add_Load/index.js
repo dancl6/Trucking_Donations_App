@@ -416,7 +416,7 @@ const Add_Load = () => {
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
-const {data2} = useQuery(QUERY_ME)
+const {data} = useQuery(QUERY_ME)
 
 let test
 
@@ -455,7 +455,7 @@ console.log("link", link)
       // const response =     
      
     try {
-        console.log("query data is:", data2?.me )
+
       await addLoad({
         // variables: { ...data }
         variables: {
@@ -505,7 +505,8 @@ console.log("link", link)
   };
 
   // console.log(errors, "Errors")
-
+  function loadForm() {
+    console.log("query data is:", data?.me.trucker )
   return (
     <div className="container my-1">
       <Link to="/trucker_login">
@@ -777,7 +778,12 @@ console.log("link", link)
       </form>
     </div>
   );
-
+      }
+    return (
+      <div>
+    {loadForm()}
+    </div>
+    )
   }
 
 
