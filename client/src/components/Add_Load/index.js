@@ -398,7 +398,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/react-hooks';
 // import Auth from "../utils/auth";
 import { ADD_LOAD } from "../../utils/mutations";
-import { QUERY_ME } from "../../utils/queries";
+import { TRUCK_ID_IS } from "../../utils/queries";
 import { useForm } from "react-hook-form"
 import { onError } from "apollo-link-error"
 import { createHttpLink } from "apollo-link-http";
@@ -416,7 +416,7 @@ const Add_Load = () => {
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
-const {data} = useQuery(QUERY_ME)
+const {data} = useQuery(TRUCK_ID_IS);
 
 let test
 
@@ -455,11 +455,11 @@ console.log("link", link)
       // const response =     
      
     try {
-
+ console.log("trucking id is this:", data?.trucker_Id.truck)
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number,  currentStatus: formState.currentStatus,  rating: data.rating, confirmed: false, dateStart: data.dateStart, timeStart: data.timeStart, timeDuration: data.timeDuration
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number,  currentStatus: formState.currentStatus, trucker: data.trucker_Id,  rating: data.rating, confirmed: false, dateStart: data.dateStart, timeStart: data.timeStart, timeDuration: data.timeDuration
         }
       })
     } catch (e) {
@@ -506,7 +506,7 @@ console.log("link", link)
 
   // console.log(errors, "Errors")
   function loadForm() {
-    console.log("query data is:", data?.me.trucker )
+    console.log("query data is:", data?.trucker_Id.truck )
   return (
     <div className="container my-1">
       <Link to="/trucker_login">

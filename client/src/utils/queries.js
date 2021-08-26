@@ -46,8 +46,8 @@ trucker {
 export const TRUCK_ID_IS = gql`
 {
   trucker_Id{
-    truck
-       
-      }
+truck
+  
+ }
 }
 `;
