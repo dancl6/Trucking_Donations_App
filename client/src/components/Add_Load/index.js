@@ -396,12 +396,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/react-hooks';
+// import { Component } from 'react'
 // import Auth from "../utils/auth";
 import { ADD_LOAD } from "../../utils/mutations";
 import { TRUCK_ID_IS } from "../../utils/queries";
 import { useForm } from "react-hook-form"
 import { onError } from "apollo-link-error"
 import { createHttpLink } from "apollo-link-http";
+import Select from 'react-select'
 // import { useAsyncTask } from 'react-hooks-async'
 import { ErrorMessage } from '@hookform/error-message'
 // import { QUERY_ME } from "../../utils/queries";
@@ -449,8 +451,8 @@ console.log("link", link)
 
 
 
-  const onSubmit = async(data) => {
-    console.log(data.number, formState.streetAddress)
+  const onSubmit = async(data2) => {
+    console.log(data2.number, formState.streetAddress)
     // async(data) => {
       // const response =     
      
@@ -459,7 +461,7 @@ console.log("link", link)
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data.number,  currentStatus: formState.currentStatus, trucker: data.trucker_Id,  rating: data.rating, confirmed: false, dateStart: data.dateStart, timeStart: data.timeStart, timeDuration: data.timeDuration
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: formState.currentStatus, trucker: data.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
         }
       })
     } catch (e) {
