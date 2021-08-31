@@ -415,6 +415,7 @@ import { ErrorMessage } from '@hookform/error-message'
 // function Trucker_Signup() {
 const Add_Load = () => {
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
+  const [optionState, setOptionState] = useState({currentStatus: ''})
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
@@ -505,7 +506,19 @@ console.log("link", link)
       [name]: value
     });
   };
+  const handleChange2 = event => {
+    const { name, value } = event.target;
+    setOptionState({
+      ...optionState,
+      [name]: value
+    });
+  };
+  // function optionState() {
+  //   var options = [],
+  //   optionState = this.props.optionState;
 
+    
+  // }
   // console.log(errors, "Errors")
   function loadForm() {
     console.log("query data is:", data?.trucker_Id.truck )
@@ -622,7 +635,8 @@ console.log("link", link)
             type="currentStatus"
             id="currentStatus"
             // value={formState.currentStatus}
-            onChange={handleChange}
+            onChange={optionState}
+            // value = {optionState}
           >
           <option value="Open">Open</option>
           <option value= "In Progress">In Progress</option>
