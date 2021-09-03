@@ -456,7 +456,7 @@ console.log("link", link)
     console.log(data2.number, formState.streetAddress)
     // async(data) => {
       // const response =     
-     
+
     try {
  console.log("trucking id is this:", data?.trucker_Id.truck)
       await addLoad({
@@ -521,7 +521,17 @@ console.log("link", link)
   // }
   // console.log(errors, "Errors")
   function loadForm() {
-    console.log("query data is:", data?.trucker_Id.truck )
+  class App extends React.component {
+    constructor() {
+    super();
+    this.state = {selectValue: ''}
+    }
+    callThis = (e) => {
+      console.log(this.selectVal.value)
+    }
+    // console.log("query data is:", data?.trucker_Id.truck )
+
+    render(){
   return (
     <div className="container my-1">
       <Link to="/trucker_login">
@@ -630,6 +640,7 @@ console.log("link", link)
         <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
           <select
+            ref = {(input) => this.selectVal = input} 
             placeholder="currentStatus"
             name="currentStatus"
             type="currentStatus"
@@ -642,6 +653,7 @@ console.log("link", link)
           <option value= "In Progress">In Progress</option>
           <option value= "Closed">Closed</option>
           </select>
+          <input type = "button" value = "click" onClick = {this.callThis}/>
         </div>
 
         {/* <div className="flex-row space-between my-2">
@@ -795,12 +807,13 @@ console.log("link", link)
     </div>
   );
       }
+    }
     return (
       <div>
     {loadForm()}
     </div>
     )
   }
-
+}
 
 export default Add_Load;
