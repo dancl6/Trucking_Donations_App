@@ -521,17 +521,17 @@ console.log("link", link)
   // }
   // console.log(errors, "Errors")
   function loadForm() {
-  class App extends React.component {
-    constructor() {
+  // class App extends React.component {
+    // constructor() {
     super();
     this.state = {selectValue: ''}
-    }
-    callThis = (e) => {
+    
+   var callThis = (e) => {
       console.log(this.selectVal.value)
     }
     // console.log("query data is:", data?.trucker_Id.truck )
 
-    render(){
+    // render(){
   return (
     <div className="container my-1">
       <Link to="/trucker_login">
@@ -807,13 +807,13 @@ console.log("link", link)
     </div>
   );
       }
-    }
+    
     return (
       <div>
     {loadForm()}
     </div>
     )
-  }
-}
+  // }
+// }
 
 export default Add_Load;
