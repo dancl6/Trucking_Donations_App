@@ -21,12 +21,13 @@ import { ErrorMessage } from '@hookform/error-message'
 
 // function Trucker_Signup() {
 const Add_Load = () => {
-  var temp
+
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
   const [optionState, setOptionState] = useState({currentStatus: ''})
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
+const [button, setButton] = useState('Select Status');
 const {data} = useQuery(TRUCK_ID_IS);
 
 let test
@@ -66,11 +67,11 @@ console.log("link", link)
       // const response =     
 
     try {
- console.log("trucking id is this:", data?.trucker_Id.truck, "current status temp is:", temp)
+ console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: temp, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
         }
       })
     } catch (e) {
@@ -125,7 +126,7 @@ console.log("link", link)
   //   var options = [],
   //   optionState = this.props.optionState;
 
-    
+
   // }
   // console.log(errors, "Errors")
   function loadForm() {
@@ -263,9 +264,10 @@ console.log("link", link)
           </select>
           <input type = "button" value = "click" onClick = {this.callThis}/> */}
 
-          <DropdownButton  onSelect = {function (evt) {
+          <DropdownButton title = {button} onSelect = {function (evt) {
             console.log("the new and nice value is:", evt)
-             temp = evt
+
+             setButton(evt)
           }}> <MenuItem eventKey = "Open">Open</MenuItem>
               <MenuItem eventKey = "In Progress">In Progress</MenuItem>
               <MenuItem eventKey = "Closed">Closed</MenuItem>
