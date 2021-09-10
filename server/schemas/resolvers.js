@@ -122,7 +122,7 @@ const resolvers = {
             const loadOne = await Load.create(args);
             // console.log("load one is:", loadOne)
             // let loadAdded =   await Load.findById()
-            console.log("context from load is:", context._id)
+            console.log("context from load is:", context.user._id)
             console.log("load one is again:", loadOne)
             // await Dock_User.findByIdAndUpdate(
             //   {_id: args.dock},
@@ -132,7 +132,7 @@ const resolvers = {
             // )
 
             await Trucking_User.findByIdAndUpdate(
-              {_id: context.id},
+              {_id: context.user._id},
               { $addToSet: { loads: {_id: loadOne._id}}},
               {new: true, upsert: true}
             )
