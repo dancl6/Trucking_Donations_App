@@ -55,16 +55,13 @@ const link = errorLink.concat(requestLink)
 
 console.log("link", link)
 
-  // const cancelForm = async event => {
-  //   document.getElementById("trucker").reset();
-  // }
+
 
 
 
   const onSubmit = async(data2) => {
     console.log(data2.number, formState.streetAddress)
-    // async(data) => {
-      // const response =     
+
 
     try {
  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
@@ -80,9 +77,7 @@ console.log("link", link)
       console.log("testing error is:", error)
     }
         
-      // const data = await response.json();
-      // console.log(data, "server data")
-    // })
+
     
   }
 
@@ -92,9 +87,7 @@ console.log("link", link)
     try {
        await addLoad({
         variables: { ...formState }
-        // variables: {
-        //   streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: formState.number, trucker: formState.trucker, currentStatus: formState.currentStatus, dock: formState.dock
-        // }
+
       });
       
       // Auth.login(data.token);
@@ -130,17 +123,7 @@ console.log("link", link)
   // }
   // console.log(errors, "Errors")
   function loadForm() {
-  // class App extends React.component {
-    // constructor() {
-  //   super();
-  //   this.state = {selectValue: ''}
-    
-  //  var callThis = (e) => {
-  //     console.log(this.selectVal.value)
-  //   }
-    // console.log("query data is:", data?.trucker_Id.truck )
 
-    // render(){
   return (
     <div className="container my-1">
       <Link to="/trucker_login">
@@ -152,17 +135,7 @@ console.log("link", link)
       <form onSubmit = {handleSubmit(onSubmit)}
         
         
-        // async(formData) => {
-        
-        //      await addLoad({
-        //     variables: { ...formData }
-        //     // variables: {
-        //     //   streetAddress: formData.streetAddress, state: formData.state, zipcode: formData.zipcode, donationItem: formData.donationItem, number: formData.number, trucker: formData.trucker, currentStatus: formData.currentStatus, dock: formData.dock
-        //     // }
-        //   });
-        //   // const data = await response.json();
-        //   // console.log(data, "server data")
-        // })}
+
         >
         <div className="flex-row space-between my-2">
           <label htmlFor="streetAddress">Street Address:</label>
@@ -218,16 +191,7 @@ console.log("link", link)
                     setValueAs: v => parseFloat(v)       
        
                   })} 
-            // placeholder="number"
-            // name="number"
-            // type="number"
-            // id="number"
-            // ref={
-            //   register({
-            //     validate: v =>
-            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
-            //   })
-            // }
+ 
 
             onChange={handleChange}
           />
@@ -235,34 +199,9 @@ console.log("link", link)
             {test ? <div>{test}</div> : null}
 
         </div>
-        {/* <div className="flex-row space-between my-2">
-          <label htmlFor="trucker">Trucker:</label>
-          <input
-            placeholder="trucker"
-            name="trucker"
-            type="trucker"
-            id="trucker"
-            // value={formState.trucker}
-            onChange={handleChange}
-          />
-        </div> */}
+
         <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
-          {/* <select
-            ref = {(input) => this.selectVal = input} 
-            placeholder="currentStatus"
-            name="currentStatus"
-            type="currentStatus"
-            id="currentStatus"
-            // value={formState.currentStatus}
-            onChange={optionState}
-            // value = {optionState}
-          >
-          <option value="Open">Open</option>
-          <option value= "In Progress">In Progress</option>
-          <option value= "Closed">Closed</option>
-          </select>
-          <input type = "button" value = "click" onClick = {this.callThis}/> */}
 
           <DropdownButton title = {button} onSelect = {function (evt) {
             console.log("the new and nice value is:", evt)
@@ -274,38 +213,6 @@ console.log("link", link)
           </DropdownButton>
         </div>
 
-        {/* <div className="flex-row space-between my-2">
-          <label htmlFor="dock">Dock:</label>
-          <input
-            placeholder="dock"
-            name="dock"
-            type="dock"
-            id="dock"
-            // value={formState.dock}
-            onChange={handleChange}
-          />
-        </div> */}
-
-        {/* <div className="flex-row space-between my-2">
-        <label htmlFor="rating">Rating:</label>
-          <input 
-          type = "number" 
-          {...register(
-                  "rating",
-                  {       
-                    setValueAs: v => parseFloat(v)   ,
-                    min: { value: 1, message: "Rating must not be less than 1"},
-                    max: { value: 5, message: "Rating must not be greater than 5"},    
-       
-                  })} 
-
-
-            onChange={handleChange}
-          />
-
-
-            {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div> */}
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
           <input 
@@ -318,25 +225,11 @@ console.log("link", link)
                     // max: { value: 5, message: "Rating must not be greater than 5"},    
        
                   })} 
-            // placeholder="number"
-            // name="number"
-            // type="number"
-            // id="number"
-            // ref={
-            //   register({
-            //     validate: v =>
-            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
-            //   })
-            // }
+
 
             onChange={handleChange}
           />
 
-            {/* <ErrorMessage className = "Error"
-              errors={errors}
-              name="rating"
-              render={({ message }) => <p>{message}</p>}
-            /> */}
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
         <div className="flex-row space-between my-2">
@@ -351,25 +244,12 @@ console.log("link", link)
                     // max: { value: 5, message: "Rating must not be greater than 5"},    
        
                   })} 
-            // placeholder="number"
-            // name="number"
-            // type="number"
-            // id="number"
-            // ref={
-            //   register({
-            //     validate: v =>
-            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
-            //   })
-            // }
+
 
             onChange={handleChange}
           />
 
-            {/* <ErrorMessage className = "Error"
-              errors={errors}
-              name="rating"
-              render={({ message }) => <p>{message}</p>}
-            /> */}
+
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
         <div className="flex-row space-between my-2">
@@ -384,38 +264,15 @@ console.log("link", link)
                     // max: { value: 5, message: "Rating must not be greater than 5"},    
        
                   })} 
-            // placeholder="number"
-            // name="number"
-            // type="number"
-            // id="number"
-            // ref={
-            //   register({
-            //     validate: v =>
-            //     typeof v !== "number" ? "Invalid amount" : v % 2 !==0 ? "Only even amounts are allowed!" : undefined,
-            //   })
-            // }
+
 
             onChange={handleChange}
           />
 
-            {/* <ErrorMessage className = "Error"
-              errors={errors}
-              name="rating"
-              render={({ message }) => <p>{message}</p>}
-            /> */}
+
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
-        {/* <div className="flex-row space-between my-2">
-          <label htmlFor="confirmed">Confirmed?:</label>
-          <input
-            placeholder=""
-            name="confirmed"
-            type="boolean"
-            id="confirmed"
-            // value={formState.trucker}
-            onChange={handleChange}
-          />
-        </div> */}
+
         <div className="flex-row flex-end">
           <button type="submit">
             Submit

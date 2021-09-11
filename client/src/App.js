@@ -9,6 +9,7 @@ import { ApolloProvider } from '@apollo/react-hooks';
 // import { ApolloClient } from '@apollo/client';
 import Nav from "./components/Nav";
 import  Trucker_Signup from "./pages/Trucker_Signup"
+import  Modify_Load from "./pages/Modify_Load"
 import  Trucker_Login from "./pages/Trucker_Login"
 import  Dock_Signup from "./pages/Dock_Signup"
 import Dock_Login from "./pages/Dock_Login"
@@ -48,6 +49,7 @@ function App() {
       <Route exact path="/dock_login" component={Dock_Login} />
       <Route exact path="/add_load" component={Add_Load} />
       <Route exact path="/load_search" component={Search_Loads} />
+      <Route exact path="/modify_load" component={Modify_Load} />
       {/* <Route exact path="/add_load" component={Add_Load} /> */}
 
     </Switch>

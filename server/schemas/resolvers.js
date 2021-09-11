@@ -140,6 +140,9 @@ const resolvers = {
       
             // return { load };
           },
+          updateLoad: async (parent, args, context) => {
+
+          },
           addLoadToDock: async (parent, args, context) => {
             if (context.user) {
               console.log("context.user is:", context.user )
