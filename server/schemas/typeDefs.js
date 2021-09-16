@@ -132,7 +132,7 @@ addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadTrucker(Trucking_User: ID!, loadRemoved: ID!) : Trucking_User
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-updateLoad(_id: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: Float!, timeStart: Float!, timeDuration: Float!): Load
+updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: Float!, timeStart: Float!, timeDuration: Float!): Load
 }
 `;
 

@@ -4,7 +4,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useForm } from "react-hook-form"
 
 
-const Add_Load = () => {
+const Modify_Load = () => {
 
 const { register, handleSubmit } = useForm();
 const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
@@ -22,7 +22,7 @@ const handleChange = event => {
 
     try {
  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
-      await addLoad({
+      await updateLoad({
         // variables: { ...data }
         variables: {
           streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
@@ -49,3 +49,5 @@ const handleChange = event => {
   )
 
 }
+
+export default Modify_Load;

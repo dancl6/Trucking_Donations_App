@@ -138,13 +138,14 @@ const resolvers = {
             )
             // const token = signToken(dockUser);
       
-            // return { load };
+            return { _id: loadOne._id };
           },
           updateLoad: async (parent, args, context) => {
             console.log("update load context user is :", context.user)
-            if (context.user) {
-              return await Load.findByIdAndUpdate(context.user._id, args, { new: true });
-            }
+            // if (context.user) {
+              await Load.findByIdAndUpdate({_id: args.LoadId},args, { new: true });
+            // }
+            return {_id: args.LoadId}
           },
           addLoadToDock: async (parent, args, context) => {
             if (context.user) {
