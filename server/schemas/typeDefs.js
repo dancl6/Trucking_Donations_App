@@ -106,8 +106,13 @@ type Boolean_Return {
   docker: Boolean
 }
 
+
 type truck_ID {
   truck: ID
+}
+
+type OneLoad {
+  TheLoad: ID
 }
 
 type Query {
@@ -118,6 +123,7 @@ type Query {
     loads: [LoadForQueries]
     me: Boolean_Return
     trucker_Id: truck_ID
+    getLoad(this: ID!): OneLoad
 }
 
 

@@ -74,6 +74,12 @@ const resolvers = {
             let truck = context.user._id
             console.log("trucker id is :", truck)
           return {truck}
+          },
+          getLoad: async (parent, args, context) => {
+            // let loadIs = args.TheLoad
+           let returnedLoad =  await Load.findById( args.TheLoad)
+            // console.log("the load is:", loadIs)
+            return {returnedLoad}
           }
           // loadsInAState : async (parent, args, context) => {
           //   console.log("hello")
