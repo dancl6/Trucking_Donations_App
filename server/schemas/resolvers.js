@@ -77,9 +77,9 @@ const resolvers = {
           },
           getLoad: async (parent, args, context) => {
             // let loadIs = args.TheLoad
-           let returnedLoad =  await Load.findById( args.TheLoad)
+           let TheLoad =  await Load.findById( args.this)
             // console.log("the load is:", loadIs)
-            return {returnedLoad}
+            return {TheLoad}
           }
           // loadsInAState : async (parent, args, context) => {
           //   console.log("hello")

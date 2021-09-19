@@ -112,7 +112,7 @@ type truck_ID {
 }
 
 type OneLoad {
-  TheLoad: ID
+  TheLoad: Load
 }
 
 type Query {
@@ -123,7 +123,7 @@ type Query {
     loads: [LoadForQueries]
     me: Boolean_Return
     trucker_Id: truck_ID
-    getLoad(this: ID!): OneLoad
+    getLoad(this: ID!): TheLoad
 }
 
 
