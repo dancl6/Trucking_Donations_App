@@ -51,3 +51,12 @@ truck
  }
 }
 `;
+
+export const GET_LOAD = gql`
+query getLoad($this:ID!){
+  getLoad(this: $this){
+   _id
+
+ }
+ }
+`;
