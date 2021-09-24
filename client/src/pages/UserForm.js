@@ -7,7 +7,7 @@ import { TRUCK_ID_IS } from '../utils/queries';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
 
-const UserForm = ({preloadedValues}) => {
+export function  UserForm({preloadedValues}) {
 // const preloadedValues = {
     const { register, handleSubmit, formState: { errors }
 } = useForm({
@@ -218,4 +218,4 @@ const handleChange = event => {
 
 }
 
-export default UserForm;
+// export default UserForm;
