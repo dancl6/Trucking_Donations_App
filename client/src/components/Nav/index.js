@@ -14,11 +14,18 @@ function Nav() {
     function showNavigation() {
       // console.log("data is here now:", data.me.trucker)
       const order_Html = data?.me.trucker ?  (
-        <li className="mx-1">
+      <div>
+      <li className="mx-1">
         <Link to="/add_load">
           Add Load
         </Link>
       </li>
+      <li className="mx-1">
+        <Link to="/modify_load">
+          Modify Load
+        </Link>
+      </li>
+      </div>
       ): null;
       const search_Loads = data?.me.docker ?  (
         <li className="mx-1">
