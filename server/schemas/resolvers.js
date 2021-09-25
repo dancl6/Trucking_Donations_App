@@ -80,7 +80,14 @@ const resolvers = {
           //  let TheLoad =  await Load.findById( args.this)
             // console.log("the load is:", loadIs)
             return await Load.findById(args.this)
-          }
+          },
+          getTruckerLoads: async (parent, args, context) => {
+            console.log("context user for get trucker loads is:", context.user)
+            let test =  await Trucking_User.findById(context.user._id)
+            console.log("trucking user data is:", test)
+
+            return test.loads
+          },
           // loadsInAState : async (parent, args, context) => {
           //   console.log("hello")
           //   let state_US = args.state

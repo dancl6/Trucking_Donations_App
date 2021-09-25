@@ -124,6 +124,7 @@ type Query {
     me: Boolean_Return
     trucker_Id: truck_ID
     getLoad(this: ID!): Load
+    getTruckerLoads: [Load]
 }
 
 
