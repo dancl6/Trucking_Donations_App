@@ -25,6 +25,11 @@ function Nav() {
           Modify Load
         </Link>
       </li>
+      <li className="mx-1">
+        <Link to="/my_loads">
+          My Loads
+        </Link>
+      </li>
       </div>
       ): null;
       const search_Loads = data?.me.docker ?  (

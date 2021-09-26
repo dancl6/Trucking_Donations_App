@@ -16,6 +16,7 @@ import Dock_Login from "./pages/Dock_Login"
 import  Add_Load from "./components/Add_Load"
 import Search_Loads from './pages/Search_Loads';
 import { StoreProvider } from "./utils/GlobalState";
+import My_Loads from './pages/My_Loads';
 
 // import { addTypenameToDocument } from '@apollo/client/utilities';
 // import { cache } from './cache'
@@ -50,6 +51,7 @@ function App() {
       <Route exact path="/add_load" component={Add_Load} />
       <Route exact path="/load_search" component={Search_Loads} />
       <Route exact path="/modify_load" component={Modify_Load} />
+      <Route exact path="/my_loads" component={My_Loads} />
       {/* <Route exact path="/add_load" component={Add_Load} /> */}
 
     </Switch>

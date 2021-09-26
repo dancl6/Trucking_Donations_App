@@ -60,3 +60,11 @@ query getLoad($this:ID!){
  }
  }
 `;
+
+export const GET_TRUCKER_LOADS = gql`
+{
+  getTruckerLoads{
+    _id
+  }
+}
+`;
