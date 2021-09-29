@@ -3,15 +3,18 @@ import { Link } from "react-router-dom";
 import { useQuery } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { GET_TRUCKER_LOADS } from "../utils/queries";
-import { useStoreContext } from '../utils/actions'
+import { useStoreContext } from '../utils/GlobalState'
 
 const My_Loads = () => {
     const {data} = useQuery(GET_TRUCKER_LOADS);
     const [state, dispatch] = useStoreContext();
-    console.log("data for my loads is:", data?.[0]._id)
+
+
+
+    console.log("data for my loads is:", data?.getTruckerLoads[0])
 return (
     <div>
-        {data?.map(load => (
+        {data?.getTruckerLoads.map(load => (
            <p>
                <span>State: {load.state}</span>               
                <span>Street Address: {load.streetAddress}</span>
