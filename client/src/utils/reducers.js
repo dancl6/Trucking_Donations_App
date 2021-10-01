@@ -1,5 +1,5 @@
 import { useReducer } from 'react';
-import { USER_LIST, LOAD_LIST } from './actions'
+import { USER_LIST, LOAD_LIST, TRUCKER_LOADS } from './actions'
 
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -13,6 +13,11 @@ export const reducer = (state, action) => {
           ...state,
           Load: [...action.Load]
         };
+        case TRUCKER_LOADS:
+            return {
+              ...state,
+              Trucker_Loads: [...action.Trucker_Loads]
+            };
     default: 
         return state;
     }
