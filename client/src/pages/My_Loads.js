@@ -10,7 +10,7 @@ import { TRUCKER_LOADS } from "../utils/actions";
 const My_Loads = () => {
     const {data} = useQuery(GET_TRUCKER_LOADS);
     const [state, dispatch] = useStoreContext();
-
+    const { Trucker_Loads } = state;
 dispatch({
     type: TRUCKER_LOADS,
     Trucker_Loads: data?.getTruckerLoads
