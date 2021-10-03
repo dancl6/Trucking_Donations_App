@@ -8,7 +8,7 @@ import { TRUCKER_LOADS } from "../utils/actions";
 
 
 const My_Loads = () => {
-    const {data} = useQuery(GET_TRUCKER_LOADS);
+    const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     const [state, dispatch] = useStoreContext();
     const { Trucker_Loads } = state;
 dispatch({
@@ -16,18 +16,25 @@ dispatch({
     Trucker_Loads: data?.getTruckerLoads
 })
 
-// useEffect(() => {
-//     console.log(`RERENDER: STATE IS`, state.);
-//   }, [state.currentWorkout]);
+useEffect(() => {
+    if (data) {
+        dispatch({
+            type:GET_TRUCKER_LOADS,
+            Trucker_Loads: data.getTruckerLoads
+        })
+    }
+    // console.log(`RERENDER: STATE IS`, state.);
+  }, [data, loading, dispatch]);
+  
 
-    console.log("data for my loads is:", data?.getTruckerLoads[0])
+    console.log("data for my loads is:", data?.getTruckerLoads, "and", Trucker_Loads)
 return (
     <div>
-        {data?.getTruckerLoads.map(load => (
+        {Trucker_Loads.map(load => (
            <p>
-               <span>State: {load.state}</span>               
-               <span>Street Address: {load.streetAddress}</span>
-               <span>Donation Item: {load.donationItem}</span>
+               <span>State: {load._id}</span>               
+               {/* <span>Street Address: {load.streetAddress}</span>
+               <span>Donation Item: {load.donationItem}</span> */}
                
            </p> 
         ))}
