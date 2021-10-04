@@ -11,10 +11,10 @@ const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     const [state, dispatch] = useStoreContext();
     const { Trucker_Loads } = state;
-dispatch({
-    type: TRUCKER_LOADS,
-    Trucker_Loads: data?.getTruckerLoads
-})
+// dispatch({
+//     type: TRUCKER_LOADS,
+//     Trucker_Loads: data?.getTruckerLoads
+// })
 
 useEffect(() => {
     if (data) {
@@ -30,7 +30,7 @@ useEffect(() => {
     console.log("data for my loads is:", data?.getTruckerLoads, "and", Trucker_Loads)
 return (
     <div>
-        {Trucker_Loads.map(load => (
+        {data?.getTruckerLoads.map(load => (
            <p>
                <span>State: {load._id}</span>               
                {/* <span>Street Address: {load.streetAddress}</span>
