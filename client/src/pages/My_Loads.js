@@ -15,6 +15,12 @@ const My_Loads = () => {
 //     type: TRUCKER_LOADS,
 //     Trucker_Loads: data?.getTruckerLoads
 // })
+var sum = 0
+let test = data?.getTruckerLoads.map(load => {
+    sum = sum + 1
+     objName = "obj" + sum
+console.log(load)
+})
 
 useEffect(() => {
     if (data) {
