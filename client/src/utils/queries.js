@@ -53,8 +53,8 @@ truck
 `;
 
 export const GET_LOAD = gql`
-query getLoad($this:ID!){
-  getLoad(this: $this){
+query getLoad($loadId:ID!){
+  getLoad(loadId: $loadId){
    _id
 
  }

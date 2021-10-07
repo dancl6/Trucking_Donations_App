@@ -79,7 +79,7 @@ const resolvers = {
             // let loadIs = args.TheLoad
           //  let TheLoad =  await Load.findById( args.this)
             // console.log("the load is:", loadIs)
-            return await Load.findById(args.this)
+            return await Load.findById(args.loadId)
           },
           getTruckerLoads: async (parent, args, context) => {
             console.log("context user for get trucker loads is:", context.user)
