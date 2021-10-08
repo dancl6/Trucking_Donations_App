@@ -11,17 +11,17 @@ const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     const [state, dispatch] = useStoreContext();
     const { Trucker_Loads } = state;
-    const {loading: loading2, data: data2 } = useQuery(GET_LOAD)
+    const {loading: loading2,  data2 } = useQuery(GET_LOAD)
     const getLoadInfo = async (loadId)  => {
  
-            data2 ({
-                variables: {loadId}
-            })
-
-        
-            // await data2 ({
+            // data2 ({
             //     variables: {loadId}
             // })
+
+        
+            await data2 ({
+                variables: {loadId}
+            })
         console.log("data 2 is:", data2)
     }
 // dispatch({
@@ -51,10 +51,10 @@ return (
     <div>
         {data?.getTruckerLoads.map(load => (
             <div>
-                {getLoadInfo(load._id)  ? (<span>{data2}</span>) : ''       }
+                {getLoadInfo(load._id) ? (<span>{data2}</span>) : ''       }
             
            <p>
-               <span>State: {data2.state}</span>               
+               {/* <span>State: {data2.state}</span>                */}
                    
            </p>
            </div> 
