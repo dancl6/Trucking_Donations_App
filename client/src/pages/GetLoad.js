@@ -10,6 +10,7 @@ function GetLoad({loadId}) {
     const { loading, error, data } = useQuery(GET_LOAD, {
         variables: {loadId},
     })
+    return data
 }
 
 export default GetLoad;

@@ -5,7 +5,7 @@ import Auth from "../utils/auth";
 import { GET_TRUCKER_LOADS, GET_LOAD } from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
 import { TRUCKER_LOADS } from "../utils/actions";
-import {GetLoad} from "./GetLoad"
+import GetLoad from "./GetLoad"
 
 const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
@@ -41,15 +41,15 @@ const My_Loads = () => {
 // console.log(load)
 // })
 
-useEffect(() => {
-    if (data) {
-        dispatch({
-            type:GET_TRUCKER_LOADS,
-            Trucker_Loads: data.getTruckerLoads
-        })
-    }
-    // console.log(`RERENDER: STATE IS`, state.);
-  }, [data, loading, dispatch]);
+// useEffect(() => {
+//     if (data) {
+//         dispatch({
+//             type:GET_TRUCKER_LOADS,
+//             Trucker_Loads: data.getTruckerLoads
+//         })
+//     }
+//     // console.log(`RERENDER: STATE IS`, state.);
+//   }, [data, loading, dispatch]);
   
 
     console.log("data for my loads is:", data?.getTruckerLoads, "and", Trucker_Loads)
