@@ -9,8 +9,8 @@ import GetLoad from "./GetLoad"
 
 const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
-    const [state, dispatch] = useStoreContext();
-    const { Trucker_Loads } = state;
+    // const [state, dispatch] = useStoreContext();
+    // const { Trucker_Loads } = state;
 //     function getLoad ({loadId}) {
 //     const {loading: loading2, error, data:data2 } = useQuery(GET_LOAD, {
 //         variables: {loadId},
@@ -52,7 +52,7 @@ const My_Loads = () => {
 //   }, [data, loading, dispatch]);
   
 
-    console.log("data for my loads is:", data?.getTruckerLoads, "and", Trucker_Loads)
+    console.log("data for my loads is:", data?.getTruckerLoads)
 return (
     <div>
         {data?.getTruckerLoads.map(load => (

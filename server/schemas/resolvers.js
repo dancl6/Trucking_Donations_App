@@ -44,7 +44,7 @@ const resolvers = {
           },
           loads: async () => {
              let load = await Load.find({})
-            console.log("all loads is :", load)
+            // console.log("all loads is :", load)
              return load
           },
           me: async (parent, args, context) => {
@@ -82,9 +82,9 @@ const resolvers = {
             return await Load.findById(args.loadId)
           },
           getTruckerLoads: async (parent, args, context) => {
-            console.log("context user for get trucker loads is:", context.user)
+            // console.log("context user for get trucker loads is:", context.user)
             let test =  await Trucking_User.findById(context.user._id)
-            console.log("trucking user data is:", test)
+            // console.log("trucking user data is:", test)
 
             return test.loads
           },
