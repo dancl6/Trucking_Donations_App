@@ -57,7 +57,7 @@ return (
     <div>
         {data?.getTruckerLoads.map(load => (
             <div>
-                {GetLoad(load._id) ? (<span>{GetLoad(load._id)}</span>) : ''       }
+            <div>    {GetLoad(load._id) ? (<span>{GetLoad(load._id)}</span>) : ''       }</div>
             
            <p>
                {/* <span>State: {data2.state}</span>                */}
