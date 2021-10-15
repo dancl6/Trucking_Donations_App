@@ -130,6 +130,12 @@ const resolvers = {
       
             return { token, dockUser };
           },
+          getLoad2: async (parent, args, context) => {
+            // let loadIs = args.TheLoad
+          //  let TheLoad =  await Load.findById( args.this)
+            // console.log("the load is:", loadIs)
+            return await Load.findById(args.loadId)
+          },
           addLoad: async (parent, args, context) => {
             // console.log("context is :", context)
             const loadOne = await Load.create(args);
