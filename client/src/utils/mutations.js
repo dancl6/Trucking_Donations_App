@@ -75,7 +75,7 @@ export const GET_LOAD2 = gql`
 mutation getLoad2($loadId:ID!){
   getLoad2(loadId: $loadId){
    _id
-
+    state
  }
  }
  `;

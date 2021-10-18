@@ -57,7 +57,7 @@ query getLoad($loadId:ID!){
   getLoad(loadId: $loadId){
    _id
 
- }
+ } 
  }
 `;
 

@@ -22,12 +22,12 @@ try {
 }
 
 
-    console.log("data for my loads is:", data?.getTruckerLoads)
+    console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", handleGetLoad("6142bdb9b88e8e5794462379"))
 return (
     <div>
         {data?.getTruckerLoads.map(load => (
             <div>
-            <div>    {handleGetLoad(load._id) ? (<span>{handleGetLoad(load._id)}</span>) : ''       }</div>
+            <div>    {handleGetLoad(load._id) ? (<span>{handleGetLoad(load._id)._id}</span>) : ''       }</div>
             
            <p>
                {/* <span>State: {data2.state}</span>                */}
