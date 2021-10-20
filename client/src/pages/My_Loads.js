@@ -17,7 +17,7 @@ const handleGetLoad = async (loadId) => {
 try {
     await data2({
         variables: {loadId}
-    })
+    }).then(res => console.log("the res is:",res))
 } catch (e) {
 
 }
@@ -29,7 +29,7 @@ return (
     <div>
         {data?.getTruckerLoads.map(load => (
             <div>
-            <div>    {data2(load._id) ? (<span>{data2(load._id)}</span>) : ''       }</div>
+            <div>    {handleGetLoad(load._id) ? (<span>{handleGetLoad(load._id)}</span>) : ''       }</div>
             
            <p>
                {/* <span>State: {data2.state}</span>                */}
