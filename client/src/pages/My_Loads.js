@@ -15,11 +15,16 @@ const My_Loads = () => {
 const handleGetLoad = async (loadId) => {
     // loadId = "6142bdb9b88e8e5794462379"
 try {
-    await data2({
+    
+    const res = await data2({
         variables: {loadId}
-    }).then(res => console.log("the res is:",res))
+    })
+    const loads = res.data;
+    this.setState({
+        Loads: loads
+    })
 } catch (e) {
-
+    console.log(e)
 }
 }
 
