@@ -11,21 +11,23 @@ import GetLoad from "./GetLoad"
 const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
 // const [getLoad2] = useMutation(GET_LOAD2)
-    const {loading: loading2, data: data2 } = useQuery(GET_LOAD)
-const handleGetLoad = async (loadId) => {
+    const [loadId, setLoadId] = useState('')
+    const {loading: loading2, data: data2 } = useQuery(GET_LOAD, {
+        variables: {loadId},
+    })
+const handleGetLoad = async (event) => {
     // loadId = "6142bdb9b88e8e5794462379"
-try {
-    
-    const res = await data2({
-        variables: {loadId}
-    })
-    const loads = res.data;
-    this.setState({
-        Loads: loads
-    })
-} catch (e) {
-    console.log(e)
-}
+
+    setLoadId(event)    
+    // const res = await data2({
+    //     variables: {loadId}
+    // })
+    // const loads = res.data;
+    // this.setState({
+    //     Loads: loads
+    // })
+
+
 }
 
 
