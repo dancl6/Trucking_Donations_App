@@ -12,24 +12,27 @@ const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
 // const [getLoad2] = useMutation(GET_LOAD2)
     const [state, dispatch] = useStoreContext();
-    const [loadId, setLoadId] = useState('')
+    // const [loadId, setLoadId] = useState('')
+    const test = data?.getTruckerLoads
+    const loadId = test
+    console.log("test is now:", test?.[0]._id)
     const {loading: loading2, data: data2 } = useQuery(GET_LOAD, {
         variables: {loadId},
     })
-    useEffect(() => {
-        if (data2) {
-            console.log("data2 is:", data2)
-            dispatchEvent({
-                type: TRUCKER_LOADS,
-                loads: data2.load
-            })
-        }
+    // useEffect(() => {
+    //     if (data2) {
+    //         console.log("data2 is:", data2)
+    //         dispatchEvent({
+    //             type: TRUCKER_LOADS,
+    //             loads: data2.load
+    //         })
+    //     }
 
-    }, [data2, loading2, dispatch])
+    // }, [data2, loading2, dispatch])
 const handleGetLoad = async (event) => {
     // loadId = "6142bdb9b88e8e5794462379"
 
-    setLoadId(event)    
+    // setLoadId(event)    
     // const res = await data2({
     //     variables: {loadId}
     // })
@@ -42,12 +45,12 @@ const handleGetLoad = async (event) => {
 }
 
 
-    console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", handleGetLoad("6142bdb9b88e8e5794462379"))
+    console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", data2, "test is:", test)
 return (
     <div>
         {data?.getTruckerLoads.map(load => (
             <div>
-            <div>    {handleGetLoad(load._id) ? (<span>{handleGetLoad(load._id)}</span>) : ''       }</div>
+            <div>    {data2 ? (<span>{data2}</span>) : ''       }</div>
             
            <p>
                {/* <span>State: {data2.state}</span>                */}
