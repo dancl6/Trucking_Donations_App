@@ -11,10 +11,21 @@ import GetLoad from "./GetLoad"
 const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
 // const [getLoad2] = useMutation(GET_LOAD2)
+    const [state, dispatch] = useStoreContext();
     const [loadId, setLoadId] = useState('')
     const {loading: loading2, data: data2 } = useQuery(GET_LOAD, {
         variables: {loadId},
     })
+    useEffect(() => {
+        if (data2) {
+            console.log("data2 is:", data2)
+            dispatchEvent({
+                type: TRUCKER_LOADS,
+                loads: data2.load
+            })
+        }
+
+    }, [data2, loading2, dispatch])
 const handleGetLoad = async (event) => {
     // loadId = "6142bdb9b88e8e5794462379"
 
