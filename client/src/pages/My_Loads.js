@@ -9,13 +9,24 @@ import { TRUCKER_LOADS } from "../utils/actions";
 import GetLoad from "./GetLoad"
 
 const My_Loads = () => {
+    const arrayId = []
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
 // const [getLoad2] = useMutation(GET_LOAD2)
     const [state, dispatch] = useStoreContext();
     // const [loadId, setLoadId] = useState('')
-    const test = data?.getTruckerLoads
-    const loadId = test
-    console.log("test is now:", test?.[0]._id)
+
+    if (data){
+        console.log("data hey is:", data.getTruckerLoads[0],'data length is:', data.getTruckerLoads.length)
+    for (let i = 0; i < data.getTruckerLoads.length; i ++ ){
+        arrayId.push(data.getTruckerLoads[i]._id)
+        console.log("pushing is :", data.getTruckerLoads[i]._id)
+    }
+}
+    console.log("array id is :", arrayId)
+    const loadId = arrayId
+    // const loadId = test
+
+    // console.log("test is now:", test?.[0]._id)
     const {loading: loading2, data: data2 } = useQuery(GET_LOAD, {
         variables: {loadId},
     })
@@ -44,11 +55,14 @@ const handleGetLoad = async (event) => {
 
 }
 
+    if (data2) {
+        console.log("data 2 is:::", data2[0])
+    }
 
-    console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", data2, "test is:", test)
+    console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", data2?.state)
 return (
     <div>
-        {data?.getTruckerLoads.map(load => (
+        {data2?.map(load => (
             <div>
             <div>    {data2 ? (<span>{data2}</span>) : ''       }</div>
             

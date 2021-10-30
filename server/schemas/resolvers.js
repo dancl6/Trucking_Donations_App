@@ -81,7 +81,14 @@ const resolvers = {
             // console.log("the load is:", loadIs)
             const ObjectId = require('mongodb').ObjectID
             let _idObject = ObjectId(args.loadId)
-            return await Load.findById(_idObject)
+            let test = []
+            console.log("args length is:", args.loadId.length)
+            for (let i = 0; i < args.loadId.length; i ++ ) {
+              test.push(Load.findbyId(args.loadId[i]))
+            }
+            // return await Load.findById(args.loadId)
+            console.log("long array is:", test)
+            return test
           },
           getTruckerLoads: async (parent, args, context) => {
             // console.log("context user for get trucker loads is:", context.user)
