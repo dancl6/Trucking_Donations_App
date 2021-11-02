@@ -4,7 +4,12 @@ const { findById } = require('../models/Dock_User');
 const { signTokenTrucker, signTokenDock } = require('../utils/auth');
 
 const resolvers = {
-
+    // Test1 : new GraphQLObjectType({
+    //   name: "test",
+    //   args: {
+    //     containsId: new GraphQLList(GraphQLID)
+    //   },
+    // }),
     Query: {
         truckingUser: async (parent, args, context) => {
             if (context.user) {
@@ -88,7 +93,7 @@ const resolvers = {
             }
             // return await Load.findById(args.loadId)
             console.log("long array is:", test)
-            return test
+            return {test}
           },
           getTruckerLoads: async (parent, args, context) => {
             // console.log("context user for get trucker loads is:", context.user)
