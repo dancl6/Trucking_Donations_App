@@ -89,11 +89,11 @@ const resolvers = {
             let test = []
             console.log("args length is:", args.loadId.length)
             for (let i = 0; i < args.loadId.length; i ++ ) {
-              test.push(Load.findbyId(args.loadId[i]))
+              test.push(Load.findbyId(_idObject[i]))
             }
             // return await Load.findById(args.loadId)
             console.log("long array is:", test)
-            return {test}
+            return test.list()
           },
           getTruckerLoads: async (parent, args, context) => {
             // console.log("context user for get trucker loads is:", context.user)
