@@ -2,6 +2,7 @@ const { AuthenticationError } = require('apollo-server-express');
 const { Trucking_User, Dock_User, Load } = require('../models');
 const { findById } = require('../models/Dock_User');
 const { signTokenTrucker, signTokenDock } = require('../utils/auth');
+// import {GraphQLList} from 'graphql'
 
 const resolvers = {
     // Test1 : new GraphQLObjectType({
@@ -89,11 +90,13 @@ const resolvers = {
             let test = []
             console.log("args length is:", args._id.length)
             for (let i = 0; i < args._id.length; i ++ ) {
-              test.push(Load.findbyId(args._id[i]))
+              test.push(Load.findById(args._id[i]))
             }
+            let test2 = await Load.findById(args._id)
             // return await Load.findById(args.loadId)
             console.log("long array is:", test)
-            return test.list()
+            // return test.list()
+            return {test}
           },
           getTruckerLoads: async (parent, args, context) => {
             // console.log("context user for get trucker loads is:", context.user)
