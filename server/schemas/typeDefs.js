@@ -123,7 +123,7 @@ type Query {
     loads: [LoadForQueries]
     me: Boolean_Return
     trucker_Id: truck_ID
-    getLoad(loadId: [ID]!): [Load]
+    getLoad(_id: [ID]!): [Load]
     getTruckerLoads: [Load]
 }
 

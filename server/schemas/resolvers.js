@@ -85,10 +85,10 @@ const resolvers = {
           //  let TheLoad =  await Load.findById( args.this)
             // console.log("the load is:", loadIs)
             const ObjectId = require('mongodb').ObjectID
-            let _idObject = ObjectId(args.loadId)
+            let _idObject = ObjectId(args._id)
             let test = []
-            console.log("args length is:", args.loadId.length)
-            for (let i = 0; i < args.loadId.length; i ++ ) {
+            console.log("args length is:", args._id.length)
+            for (let i = 0; i < args._id.length; i ++ ) {
               test.push(Load.findbyId(_idObject[i]))
             }
             // return await Load.findById(args.loadId)
