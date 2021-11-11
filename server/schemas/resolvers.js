@@ -89,7 +89,7 @@ const resolvers = {
             let test = []
             console.log("args length is:", args._id.length)
             for (let i = 0; i < args._id.length; i ++ ) {
-              test.push(Load.findbyId(_idObject[i]))
+              test.push(Load.findbyId(args._id[i]))
             }
             // return await Load.findById(args.loadId)
             console.log("long array is:", test)
