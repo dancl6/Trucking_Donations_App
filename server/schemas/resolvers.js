@@ -85,6 +85,7 @@ const resolvers = {
             // let loadIs = args.TheLoad
           //  let TheLoad =  await Load.findById( args.this)
             // console.log("the load is:", loadIs)
+            const {_id} = args._id
             const ObjectId = require('mongodb').ObjectID
             let _idObject = ObjectId(args._id)
             let test = []
