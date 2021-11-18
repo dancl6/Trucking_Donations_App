@@ -205,8 +205,16 @@ const resolvers = {
             // if (context.user) {
               console.log("load removed is :", args.loadRemoved)
               let load1 = Load.findById(args.loadRemoved)
-              return await Trucking_User.findByIdAndUpdate(context.user._id, { $pull: {loads: {_id: args.loadRemoved}}, new: true, upsert: true})
-            // }
+              await Load.findByIdAndUpdate(
+                args.loadRemoved,
+                { $pull: { trucker: { _id: args.Trucking_User}}}, {new: true}
+              )
+              // return await Trucking_User.findByIdAndUpdate(args.Trucking_User, { $pull: {loads: {_id: args.loadRemoved}}, new: true, upsert: true})
+              return await Trucking_User.findByIdAndUpdate(
+               args.Trucking_User,
+               { $pull: { loads: { _id: args.loadRemoved }}}, { multi: true} 
+              )
+              // }
           },
           truckingLogin: async (parent, { userName, password }) => {
             const user = await Trucking_User.findOne( { userName } );
