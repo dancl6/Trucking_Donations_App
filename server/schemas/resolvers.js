@@ -206,13 +206,12 @@ const resolvers = {
               console.log("load removed is :", args.loadRemoved)
               let load1 = Load.findById(args.loadRemoved)
               await Load.findByIdAndUpdate(
-                args.loadRemoved,
-                { $pull: { trucker: { _id: args.Trucking_User}}}, {new: true}
+                {_id: args.loadRemoved},
+                { $pull: { trucker: { _id: args.Trucking_User}}}
               )
-              // return await Trucking_User.findByIdAndUpdate(args.Trucking_User, { $pull: {loads: {_id: args.loadRemoved}}, new: true, upsert: true})
               return await Trucking_User.findByIdAndUpdate(
                args.Trucking_User,
-               { $pull: { loads: { _id: args.loadRemoved }}}, { multi: true} 
+               { $pull: { loads: { _id: args.loadRemoved }}} 
               )
               // }
           },
