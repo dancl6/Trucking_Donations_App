@@ -7,6 +7,8 @@ import { GET_TRUCKER_LOADS, GET_LOAD } from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
 import { TRUCKER_LOADS } from "../utils/actions";
 import GetLoad from "./GetLoad"
+// import { Link } from "react-router-dom";
+import Button from 'react-bootstrap/Button'
 
 const My_Loads = () => {
     const arrayId = []
@@ -62,10 +64,23 @@ const handleGetLoad = async (event) => {
     console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", data2?.state)
 return (
     <div>
-        {/* <div>{arrayId}</div> */}
+
         {arrayId?.map(load => (
-            <div>{load}</div>
+            
+
+            <div>{load}
+            <Link to={"/modify_load"}>
+            <Button variant="primary">Update Load</Button>
+          </Link>
+          </div>
+
         ))}
+
+
+
+
+        {/* <div>{arrayId}</div> */}
+
         {data2?.map(load => (
             <div>
             {/* <div>    {data2 ? (<span>{data2}</span>) : ''       }</div> */}

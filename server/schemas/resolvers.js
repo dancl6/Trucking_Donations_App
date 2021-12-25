@@ -103,7 +103,14 @@ const resolvers = {
             // console.log("context user for get trucker loads is:", context.user)
             let test =  await Trucking_User.findById(context.user._id)
             console.log("trucking user data is:", test)
-
+            console.log("load is in state:", test.loads.state)
+            let list = []
+            console.log("the load at i is:", test.loads[1])
+            for ( let i = 0 ; i < test.loads.length; i ++ ) {
+              
+              list.push(await Load.findById(test.loads[i]))
+            }
+            console.log("load list is this:", list)
             return test.loads
           },
           // loadsInAState : async (parent, args, context) => {

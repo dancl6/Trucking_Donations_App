@@ -9,6 +9,8 @@ export const QUERY_TRUCKING_USERS = gql`
     phoneNumber
     loads {
       _id
+      state
+      
     }
     
   }
