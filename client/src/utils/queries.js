@@ -10,7 +10,7 @@ export const QUERY_TRUCKING_USERS = gql`
     loads {
       _id
       state
-      
+
     }
     
   }
@@ -67,6 +67,10 @@ export const GET_TRUCKER_LOADS = gql`
 {
   getTruckerLoads{
     _id
+    state
+    zipcode
+    streetAddress
+    
   }
 }
 `;

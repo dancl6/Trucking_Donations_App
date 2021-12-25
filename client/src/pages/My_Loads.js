@@ -13,6 +13,7 @@ import Button from 'react-bootstrap/Button'
 const My_Loads = () => {
     const arrayId = []
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
+    console.log("data now is:", data?.getTruckerLoads._id)
 // const [getLoad2] = useMutation(GET_LOAD2)
     const [state, dispatch] = useStoreContext();
     // const [loadId, setLoadId] = useState('')
@@ -20,8 +21,8 @@ const My_Loads = () => {
     if (data){
         console.log("data hey is:", data.getTruckerLoads[0],'data length is:', data.getTruckerLoads.length)
     for (let i = 0; i < data.getTruckerLoads.length; i ++ ){
-        arrayId.push(data.getTruckerLoads[i]._id)
-        console.log("pushing is :", data.getTruckerLoads[i]._id)
+        arrayId.push(data.getTruckerLoads[i].state)
+        console.log("pushing is :", data.getTruckerLoads[i].state)
     }
 }
     console.log("array id is :", arrayId)
