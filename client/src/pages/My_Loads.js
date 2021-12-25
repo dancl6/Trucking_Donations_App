@@ -62,7 +62,10 @@ const handleGetLoad = async (event) => {
     console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", data2?.state)
 return (
     <div>
-        <div>{arrayId}</div>
+        {/* <div>{arrayId}</div> */}
+        {arrayId?.map(load => (
+            <div>{load}</div>
+        ))}
         {data2?.map(load => (
             <div>
             {/* <div>    {data2 ? (<span>{data2}</span>) : ''       }</div> */}
