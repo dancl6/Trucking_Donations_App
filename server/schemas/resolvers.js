@@ -111,7 +111,7 @@ const resolvers = {
               list.push(await Load.findById(test.loads[i]))
             }
             console.log("load list is this:", list)
-            return test.loads
+            return list
           },
           // loadsInAState : async (parent, args, context) => {
           //   console.log("hello")
