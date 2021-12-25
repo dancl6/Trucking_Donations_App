@@ -12,6 +12,10 @@ import Button from 'react-bootstrap/Button'
 
 const My_Loads = () => {
     const arrayId = []
+    const arrayState = []
+    const arrayAddress = []
+    const arrayZip = []
+    
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     console.log("data now is:", data?.getTruckerLoads._id)
 // const [getLoad2] = useMutation(GET_LOAD2)
@@ -21,8 +25,9 @@ const My_Loads = () => {
     if (data){
         console.log("data hey is:", data.getTruckerLoads[0],'data length is:', data.getTruckerLoads.length)
     for (let i = 0; i < data.getTruckerLoads.length; i ++ ){
-        arrayId.push(data.getTruckerLoads[i].state)
-        console.log("pushing is :", data.getTruckerLoads[i].state)
+        arrayId.push(data.getTruckerLoads[i]._id)
+        
+        console.log("pushing is :", data.getTruckerLoads[i]._id)
     }
 }
     console.log("array id is :", arrayId)
@@ -66,16 +71,23 @@ const handleGetLoad = async (event) => {
 return (
     <div>
 
-        {arrayId?.map(load => (
-            
+        {Object.keys(data?.getTruckerLoads).map(function(key,index){
 
-            <div>{load}
-            <Link to={"/modify_load"}>
+        
+            return(
+            
+            <div>
+            {data?.getTruckerLoads[index].state}
+            {data?.getTruckerLoads[index].zipcode}
+            {data?.getTruckerLoads[index].streetAddress}
+            {data?.getTruckerLoads[index].number}
+
+            <Link to={`/modify_load/${data?.getTruckerLoads[index]._id}`}>
             <Button variant="primary">Update Load</Button>
           </Link>
           </div>
-
-        ))}
+            )
+        })}
 
 
 
