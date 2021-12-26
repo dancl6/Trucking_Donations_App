@@ -80,7 +80,7 @@ return (
             {data?.getTruckerLoads[index].state}
             {data?.getTruckerLoads[index].zipcode}
             {data?.getTruckerLoads[index].streetAddress}
-            {data?.getTruckerLoads[index].number}
+            {/* {data?.getTruckerLoads[index].number} */}
 
             <Link to={`/modify_load/${data?.getTruckerLoads[index]._id}`}>
             <Button variant="primary">Update Load</Button>
