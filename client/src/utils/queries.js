@@ -58,7 +58,8 @@ export const GET_LOAD = gql`
 query getLoad($loadId:[ID]!){
   getLoad(loadId: $loadId){
    _id
-
+    state
+    zipcode
  } 
  }
 `;

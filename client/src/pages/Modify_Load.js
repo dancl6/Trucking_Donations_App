@@ -13,8 +13,9 @@ const Modify_Load = () => {
     fetchData()
   }, [])
   // return(
-  
-  if (data) {return (  (<UserForm preloadedValues = {data} />) ) }else { return (<div>Loading...</div>)}
+    // return <UserForm preloadedValues={data}/>
+  return data ? <UserForm preloadedValues= {data}/> : <div>Loading...</div>
+  // if (data) {return (  (<UserForm preloadedValues = {data} />) ) }else { return (<div>Loading...</div>)}
   // )
 }
 

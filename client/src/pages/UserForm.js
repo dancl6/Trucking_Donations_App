@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useForm } from "react-hook-form"
 import { UPDATE_LOAD } from '../utils/mutations';
-import { TRUCK_ID_IS } from '../utils/queries';
+import { TRUCK_ID_IS, GET_LOAD } from '../utils/queries';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
 
@@ -14,9 +14,11 @@ export function  UserForm({preloadedValues}) {
   defaultValues: preloadedValues
 });
 // }
-
+const QueryString = window.location.search;
+console.log("Query string is:", QueryString)
+const id = "test"
 const [button, setButton] = useState('Select Status');
-const [updateLoad, { error }] = useMutation(UPDATE_LOAD);
+const [getLoad, { error }] = useMutation(GET_LOAD);
 const {data} = useQuery(TRUCK_ID_IS);
 const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
 const handleChange = event => {
@@ -33,10 +35,10 @@ const handleChange = event => {
 
     try {
 //  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
-      await updateLoad({
+      await getLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
+         loadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
         }
       })
     } catch (e) {
@@ -124,6 +126,7 @@ const handleChange = event => {
  
 
             onChange={handleChange}
+            name = "number"
           />
             {errors.number ? <div>{errors.number.message}</div> : null}
             {test ? <div>{test}</div> : null}
@@ -139,6 +142,8 @@ const handleChange = event => {
              setButton(evt)
           }}
           ref = {register}
+
+          name = "currentStatus"
           > <MenuItem eventKey = "Open">Open</MenuItem>
               <MenuItem eventKey = "In Progress">In Progress</MenuItem>
               <MenuItem eventKey = "Closed">Closed</MenuItem>
@@ -161,6 +166,7 @@ const handleChange = event => {
 
 
             onChange={handleChange}
+            name = "dateStart"
           />
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
@@ -180,6 +186,7 @@ const handleChange = event => {
 
 
             onChange={handleChange}
+            name = "timeStart"
           />
 
 
@@ -200,6 +207,7 @@ const handleChange = event => {
 
 
             onChange={handleChange}
+            name = "timeDuration"
           />
 
 
