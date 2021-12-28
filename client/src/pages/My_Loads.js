@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { GET_LOAD2 } from "../utils/mutations";
-import { GET_TRUCKER_LOADS, GET_LOAD } from "../utils/queries";
+import { GET_TRUCKER_LOADS} from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
 import { TRUCKER_LOADS } from "../utils/actions";
-import GetLoad from "./GetLoad"
+// import GetLoad from "./GetLoad"
 // import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
 
@@ -35,9 +35,9 @@ const My_Loads = () => {
     // const loadId = test
 
     // console.log("test is now:", test?.[0]._id)
-    const {loading: loading2, data: data2 } = useQuery(GET_LOAD, {
-        variables: {loadId},
-    })
+    // const {loading: loading2, data: data2 } = useQuery(GET_LOAD, {
+    //     variables: {loadId},
+    // })
     // useEffect(() => {
     //     if (data2) {
     //         console.log("data2 is:", data2)
@@ -63,11 +63,11 @@ const handleGetLoad = async (event) => {
 
 }
 
-    if (data2) {
-        console.log("data 2 is:::", data2[0])
-    }
+    // if (data2) {
+    //     console.log("data 2 is:::", data2[0])
+    // }
 
-    console.log("data for my loads is:", data?.getTruckerLoads, "and next is:", data2?.state)
+    console.log("data for my loads is:", data?.getTruckerLoads)
 return (
     <div>
 
@@ -79,7 +79,7 @@ return (
             <div>
             {data?.getTruckerLoads[index].state}
             {data?.getTruckerLoads[index].zipcode}
-            {data?.getTruckerLoads[index].streetAddress}
+            {/* {data?.getTruckerLoads[index].streetAddress} */}
             {/* {data?.getTruckerLoads[index].number} */}
 
             <Link to={`/modify_load/${data?.getTruckerLoads[index]._id}`}>
@@ -94,18 +94,7 @@ return (
 
         {/* <div>{arrayId}</div> */}
 
-        {data2?.map(load => (
-            <div>
-            {/* <div>    {data2 ? (<span>{data2}</span>) : ''       }</div> */}
-            
 
-
-           <p>
-               {/* <span>State: {data2.state}</span>                */}
-                   
-           </p>
-           </div> 
-        ))}
     </div>
 )
 
