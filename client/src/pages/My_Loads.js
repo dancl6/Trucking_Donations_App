@@ -70,18 +70,24 @@ const handleGetLoad = async (event) => {
     console.log("data for my loads is:", data?.getTruckerLoads[2].zipcode)
 return (
     <div>
+        {/* {data.getTruckerLoads ?
+
+          (<h1>Add a Workout?</h1>) :
+          (<h1>Current Workout</h1>)} */}
+
+
 
         {data?.getTruckerLoads.forEach(element => {
-            console.log("element is :", element.state)
-            return(
-                <div>
+            // console.log("element is :", element.state)
+            // return(
+                (<div>
                     {element.state}
-                </div>
-            )
+                </div>)
+            // )
         })}
-
+        <div>
         {data?.getTruckerLoads[0].state}
-
+        </div>
         {/* {Object.keys(data?.getTruckerLoads).map(function(key,index){
 
         
