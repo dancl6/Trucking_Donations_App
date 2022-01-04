@@ -67,11 +67,22 @@ const handleGetLoad = async (event) => {
     //     console.log("data 2 is:::", data2[0])
     // }
 
-    console.log("data for my loads is:", data?.getTruckerLoads)
+    console.log("data for my loads is:", data?.getTruckerLoads[2].zipcode)
 return (
     <div>
 
-        {Object.keys(data?.getTruckerLoads).map(function(key,index){
+        {data?.getTruckerLoads.forEach(element => {
+            console.log("element is :", element.state)
+            return(
+                <div>
+                    {element.state}
+                </div>
+            )
+        })}
+
+        {data?.getTruckerLoads[0].state}
+
+        {/* {Object.keys(data?.getTruckerLoads).map(function(key,index){
 
         
             return(
@@ -79,15 +90,14 @@ return (
             <div>
             {data?.getTruckerLoads[index].state}
             {data?.getTruckerLoads[index].zipcode}
-            {/* {data?.getTruckerLoads[index].streetAddress} */}
-            {/* {data?.getTruckerLoads[index].number} */}
+
 
             <Link to={`/modify_load/${data?.getTruckerLoads[index]._id}`}>
             <Button variant="primary">Update Load</Button>
           </Link>
           </div>
             )
-        })}
+        })} */}
 
 
 
