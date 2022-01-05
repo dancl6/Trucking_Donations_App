@@ -76,15 +76,20 @@ return (
           (<h1>Current Workout</h1>)} */}
 
 
+        <div>
 
-        {data?.getTruckerLoads.forEach(element => {
-            // console.log("element is :", element.state)
-            // return(
-                (<div>
-                    {element.state}
-                </div>)
-            // )
-        })}
+
+            {data?.getTruckerLoads.map(item => (
+
+                // return (
+                <div key = {item.state}>
+                  {item.state}
+                </div>
+              
+                // )
+            ))}
+
+        </div>
         <div>
         {data?.getTruckerLoads[0].state}
         </div>
