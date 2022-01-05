@@ -16,9 +16,12 @@ export function  UserForm({preloadedValues}) {
 // }
 const QueryString = window.location.search;
 console.log("Query string is:", QueryString)
-const id = "test"
+const id = QueryString
 const [button, setButton] = useState('Select Status');
-const [getLoad, { error }] = useMutation(GET_LOAD);
+const [updateLoad, {error}] = useMutation(UPDATE_LOAD)
+const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
+  variables: { _id: id }
+});
 const {data} = useQuery(TRUCK_ID_IS);
 const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
 const handleChange = event => {
@@ -35,7 +38,7 @@ const handleChange = event => {
 
     try {
 //  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
-      await getLoad({
+      await updateLoad({
         // variables: { ...data }
         variables: {
          loadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration

@@ -57,9 +57,25 @@ truck
 export const GET_LOAD = gql`
 query getLoad($loadId:ID!){
   getLoad(loadId: $loadId){
-   _id
+    _id
     state
     zipcode
+    streetAddress
+    donationItem
+    number
+    comments
+    trucker {
+      _id
+    }
+    currentStatus
+    dock {
+      _id
+    }
+    rating
+    confirmed
+    dateStart
+    timeStart
+    timeDuration
  } 
  }
 `;
