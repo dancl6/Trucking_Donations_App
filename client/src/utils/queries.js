@@ -54,15 +54,15 @@ truck
 }
 `;
 
-// export const GET_LOAD = gql`
-// query getLoad($loadId:[ID]!){
-//   getLoad(loadId: $loadId){
-//    _id
-//     state
-//     zipcode
-//  } 
-//  }
-// `;
+export const GET_LOAD = gql`
+query getLoad($loadId:ID!){
+  getLoad(loadId: $loadId){
+   _id
+    state
+    zipcode
+ } 
+ }
+`;
 
 export const GET_TRUCKER_LOADS = gql`
 {
@@ -71,6 +71,7 @@ export const GET_TRUCKER_LOADS = gql`
     state
     zipcode
     streetAddress
+    dock
     
   }
 }

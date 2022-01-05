@@ -96,8 +96,9 @@ const resolvers = {
             let test2 = await Load.findById(args._id)
             // return await Load.findById(args.loadId)
             console.log("long array is:", test)
+            let test3 = await Load.findById(args._id)
             // return test.list()
-            return {test}
+            return test3
           },
           getTruckerLoads: async (parent, args, context) => {
             // console.log("context user for get trucker loads is:", context.user)
