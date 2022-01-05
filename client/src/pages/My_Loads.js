@@ -82,10 +82,15 @@ return (
             {data?.getTruckerLoads.map(item => (
 
                 // return (
-                <div key = {item.state}>
+
+                <div>
+            <Link to={`/modify_load/${item._id}`}>
+            <Button variant="primary">Update Load</Button>
+          </Link>
+                <div key = {item._id}>
                   {item.state}
                 </div>
-              
+                </div>
                 // )
             ))}
 
