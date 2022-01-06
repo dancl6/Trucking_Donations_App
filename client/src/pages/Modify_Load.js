@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { UPDATE_LOAD } from '../utils/mutations';
+import { GET_LOAD } from '../utils/queries'
 import {UserForm} from './UserForm'
 
 const Modify_Load = () => {
-  const [data, setData ] = useState(null)
+  const [data2, setData ] = useState(null)
+  // const [data: data3, loading] = useQuery(GET_LOAD)
+  const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
+    variables: { _id: "607f8255c8bb1c7408eba11e" }
+  });
   const [updateLoad, { error }] = useMutation(UPDATE_LOAD);
   useEffect(() => {
     const fetchData = async () => {
@@ -14,7 +19,7 @@ const Modify_Load = () => {
   }, [])
   // return(
     // return <UserForm preloadedValues={data}/>
-  return data ? <UserForm preloadedValues= {data}/> : <div>Loading...</div>
+  return loadData ? <UserForm preloadedValues= {loadData}/> : <div>Loading... </div>
   // if (data) {return (  (<UserForm preloadedValues = {data} />) ) }else { return (<div>Loading...</div>)}
   // )
 }

@@ -13,7 +13,7 @@ function Nav() {
   const {data2} = useQuery(LOAD_QUERY)
     function showNavigation() {
       // console.log("data is here now:", data.me.trucker)
-      const order_Html = data?.me.trucker ?  (
+      const trucker_Menu = data?.me.trucker ?  (
       <div>
       <li className="mx-1">
         <Link to="/add_load">
@@ -32,7 +32,7 @@ function Nav() {
       </li>
       </div>
       ): null;
-      const search_Loads = data?.me.docker ?  (
+      const docker_Menu = data?.me.docker ?  (
         <li className="mx-1">
         <Link to="/load_search">
           Search Loads
@@ -46,13 +46,13 @@ function Nav() {
           console.log("get profile is :", test)
           return (
             <ul className="flex-row">
-              <li className="mx-1">
+              {/* <li className="mx-1">
                 <Link to="/orderHistory">
                   Order History
                 </Link>
-              </li>
-              {order_Html}
-              {search_Loads}
+              </li> */}
+              {trucker_Menu}
+              {docker_Menu}
               {/* <li className="mx-1">
                 <Link to="/add_load">
                   Add Load

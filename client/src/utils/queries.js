@@ -87,8 +87,21 @@ export const GET_TRUCKER_LOADS = gql`
     state
     zipcode
     streetAddress
-    dock
-    
+    donationItem
+    number
+    comments
+    trucker {
+      _id
+    }
+    currentStatus
+    dock {
+      _id
+    }
+    rating
+    confirmed
+    dateStart
+    timeStart
+    timeDuration
   }
 }
 `;
