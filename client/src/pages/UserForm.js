@@ -6,6 +6,7 @@ import { UPDATE_LOAD } from '../utils/mutations';
 import { TRUCK_ID_IS, GET_LOAD } from '../utils/queries';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
+import { useParams } from 'react-router-dom'
 
 export function  UserForm({preloadedValues}) {
 // const preloadedValues = {
@@ -14,13 +15,14 @@ export function  UserForm({preloadedValues}) {
   defaultValues: preloadedValues
 });
 // }
-const QueryString = window.location.search;
-console.log("Query string is:", QueryString)
-const id = QueryString
+// const QueryString = window.location.search;
+// console.log("Query string is:", QueryString)
+// const id = QueryString
 const [button, setButton] = useState('Select Status');
+const { id } = useParams();
 const [updateLoad, {error}] = useMutation(UPDATE_LOAD)
 const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
-  variables: { _id: "607f8255c8bb1c7408eba11e" }
+  variables: { _id: id }
 });
 console.log("data from get load is this:", loadData)
 const [data] = useQuery(TRUCK_ID_IS);

@@ -3,12 +3,14 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import { UPDATE_LOAD } from '../utils/mutations';
 import { GET_LOAD } from '../utils/queries'
 import {UserForm} from './UserForm'
+import { useParams } from 'react-router-dom'
 
 const Modify_Load = () => {
   const [data2, setData ] = useState(null)
+  const { id } = useParams();
   // const [data: data3, loading] = useQuery(GET_LOAD)
   const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
-    variables: { _id: "607f8255c8bb1c7408eba11e" }
+    variables: { _id: id }
   });
   const [updateLoad, { error }] = useMutation(UPDATE_LOAD);
   useEffect(() => {

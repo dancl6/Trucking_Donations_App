@@ -50,7 +50,7 @@ function App() {
       <Route exact path="/dock_login" component={Dock_Login} />
       <Route exact path="/add_load" component={Add_Load} />
       <Route exact path="/load_search" component={Search_Loads} />
-      <Route exact path="/modify_load" component={Modify_Load} />
+      <Route exact path="/modify_load/:id" component={Modify_Load} />
       <Route exact path="/my_loads" component={My_Loads} />
       {/* <Route exact path="/add_load" component={Add_Load} /> */}
 
