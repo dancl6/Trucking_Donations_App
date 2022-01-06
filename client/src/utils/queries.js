@@ -55,8 +55,8 @@ truck
 `;
 
 export const GET_LOAD = gql`
-query getLoad($loadId:ID!){
-  getLoad(loadId: $loadId){
+query getLoad($_id:ID!){
+  getLoad(_id: $_id){
     _id
     state
     zipcode
