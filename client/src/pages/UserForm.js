@@ -106,6 +106,7 @@ const handleChange = event => {
             placeholder="streetAddress"
             name="streetAddress"
             type="streetAddress"
+            {...register("streetAddress", {required: true})}
             id="streetAddress"
             // value={formState.streetAddress}
             onChange={handleChange}
@@ -118,6 +119,7 @@ const handleChange = event => {
             placeholder="state"
             name="state"
             type="state"
+            {...register("state", {required: true})}
             id="state"
             // value={formState.state}
             onChange={handleChange}
@@ -130,6 +132,7 @@ const handleChange = event => {
             placeholder="zipcode"
             name="zipcode"
             type="zipcode"
+            {...register("zipcode", {required: true})}
             id="zipcode"
             // value={formState.zipcode}
             onChange={handleChange}
@@ -142,6 +145,7 @@ const handleChange = event => {
             placeholder="Donation Item"
             name="donationItem"
             type="donationItem"
+            {...register("donationItem", {required: true})}
             id="donationItem"
             // value={formState.donationItem}
             onChange={handleChange}
@@ -154,6 +158,7 @@ const handleChange = event => {
           type = "number" 
           {...register(
                   "number",
+                  {required: true},
                   {       
                     setValueAs: v => parseFloat(v)       
        
@@ -192,6 +197,7 @@ const handleChange = event => {
           type = "number" 
           {...register(
                   "dateStart",
+                  {required: true},
                   {       
                     setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
@@ -212,6 +218,7 @@ const handleChange = event => {
           type = "number" 
           {...register(
                   "timeStart",
+                  {required: true},
                   {       
                     setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
@@ -233,6 +240,7 @@ const handleChange = event => {
           type = "timeDuration" 
           {...register(
                   "timeDuration",
+                  {required: true},
                   {       
                     setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
