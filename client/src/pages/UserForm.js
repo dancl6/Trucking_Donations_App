@@ -26,7 +26,7 @@ const [updateLoad, {error}] = useMutation(UPDATE_LOAD)
 const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
   variables: { _id: id }
 });
-console.log("data from get load is this:", loadData)
+console.log("data from get load is this:", loadData.getLoad._id)
 const {data} = useQuery(TRUCK_ID_IS);
 const [formState, setFormState] = useState({LoadId: loadData._id,streetAddress: loadData.streetAddress, state: loadData.state , zipcode: loadData.zipcode , donationItem: loadData.donationItem, number: loadData.number , dock:loadData.dock, trucker: loadData.trucker, currentStatus: loadData.currentStatus, confirmed: loadData.confirmed, dateStart:loadData.dateStart, timeStart: loadData.timeStart, timeDuration: loadData.timeDuration });
 // const [formState, setFormState] = useState({LoadId: "607f8255c8bb1c7408eba11e",streetAddress: "", state: "WHY NOW" , zipcode: null , donationItem: "", number: 45 , dock:"607f8204c8bb1c7408eba11d", trucker: "607f81e9c8bb1c7408eba11c", currentStatus: "", confirmed: true, dateStart:76, timeStart: 86, timeDuration: 35 });
