@@ -173,7 +173,7 @@ const handleChange = event => {
 
         </div>
 
-        <div className="flex-row space-between my-2">
+        {/* <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
 
           <DropdownButton title = {button} onSelect = {function (evt) {
@@ -188,7 +188,7 @@ const handleChange = event => {
               <MenuItem eventKey = "In Progress">In Progress</MenuItem>
               <MenuItem eventKey = "Closed">Closed</MenuItem>
           </DropdownButton>
-        </div>
+        </div> */}
 
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>

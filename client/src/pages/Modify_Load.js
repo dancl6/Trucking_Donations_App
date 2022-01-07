@@ -3,6 +3,7 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import { UPDATE_LOAD } from '../utils/mutations';
 import { GET_LOAD } from '../utils/queries'
 import {UserForm} from './UserForm'
+// import { useForm } from "react-router-form"
 import { useParams } from 'react-router-dom'
 
 const Modify_Load = () => {
@@ -15,7 +16,7 @@ const Modify_Load = () => {
   const [updateLoad, { error }] = useMutation(UPDATE_LOAD);
   useEffect(() => {
     const fetchData = async () => {
-      setData(await updateLoad())
+      setData(await loadData())
     }
     fetchData()
   }, [])
