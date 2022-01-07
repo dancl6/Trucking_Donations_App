@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useForm } from "react-hook-form"
+import { onError } from "apollo-link-error"
 import { UPDATE_LOAD } from '../utils/mutations';
 import { TRUCK_ID_IS, GET_LOAD } from '../utils/queries';
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
 import { useParams } from 'react-router-dom'
+import { createHttpLink } from "apollo-link-http";
 
 export function  UserForm({preloadedValues}) {
 // const preloadedValues = {
@@ -25,7 +27,7 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
   variables: { _id: id }
 });
 console.log("data from get load is this:", loadData)
-const [data] = useQuery(TRUCK_ID_IS);
+const {data} = useQuery(TRUCK_ID_IS);
 const [formState, setFormState] = useState({LoadId: loadData._id,streetAddress: loadData.streetAddress, state: loadData.state , zipcode: loadData.zipcode , donationItem: loadData.donationItem, number: loadData.number , dock:loadData.dock, trucker: loadData.trucker, currentStatus: loadData.currentStatus, confirmed: loadData.confirmed, dateStart:loadData.dateStart, timeStart: loadData.timeStart, timeDuration: loadData.timeDuration });
 // const [formState, setFormState] = useState({LoadId: "607f8255c8bb1c7408eba11e",streetAddress: "", state: "WHY NOW" , zipcode: null , donationItem: "", number: 45 , dock:"607f8204c8bb1c7408eba11d", trucker: "607f81e9c8bb1c7408eba11c", currentStatus: "", confirmed: true, dateStart:76, timeStart: 86, timeDuration: 35 });
 const handleChange = event => {
@@ -35,6 +37,32 @@ const handleChange = event => {
       [name]: value
     });
   };
+
+  let test
+
+  const requestLink = createHttpLink({
+    uri: 'http//api.githunt.com/graphql',
+  })
+  
+  const errorLink = onError(({ graphQLErrors, networkError }) => {
+    if (graphQLErrors)
+      graphQLErrors.map(({ message, locations, path }) =>
+      
+        console.log(
+          `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`,
+        ),
+  
+      );
+      let test = graphQLErrors
+  
+    if (networkError) console.log(`[Network error]: ${networkError}`);
+  });
+  
+  const link = errorLink.concat(requestLink)
+  
+  
+  console.log("link", link)
+  
 
   const onSubmit = async(data2) => {
     console.log(data2.number, formState.streetAddress)
@@ -123,7 +151,7 @@ const handleChange = event => {
           <label htmlFor="number">Number:</label>
           <input
             ref = {register}
-          // type = "number" 
+          type = "number" 
           {...register(
                   "number",
                   {       
@@ -202,7 +230,7 @@ const handleChange = event => {
         <div className="flex-row space-between my-2">
         <label htmlFor="timeDuration">Time Interval for Drop Off:</label>
           <input 
-          // type = "rating" 
+          type = "timeDuration" 
           {...register(
                   "timeDuration",
                   {       

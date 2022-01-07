@@ -8,9 +8,11 @@ import  { QUERY_ME, LOAD_QUERY }  from "../../utils/queries";
 import { useQuery } from '@apollo/react-hooks';
 import {Add_Load} from "../../components/Add_Load";
 
+
 function Nav() {
   const {data} = useQuery(QUERY_ME);
   const {data2} = useQuery(LOAD_QUERY)
+
     function showNavigation() {
       // console.log("data is here now:", data.me.trucker)
       const trucker_Menu = data?.me.trucker ?  (
@@ -20,11 +22,16 @@ function Nav() {
           Add Load
         </Link>
       </li>
-      <li className="mx-1">
-        <Link to="/modify_load">
+      <li className = "mx-1">
+        <Link to = "/test_form_fill">
+          Test Preload
+        </Link>
+        </li>
+      {/* <li className="mx-1">
+        <Link to={`/modify_load/`}>
           Modify Load
         </Link>
-      </li>
+      </li> */}
       <li className="mx-1">
         <Link to="/my_loads">
           My Loads
@@ -41,7 +48,7 @@ function Nav() {
       ): null;
         if (Auth.loggedIn()) {
           // let test = {}
-          console.log("data 2 is:", data2?.state)
+          // console.log("data 2 is:", data2?.state)
           let test = decode(localStorage.getItem('id_token'))
           console.log("get profile is :", test)
           return (
