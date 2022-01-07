@@ -92,7 +92,7 @@ const handleChange = event => {
         ← Go to Login
       </Link>
 
-      <h2>Add Load</h2>
+      <h2>Modify Load</h2>
 
       <form onSubmit = {handleSubmit(onSubmit)}
         
