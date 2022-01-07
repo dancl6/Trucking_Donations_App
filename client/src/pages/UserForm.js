@@ -173,7 +173,7 @@ const handleChange = event => {
 
         </div>
 
-        {/* <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
 
           <DropdownButton title = {button} onSelect = {function (evt) {
@@ -182,19 +182,19 @@ const handleChange = event => {
              setButton(evt)
           }}
           ref = {register}
-
+          {...register("currentStatus", {required: true})}
           name = "currentStatus"
           > <MenuItem eventKey = "Open">Open</MenuItem>
               <MenuItem eventKey = "In Progress">In Progress</MenuItem>
               <MenuItem eventKey = "Closed">Closed</MenuItem>
           </DropdownButton>
-        </div> */}
+        </div>
 
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
           <input 
             ref = {register}
-          type = "number" 
+          type = "dateStart" 
           {...register(
                   "dateStart",
                   {required: true},
@@ -215,7 +215,7 @@ const handleChange = event => {
         <div className="flex-row space-between my-2">
         <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
           <input 
-          type = "number" 
+          type = "timeStart" 
           {...register(
                   "timeStart",
                   {required: true},
