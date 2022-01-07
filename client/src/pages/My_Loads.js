@@ -85,7 +85,7 @@ return (
 
                 <div>
             <Link to={`/modify_load/${item._id}`}>
-            <Button variant="primary">Update Load</Button>
+            <Button key = {item._id} variant="primary">Update Load</Button>
           </Link>
                 <div key = {item._id}>
                   {item.state}
@@ -95,9 +95,9 @@ return (
             ))}
 
         </div>
-        <div>
+        {/* <div>
         {data?.getTruckerLoads[0].state}
-        </div>
+        </div> */}
         {/* {Object.keys(data?.getTruckerLoads).map(function(key,index){
 
         

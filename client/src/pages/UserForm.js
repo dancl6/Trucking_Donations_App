@@ -216,6 +216,7 @@ const handleChange = event => {
         <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
           <input 
           type = "timeStart" 
+          ref = {register}
           {...register(
                   "timeStart",
                   {required: true},
@@ -238,6 +239,7 @@ const handleChange = event => {
         <label htmlFor="timeDuration">Time Interval for Drop Off:</label>
           <input 
           type = "timeDuration" 
+          ref = {register}
           {...register(
                   "timeDuration",
                   {required: true},
@@ -269,4 +271,4 @@ const handleChange = event => {
 
 }
 
-// export default UserForm;
+export default UserForm;
