@@ -88,7 +88,7 @@ return (
             <Button key = {item._id} variant="primary">Update Load</Button>
           </Link>
                 <div key = {item._id}>
-                  {item.state}
+                  {item.state} {item.currentStatus} {item._id}
                 </div>
                 </div>
                 // )

@@ -28,7 +28,30 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 });
 console.log("data from get load is this:", loadData.getLoad._id)
 const {data} = useQuery(TRUCK_ID_IS);
-const [formState, setFormState] = useState({LoadId: loadData._id,streetAddress: loadData.streetAddress, state: loadData.state , zipcode: loadData.zipcode , donationItem: loadData.donationItem, number: loadData.number , dock:loadData.dock, trucker: loadData.trucker, currentStatus: loadData.currentStatus, confirmed: loadData.confirmed, dateStart:loadData.dateStart, timeStart: loadData.timeStart, timeDuration: loadData.timeDuration });
+const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
+
+const onSubmit = async(data2) => {
+  console.log("data 2 is on submit",data2, formState.streetAddress)
+console.log("testing one two", data?.trucker_Id.truck)
+
+  try {
+//  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
+    await updateLoad({
+      // variables: { ...data }
+      variables: {
+       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: formState.confirmed, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
+      }
+    })
+  } catch (e) {
+    console.error(e);
+    // let test = e
+    console.log("testing error user form is:", error)
+  }
+      
+
+  
+}
+
 // const [formState, setFormState] = useState({LoadId: "607f8255c8bb1c7408eba11e",streetAddress: "", state: "WHY NOW" , zipcode: null , donationItem: "", number: 45 , dock:"607f8204c8bb1c7408eba11d", trucker: "607f81e9c8bb1c7408eba11c", currentStatus: "", confirmed: true, dateStart:76, timeStart: 86, timeDuration: 35 });
 const handleChange = event => {
     const { name, value } = event.target;
@@ -64,28 +87,10 @@ const handleChange = event => {
   console.log("link", link)
   
 
-  const onSubmit = async(data2) => {
-    console.log(data2.number, formState.streetAddress)
+  
 
 
-    try {
-//  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
-      await updateLoad({
-        // variables: { ...data }
-        variables: {
-         loadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
-        }
-      })
-    } catch (e) {
-      console.error(e);
-      // let test = e
-      console.log("testing error is:", error)
-    }
-        
-
-    
-  }
-
+  
   return (
     <div className="container my-1">
       <Link to="/trucker_login">
@@ -173,9 +178,21 @@ const handleChange = event => {
 
         </div>
 
+        <div>
+          <input title = {button} onSelect = {function (evt) {
+            setButton(evt)
+          }}
+          ref = {register}
+          {...register("currentStatus", {required: true})}
+          name = "currentStatus"
+          type = "currentStatus"
+          >
+          </input>
+        </div>
+
         <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
-
+          
           <DropdownButton title = {button} onSelect = {function (evt) {
             console.log("the new and nice value is:", evt)
 
@@ -184,6 +201,7 @@ const handleChange = event => {
           ref = {register}
           {...register("currentStatus", {required: true})}
           name = "currentStatus"
+          type = "currentStatus"
           > <MenuItem eventKey = "Open">Open</MenuItem>
               <MenuItem eventKey = "In Progress">In Progress</MenuItem>
               <MenuItem eventKey = "Closed">Closed</MenuItem>
@@ -198,6 +216,7 @@ const handleChange = event => {
           {...register(
                   "dateStart",
                   {required: true},
+
                   {       
                     setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
@@ -271,4 +290,4 @@ const handleChange = event => {
 
 }
 
-export default UserForm;
+// export default UserForm;

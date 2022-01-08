@@ -24,7 +24,7 @@ const Modify_Load = () => {
   }, [])
   // return(
     // return <UserForm preloadedValues={data}/>
-  return loadData2 ? <UserForm preloadedValues= {loadData2}/> : <div>Loading... </div>
+  return loadData2 ? <UserForm preloadedValues= {loadData2?.getLoad}/> : <div>Loading... </div>
   // if (data) {return (  (<UserForm preloadedValues = {data} />) ) }else { return (<div>Loading...</div>)}
   // )
 }
