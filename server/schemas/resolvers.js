@@ -114,6 +114,11 @@ const resolvers = {
             console.log("load list is this:", list)
             return list
           },
+          getLoads: async (parent, args, context) => {
+            let loads = await Load.find({})
+            console.log("loads is :", loads)
+            return loads
+          }
           // loadsInAState : async (parent, args, context) => {
           //   console.log("hello")
           //   let state_US = args.state
@@ -209,19 +214,34 @@ const resolvers = {
           
           },
           removeLoadTrucker: async (parent, args, context) => {
-            console.log("context is :", context.user._id)
+            // console.log("context is :", context.user._id)
             // if (context.user) {
               console.log("load removed is :", args.loadRemoved)
               let load1 = Load.findById(args.loadRemoved)
-              await Load.findByIdAndUpdate(
-                {_id: args.loadRemoved},
-                { $pull: { trucker: { _id: args.Trucking_User}}}
-              )
-              return await Trucking_User.findByIdAndUpdate(
-               args.Trucking_User,
-               { $pull: { loads: { _id: args.loadRemoved }}} 
-              )
+              // await Load.findByIdAndUpdate(
+              //   {_id: args.loadRemoved},
+              //   { $pull: { trucker: { _id: args.Trucking_User}}}
+              // )
+              // return await Trucking_User.findByIdAndUpdate(
+              //  args.Trucking_User,
+              //  { $pull: { loads: { _id: args.loadRemoved }}} 
+              // )
               // }
+              await Load.findByIdAndUpdate(
+                { _id: args.loadRemoved },
+                { $pull: { loads: { _id: args.loadRemoved } } },
+                { new: true, upsert: true }
+                
+              );
+              // Load.yourcollection.remove({loads: {_id: args.loadRemoved}})
+              // var bulk = Load._id.initializeUnorderedBulkOp();
+              // bulk.find( { _id: args.loadRemoved}).remove();
+              // bulk.execute()
+              // Load.findOneAndDelete(
+              //   {_id: args.loadRemoved}
+              // )
+              // db.Load.remove({_id: args.loadRemoved})
+              await Load.findByIdAndRemove({_id: args.loadRemoved})
           },
           truckingLogin: async (parent, { userName, password }) => {
             const user = await Trucking_User.findOne( { userName } );
@@ -255,6 +275,24 @@ const resolvers = {
             console.log("token is now:", token)
             return { token, user };
           },
+          removeNullTruckerLoad: async (parent, args, context ) => {
+            // await Load.findByIdAndRemove(null)
+            // var cursor = Load.find()
+            // while (cursor.hasNext()){
+            //   var doc = cursor.next()
+            //   var keys = {}
+            //   var hasNull = false
+            //   for ( var x in doc){
+            //     if (x != "_id" && doc[x] == null)
+            //     keys[x] = 1
+            //     hasNull = true
+            //   }
+            // }
+            // if (hasNull) {
+            //   Load.findByIdAndUpdate( {$unset: keys})
+            // }
+            Load.remove(null)
+          }
       
     }
 

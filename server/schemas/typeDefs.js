@@ -126,6 +126,7 @@ type Query {
     trucker_Id: truck_ID
     getLoad(_id: ID!): Load
     getTruckerLoads: [Load]
+    getLoads: [Load]
 }
 
 
@@ -142,6 +143,7 @@ removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: Float!, timeStart: Float!, timeDuration: Float!): Load
 getLoad2(loadId: ID!): Load
+removeNullTruckerLoad: Trucking_User
 }
 `;
 
