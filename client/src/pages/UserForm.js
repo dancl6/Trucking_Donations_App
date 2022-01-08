@@ -28,7 +28,7 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 });
 console.log("data from get load is this:", loadData.getLoad._id)
 const {data} = useQuery(TRUCK_ID_IS);
-const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
+const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: loadData.getLoad.confirmed, dateStart:parseInt(loadData.getLoad.dateStart), timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 
 const onSubmit = async(data2) => {
   console.log("data 2 is on submit",data2, formState.streetAddress)
