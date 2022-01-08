@@ -213,7 +213,7 @@ const resolvers = {
             }
           
           },
-          removeLoadTrucker: async (parent, args, context) => {
+          removeLoad: async (parent, args, context) => {
             // console.log("context is :", context.user._id)
             // if (context.user) {
               console.log("load removed is :", args.loadRemoved)

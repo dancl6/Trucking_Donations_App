@@ -79,3 +79,11 @@ mutation getLoad2($loadId:ID!){
  }
  }
  `;
+
+ export const REMOVE_LOAD = gql`
+ mutation removeLoad($loadRemoved: ID!) {
+  removeLoad(loadRemoved: $loadRemoved) {
+    streetAddress
+  }
+}
+ `

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useMutation, useQuery } from '@apollo/react-hooks';
-import { UPDATE_LOAD } from '../utils/mutations';
+import { REMOVE_LOAD, UPDATE_LOAD } from '../utils/mutations';
 import { GET_LOAD } from '../utils/queries'
 import {UserForm} from './UserForm'
 // import { useForm } from "react-router-form"
@@ -15,6 +15,7 @@ const Modify_Load = () => {
   });
   console.log("load for this now is:", loadData2?.getLoad)
   const [updateLoad, { error }] = useMutation(UPDATE_LOAD);
+  const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
   useEffect(() => {
     const fetchData = async () => {
       setData(loadData2?.getLoad)

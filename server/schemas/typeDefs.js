@@ -138,7 +138,7 @@ truckingLogin(userName: String!, password: String!): Auth_Trucking
 dockLogin(name: String!, password: String!): Auth_Dock
 addLoadToDock(Dock_User: ID!, loadAdded: ID!) : Dock_User
 addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
-removeLoadTrucker(Trucking_User: ID!, loadRemoved: ID!) : Trucking_User
+removeLoad( loadRemoved: ID!) : Load
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
 updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: Float!, timeStart: Float!, timeDuration: Float!): Load

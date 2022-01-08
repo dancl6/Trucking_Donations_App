@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
-import { GET_LOAD2 } from "../utils/mutations";
+import { REMOVE_LOAD } from "../utils/mutations";
 import { GET_TRUCKER_LOADS} from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
 import { TRUCKER_LOADS } from "../utils/actions";
@@ -15,7 +15,7 @@ const My_Loads = () => {
     const arrayState = []
     const arrayAddress = []
     const arrayZip = []
-    
+    const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     console.log("data now is:", data?.getTruckerLoads._id)
 // const [getLoad2] = useMutation(GET_LOAD2)
@@ -25,9 +25,11 @@ const My_Loads = () => {
     if (data){
         console.log("data hey is:", data.getTruckerLoads[0],'data length is:', data.getTruckerLoads.length)
     for (let i = 0; i < data.getTruckerLoads.length; i ++ ){
+        if (data.getTruckerLoads[i] != null) {
         arrayId.push(data.getTruckerLoads[i]._id)
         
         console.log("pushing is :", data.getTruckerLoads[i]._id)
+        } else {}
     }
 }
     console.log("array id is :", arrayId)
@@ -80,16 +82,23 @@ return (
 
 
             {data?.getTruckerLoads.map(item => (
-
+            
                 // return (
-
-                <div>
+            <div>
+            {item._id === null? (<div></div>) :         
+               ( <div>
             <Link to={`/modify_load/${item._id}`}>
             <Button key = {item._id} variant="primary">Update Load</Button>
           </Link>
+          <div >
+            <Button   onClick={() => {
+                removeLoad(item._id)
+              }}  key = {item._id} variant="primary">Remove Load</Button>
+          </div>
                 <div key = {item._id}>
                   {item.state} {item.currentStatus} {item._id}
                 </div>
+                </div>)}
                 </div>
                 // )
             ))}
