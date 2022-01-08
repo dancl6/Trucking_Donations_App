@@ -200,15 +200,15 @@ const handleChange = event => {
         </div>
 
         <div>
-          <input title = {button} onSelect = {function (evt) {
+          <div title = {button} onSelect = {function (evt) {
             setButton(evt)
           }}
           ref = {register}
           {...register("currentStatus", {required: true})}
           name = "currentStatus"
           type = "currentStatus"
-          >
-          </input>
+          > 
+          </div>
         </div>
 
         <div className="flex-row space-between my-2">
