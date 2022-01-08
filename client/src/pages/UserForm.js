@@ -28,7 +28,7 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 });
 console.log("data from get load is this:", loadData.getLoad._id)
 const {data} = useQuery(TRUCK_ID_IS);
-const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: loadData.getLoad.confirmed, dateStart:parseInt(loadData.getLoad.dateStart), timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
+const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:parseInt(loadData.getLoad.dateStart), timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 
 const onSubmit = async(data2) => {
   console.log("data 2 is on submit",data2, formState.streetAddress)
@@ -39,7 +39,7 @@ console.log("testing one two", data?.trucker_Id.truck)
     await updateLoad({
       // variables: { ...data }
       variables: {
-       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: formState.confirmed, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
+       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: parseInt(data2.dateStart), timeStart: parseInt(data2.timeStart), timeDuration: parseInt(data2.timeDuration)
       }
     })
   } catch (e) {
@@ -113,6 +113,27 @@ const handleChange = event => {
             type="streetAddress"
             {...register("streetAddress", {required: true})}
             id="streetAddress"
+            // value={formState.streetAddress}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2">
+          <label htmlFor="confirmed">Confirmed?:</label>
+          <input
+            ref = {register}
+            placeholder="confirmed"
+            name="confirmed"
+            type="confirmed"
+            {...register("confirmed", {required: true},
+            {       
+              setValueAs: v => 
+                // let stringValue =  "true"
+                 JSON.parse(v)
+          
+                
+ 
+            })}
+            id="confirmed"
             // value={formState.streetAddress}
             onChange={handleChange}
           />
