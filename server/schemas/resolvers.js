@@ -104,11 +104,11 @@ const resolvers = {
             // console.log("context user for get trucker loads is:", context.user)
             let test =  await Trucking_User.findById(context.user._id)
             console.log("trucking user data is:", test)
-            console.log("load is in state:", test.loads[2])
+            // console.log("load is in state:", test.loads[2])
             // console.log("list before emptying is this:", list)
             let list = []
             console.log("cleared list is this:", list)
-            console.log("the load at i is:", test.loads[1])
+            // console.log("the load at i is:", test.loads[1])
             console.log("length of loads list is this", test.loads.length)
 
             for ( let i = 0 ; i < test.loads.length; i ++ ) {
