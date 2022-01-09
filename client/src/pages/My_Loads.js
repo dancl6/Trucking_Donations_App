@@ -83,13 +83,12 @@ return (
 
           {/* {data? (<div></div>) : null} */}
           
-            {data?.getTruckerLoads.map((item =>
-            item != undefined ?
+            {data?.getTruckerLoads.map(item =>
+            item  ?
             (
-            
-                // return (
+
             <div>
-            {item._id === null? (<div></div>) :         
+       
                ( <div>
             <Link to={`/modify_load/${item._id}`}>
             <Button key = {item._id} variant="primary">Update Load</Button>
@@ -102,10 +101,10 @@ return (
                 <div key = {item._id}>
                   {item.state} {item.currentStatus} {item._id}
                 </div>
-                </div>)}
+                </div>)
                 </div>
-                // )
-            ): null))}
+       
+            ): null)}
 
         </div>
         {/* <div>
