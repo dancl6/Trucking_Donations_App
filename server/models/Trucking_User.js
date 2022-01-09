@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const LoadValue = require('./Load')
 // const Load = require('./Load');
 
 const truckingUserSchema = new Schema({

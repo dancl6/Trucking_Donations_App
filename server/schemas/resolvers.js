@@ -104,12 +104,17 @@ const resolvers = {
             // console.log("context user for get trucker loads is:", context.user)
             let test =  await Trucking_User.findById(context.user._id)
             console.log("trucking user data is:", test)
-            console.log("load is in state:", test.loads.state)
+            console.log("load is in state:", test.loads[2])
+            // console.log("list before emptying is this:", list)
             let list = []
+            console.log("cleared list is this:", list)
             console.log("the load at i is:", test.loads[1])
+            console.log("length of loads list is this", test.loads.length)
+
             for ( let i = 0 ; i < test.loads.length; i ++ ) {
               
               list.push(await Load.findById(test.loads[i]))
+              // console.log("load in for loop  is", test.loads[i])
             }
             console.log("load list is this:", list)
             return list
@@ -154,6 +159,15 @@ const resolvers = {
             const token = signTokenTrucker(truckingUser);
       
             return { token, truckingUser };
+          },
+          removeLoadFromTruck: async (parent, args) => {
+            await Trucking_User.findByIdAndUpdate(
+                
+              { _id: args.truckerId },
+              { $pull: { loads: { _id: args.loadId } } },
+              { new: true, upsert: true }
+              
+            )
           },
           addDockUser: async (parent, args) => {
             const dockUser = await Dock_User.create(args);
@@ -214,34 +228,25 @@ const resolvers = {
           
           },
           removeLoad: async (parent, args, context) => {
-            // console.log("context is :", context.user._id)
-            // if (context.user) {
+            const ObjectId = require('mongodb').ObjectID
               console.log("load removed is :", args.loadRemoved)
               let load1 = Load.findById(args.loadRemoved)
-              // await Load.findByIdAndUpdate(
-              //   {_id: args.loadRemoved},
-              //   { $pull: { trucker: { _id: args.Trucking_User}}}
-              // )
-              // return await Trucking_User.findByIdAndUpdate(
-              //  args.Trucking_User,
-              //  { $pull: { loads: { _id: args.loadRemoved }}} 
-              // )
-              // }
-              await Load.findByIdAndUpdate(
-                { _id: args.loadRemoved },
-                { $pull: { loads: { _id: args.loadRemoved } } },
-                { new: true, upsert: true }
-                
-              );
-              // Load.yourcollection.remove({loads: {_id: args.loadRemoved}})
-              // var bulk = Load._id.initializeUnorderedBulkOp();
-              // bulk.find( { _id: args.loadRemoved}).remove();
-              // bulk.execute()
-              // Load.findOneAndDelete(
-              //   {_id: args.loadRemoved}
-              // )
-              // db.Load.remove({_id: args.loadRemoved})
-              await Load.findByIdAndRemove({_id: args.loadRemoved})
+
+            //  await Trucking_User.findByIdAndUpdate( "607f81e9c8bb1c7408eba11c"  , {$pull: {loads: {_id:  "611f2411bf291f612cb49eab"}}}  ,      { safe: true })
+            //  await Trucking_User.updateMany({_id:"607f81e9c8bb1c7408eba11c"},{$pull:{loads: {$in: [ObjectId("60f8b9e7eff9725b88f3925c")]}}}) 
+            await Trucking_User.findByIdAndUpdate("60919d55fb7b079dbcba2bf9", {$pull: {loads:{$in: [ObjectId("607f8289c8bb1c7408eba11f")]}}})
+            
+             //  let test = await Dock_User.find({})
+            //   console.log("dock  users is:", test[0]._id)
+            //   for ( let i = 0 ; i < test.length; i ++ ) {
+            //       Dock_User.findByIdAndUpdate({_id: test[i]._id},{$pull: { loads: {_id:args.loadRemoved}}},{ new: true, upsert: true })
+            //   }
+            //   let test2 = await Trucking_User.find({})
+            //   for ( let i = 0 ; i < test2.length; i ++ ) {
+            //     Trucking_User.findByIdAndUpdate({_id: test2[i]._id},{$pull: { loads: {_id:args.loadRemoved}}},{ new: true, upsert: true })
+            //   }
+
+            //   await Load.findByIdAndRemove({_id: args.loadRemoved})
           },
           truckingLogin: async (parent, { userName, password }) => {
             const user = await Trucking_User.findOne( { userName } );

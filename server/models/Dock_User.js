@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 var uniqueValidator = require('mongoose-unique-validator');
 // const beautifyUnique = require('mongoose-beautiful-unique-validation')
+const LoadValue = require('./Load')
 const { Schema } = mongoose;
 
 const bcrypt = require('bcrypt');
