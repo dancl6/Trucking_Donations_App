@@ -236,17 +236,21 @@ const resolvers = {
             //  await Trucking_User.updateMany({_id:"607f81e9c8bb1c7408eba11c"},{$pull:{loads: {$in: [ObjectId("60f8b9e7eff9725b88f3925c")]}}}) 
             await Trucking_User.findByIdAndUpdate("60919d55fb7b079dbcba2bf9", {$pull: {loads:{$in: [ObjectId("607f8289c8bb1c7408eba11f")]}}})
             
-             //  let test = await Dock_User.find({})
-            //   console.log("dock  users is:", test[0]._id)
-            //   for ( let i = 0 ; i < test.length; i ++ ) {
-            //       Dock_User.findByIdAndUpdate({_id: test[i]._id},{$pull: { loads: {_id:args.loadRemoved}}},{ new: true, upsert: true })
-            //   }
-            //   let test2 = await Trucking_User.find({})
-            //   for ( let i = 0 ; i < test2.length; i ++ ) {
-            //     Trucking_User.findByIdAndUpdate({_id: test2[i]._id},{$pull: { loads: {_id:args.loadRemoved}}},{ new: true, upsert: true })
-            //   }
+              let test = await Dock_User.find({})
+              // console.log("dock  users is:", test[0]._id)
+              if (test) {
+              for ( let i = 0 ; i < test.length; i ++ ) {
+              await    Dock_User.findByIdAndUpdate(test[i]._id,{$pull: { loads: {$in : [ObjectId(args.loadRemoved)]}}})
+              }
+            }
 
-            //   await Load.findByIdAndRemove({_id: args.loadRemoved})
+              let test2 = await Trucking_User.find({})
+              if (test2) {
+              for ( let i = 0 ; i < test2.length; i ++ ) {
+              await  Trucking_User.findByIdAndUpdate(test2[i]._id,{$pull: { loads: {$in : [ObjectId(args.loadRemoved)]}}})
+              }
+            }
+              await Load.findByIdAndRemove({_id: args.loadRemoved})
           },
           truckingLogin: async (parent, { userName, password }) => {
             const user = await Trucking_User.findOne( { userName } );

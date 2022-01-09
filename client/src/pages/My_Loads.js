@@ -69,7 +69,7 @@ const handleGetLoad = async (event) => {
     //     console.log("data 2 is:::", data2[0])
     // }
 
-    console.log("data for my loads is:", data?.getTruckerLoads[2].zipcode)
+    // console.log("data for my loads is:", data?.getTruckerLoads[2].zipcode)
 return (
     <div>
         {/* {data.getTruckerLoads ?
@@ -81,7 +81,11 @@ return (
         <div>
 
 
-            {data?.getTruckerLoads.map(item => (
+          {/* {data? (<div></div>) : null} */}
+          
+            {data?.getTruckerLoads.map((item =>
+            item != undefined ?
+            (
             
                 // return (
             <div>
@@ -101,7 +105,7 @@ return (
                 </div>)}
                 </div>
                 // )
-            ))}
+            ): null))}
 
         </div>
         {/* <div>
