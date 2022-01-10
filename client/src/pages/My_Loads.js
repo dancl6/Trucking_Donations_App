@@ -15,6 +15,8 @@ const My_Loads = () => {
     const arrayState = []
     const arrayAddress = []
     const arrayZip = []
+    const [myLoads, setMyLoads] = useState();
+    const [test, setTest] = useState(true)
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     console.log("data now is:", data?.getTruckerLoads._id)
@@ -22,6 +24,39 @@ const My_Loads = () => {
     const [state, dispatch] = useStoreContext();
     // const [loadId, setLoadId] = useState('')
 
+const handleRemoveLoad = async (loadRemoved) => {
+    try {
+        await removeLoad({
+            variables: {loadRemoved}
+        })
+    } catch (e) {
+        console.error(e)
+    }
+}
+
+useEffect(() => {
+    if (test) {
+        console.log("before is:", test)
+        setTest((test) =>   test = false
+        )
+
+
+    }
+},[test])
+
+useEffect(() => {
+  if (data) {
+      console.log("my loads in effect is :", data)
+    setMyLoads((myLoads) => myLoads =  data)
+    // console.log("my loads in effect after setting is :", myLoads)
+  } else {
+
+  }
+  
+  
+}, [myLoads,data])
+console.log("after is:", test)
+// {setMyLoads(myLoads = data)}
     if (data){
         console.log("data hey is:", data.getTruckerLoads[0],'data length is:', data.getTruckerLoads.length)
     for (let i = 0; i < data.getTruckerLoads.length; i ++ ){
@@ -32,6 +67,7 @@ const My_Loads = () => {
         } else {}
     }
 }
+console.log("my loads with useState is:", myLoads)
     console.log("array id is :", arrayId)
     const loadId = arrayId
     // const loadId = test
@@ -83,54 +119,33 @@ return (
 
           {/* {data? (<div></div>) : null} */}
           
-            {data?.getTruckerLoads.map(item =>
+            {myLoads?.getTruckerLoads.map(item =>
             item  ?
             (
 
             <div>
        
-               ( <div>
+                <div>
             <Link to={`/modify_load/${item._id}`}>
             <Button key = {item._id} variant="primary">Update Load</Button>
           </Link>
           <div >
             <Button   onClick={() => {
-                removeLoad(item._id)
-              }}  key = {item._id} variant="primary">Remove Load</Button>
+                let loadRemoved = item._id
+                handleRemoveLoad(loadRemoved)
+            }
+              }  key = {item._id} variant="primary">Remove Load</Button>
           </div>
                 <div key = {item._id}>
                   {item.state} {item.currentStatus} {item._id}
                 </div>
-                </div>)
+                </div>
                 </div>
        
             ): null)}
 
         </div>
-        {/* <div>
-        {data?.getTruckerLoads[0].state}
-        </div> */}
-        {/* {Object.keys(data?.getTruckerLoads).map(function(key,index){
 
-        
-            return(
-            
-            <div>
-            {data?.getTruckerLoads[index].state}
-            {data?.getTruckerLoads[index].zipcode}
-
-
-            <Link to={`/modify_load/${data?.getTruckerLoads[index]._id}`}>
-            <Button variant="primary">Update Load</Button>
-          </Link>
-          </div>
-            )
-        })} */}
-
-
-
-
-        {/* <div>{arrayId}</div> */}
 
 
     </div>

@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Auth  from "../../utils/auth";
 import getToken from "../../utils/auth"
 import { Link } from "react-router-dom";
 import { Container, Row, Col } from "react-bootstrap"
 import decode from 'jwt-decode';
-import  { QUERY_ME, LOAD_QUERY }  from "../../utils/queries";
+import  { QUERY_ME, LOAD_QUERY, GET_TRUCKER_LOADS }  from "../../utils/queries";
 import { useQuery } from '@apollo/react-hooks';
 import {Add_Load} from "../../components/Add_Load";
 
@@ -12,7 +12,19 @@ import {Add_Load} from "../../components/Add_Load";
 function Nav() {
   const {data} = useQuery(QUERY_ME);
   const {data2} = useQuery(LOAD_QUERY)
-
+  const [myLoads, setMyLoads] = useState();
+  const {loading, data3} = useQuery(GET_TRUCKER_LOADS);
+  useEffect(() => {
+    if (data3) {
+        console.log("my loads in effect is :", data3)
+      setMyLoads((myLoads) => myLoads =  data3)
+      // console.log("my loads in effect after setting is :", myLoads)
+    } else {
+  
+    }
+    
+    
+  }, [myLoads,data3])
     function showNavigation() {
       // console.log("data is here now:", data.me.trucker)
       const trucker_Menu = data?.me.trucker ?  (
