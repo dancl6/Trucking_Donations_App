@@ -144,6 +144,7 @@ console.log("link", link)
             name="streetAddress"
             type="streetAddress"
             id="streetAddress"
+            key = "streetAddress"
             // value={formState.streetAddress}
             onChange={handleChange}
           />
@@ -155,6 +156,7 @@ console.log("link", link)
             name="state"
             type="state"
             id="state"
+            key = "state"
             // value={formState.state}
             onChange={handleChange}
           />
@@ -166,6 +168,7 @@ console.log("link", link)
             name="zipcode"
             type="zipcode"
             id="zipcode"
+            key = "zipcode"
             // value={formState.zipcode}
             onChange={handleChange}
           />
@@ -177,6 +180,7 @@ console.log("link", link)
             name="donationItem"
             type="donationItem"
             id="donationItem"
+            key = "donationItem"
             // value={formState.donationItem}
             onChange={handleChange}
           />
@@ -194,10 +198,11 @@ console.log("link", link)
  
 
             onChange={handleChange}
+            key = "number"
           />
             {errors.number ? <div>{errors.number.message}</div> : null}
             {test ? <div>{test}</div> : null}
-
+            
         </div>
 
         <div className="flex-row space-between my-2">
@@ -207,7 +212,9 @@ console.log("link", link)
             console.log("the new and nice value is:", evt)
 
              setButton(evt)
-          }}> <MenuItem eventKey = "Open">Open</MenuItem>
+          }}
+          key = "currentStatus"
+          > <MenuItem eventKey = "Open">Open</MenuItem>
               <MenuItem eventKey = "In Progress">In Progress</MenuItem>
               <MenuItem eventKey = "Closed">Closed</MenuItem>
           </DropdownButton>
@@ -228,6 +235,7 @@ console.log("link", link)
 
 
             onChange={handleChange}
+            key = "dateStart"
           />
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
@@ -247,6 +255,7 @@ console.log("link", link)
 
 
             onChange={handleChange}
+            key = "timeStart"
           />
 
 
@@ -267,6 +276,7 @@ console.log("link", link)
 
 
             onChange={handleChange}
+            key = "timeDuration"
           />
 
 

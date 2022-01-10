@@ -114,7 +114,7 @@ return (
           (<h1>Current Workout</h1>)} */}
 
 
-        <div>
+        {/* <div> */}
 
 
           {/* {data? (<div></div>) : null} */}
@@ -123,10 +123,10 @@ return (
             item  ?
             (
 
-            <div>
+            <div key = "parentDiv1">
        
-                <div>
-            <Link to={`/modify_load/${item._id}`}>
+                <div key = "parentDiv2">
+            <Link to={`/modify_load/${item._id}`} key = "link">
             <Button key = {item._id} variant="primary">Update Load</Button>
           </Link>
           <div >
@@ -144,7 +144,7 @@ return (
        
             ): null)}
 
-        </div>
+        {/* </div> */}
 
 
 
