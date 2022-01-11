@@ -6,6 +6,7 @@ import { REMOVE_LOAD } from "../utils/mutations";
 import { GET_TRUCKER_LOADS} from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
 import { TRUCKER_LOADS } from "../utils/actions";
+import { UPDATE_LOADS } from '../utils/actions'
 // import GetLoad from "./GetLoad"
 // import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
@@ -19,7 +20,16 @@ const My_Loads = () => {
     const [test, setTest] = useState(true)
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
-    console.log("data now is:", data?.getTruckerLoads._id)
+    console.log("data now is:", data?.getTruckerLoads.loads)
+    const addToLoads = () => {
+        if(data) {
+            dispatch({
+                type: UPDATE_LOADS,
+                loadsStore : data.getTruckerLoads
+
+            })
+        }
+    }
 // const [getLoad2] = useMutation(GET_LOAD2)
     const [state, dispatch] = useStoreContext();
     // const [loadId, setLoadId] = useState('')
