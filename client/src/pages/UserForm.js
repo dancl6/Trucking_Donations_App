@@ -20,7 +20,7 @@ export function  UserForm({preloadedValues}) {
 // const QueryString = window.location.search;
 // console.log("Query string is:", QueryString)
 // const id = QueryString
-const [button, setButton] = useState('Select Status');
+
 const { id } = useParams();
 const [updateLoad, {error}] = useMutation(UPDATE_LOAD)
 const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
@@ -29,7 +29,7 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 console.log("data from get load is this:", loadData.getLoad._id)
 const {data} = useQuery(TRUCK_ID_IS);
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:parseInt(loadData.getLoad.dateStart), timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
-
+const [button, setButton] = useState(loadData?.getLoad.currentStatus);
 const onSubmit = async(data2) => {
   console.log("data 2 is on submit",data2, formState.streetAddress)
 console.log("testing one two", data?.trucker_Id.truck)
