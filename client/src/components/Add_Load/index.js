@@ -27,7 +27,7 @@ const Add_Load = () => {
   const [addLoad, { error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
-const [button, setButton] = useState('Select Status');
+const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
 
 let test
