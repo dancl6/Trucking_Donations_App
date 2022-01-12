@@ -1,23 +1,23 @@
 import { useReducer } from 'react';
-import { TRUCKER_LOADS, UPDATE_LOADS } from './actions'
+import {  UPDATE_TRUCKER_LOADS } from './actions'
 
 export const reducer = (state, action) => {
     switch (action.type) {
-        case UPDATE_LOADS:
+        case UPDATE_TRUCKER_LOADS:
             return {
                 ...state,
-                Trucking_User: [...action.Trucking_User]
+                TruckerLoads: [...action.TruckingLoads]
               };
       // case LOAD_LIST:
       //   return {
       //     ...state,
       //     Load: [...action.Load]
       //   };
-        case TRUCKER_LOADS:
-            return {
-              ...state,
-              Trucker_Loads: [...action.Trucker_Loads]
-            };
+        // case TRUCKER_LOADS:
+        //     return {
+        //       ...state,
+        //       Trucker_Loads: [...action.Trucker_Loads]
+        //     };
     default: 
         return state;
     }

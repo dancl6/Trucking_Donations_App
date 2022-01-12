@@ -5,7 +5,7 @@ import Auth from "../utils/auth";
 import { REMOVE_LOAD } from "../utils/mutations";
 import { GET_TRUCKER_LOADS} from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
-import { TRUCKER_LOADS } from "../utils/actions";
+import { TRUCKER_LOADS, UPDATE_TRUCKER_LOADS } from "../utils/actions";
 import { UPDATE_LOADS } from '../utils/actions'
 // import GetLoad from "./GetLoad"
 // import { Link } from "react-router-dom";
@@ -30,15 +30,20 @@ const My_Loads = () => {
             })
         }
     }
+
 // const [getLoad2] = useMutation(GET_LOAD2)
     const [state, dispatch] = useStoreContext();
     // const [loadId, setLoadId] = useState('')
-
+    dispatch({
+        type: UPDATE_TRUCKER_LOADS,
+        TruckerLoads: myLoads
+    })
 const handleRemoveLoad = async (loadRemoved) => {
     try {
         await removeLoad({
             variables: {loadRemoved}
         })
+
     } catch (e) {
         console.error(e)
     }
@@ -77,6 +82,7 @@ console.log("after is:", test)
         } else {}
     }
 }
+console.log("trucker loads from store is:", state.TruckerLoads)
 console.log("my loads with useState is:", myLoads)
     console.log("array id is :", arrayId)
     const loadId = arrayId
