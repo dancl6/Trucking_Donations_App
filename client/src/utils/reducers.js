@@ -6,7 +6,7 @@ export const reducer = (state, action) => {
         case UPDATE_TRUCKER_LOADS:
             return {
                 ...state,
-                TruckerLoads: [...action.TruckingLoads]
+                TruckerLoads: [...state.TruckerLoads, ...action.TruckingLoads]
               };
       // case LOAD_LIST:
       //   return {
