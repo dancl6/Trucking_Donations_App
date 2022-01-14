@@ -84,6 +84,7 @@ console.log("after is:", test)
         } else {}
     }
 }
+
 console.log("trucker loads from store is:", state.TruckerLoads)
 console.log("my loads with useState is:", myLoads)
     console.log("array id is :", arrayId)
@@ -137,7 +138,7 @@ return (
 
           {/* {data? (<div></div>) : null} */}
           
-            {myLoads?.getTruckerLoads.map(item =>
+            {state.TruckerLoads?.map(item =>
             item  ?
             (
 
