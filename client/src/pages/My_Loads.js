@@ -34,10 +34,7 @@ const My_Loads = () => {
 // const [getLoad2] = useMutation(GET_LOAD2)
     const [state, dispatch] = useStoreContext();
     // const [loadId, setLoadId] = useState('')
-    dispatch({
-        type: UPDATE_TRUCKER_LOADS,
-        TruckerLoads: myLoads
-    })
+
 const handleRemoveLoad = async (loadRemoved) => {
     try {
         await removeLoad({
@@ -62,7 +59,12 @@ useEffect(() => {
 useEffect(() => {
   if (data) {
       console.log("my loads in effect is :", data)
-    setMyLoads((myLoads) => myLoads =  data)
+    
+      dispatch({
+        type: UPDATE_TRUCKER_LOADS,
+        TruckerLoads: data.getTruckerLoads
+    })
+    //   setMyLoads((myLoads) => myLoads =  data)
     // console.log("my loads in effect after setting is :", myLoads)
   } else {
 
