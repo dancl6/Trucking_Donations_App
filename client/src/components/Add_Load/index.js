@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/react-hooks';
 // import { Component } from 'react'
 // import Auth from "../utils/auth";
+import { useStoreContext } from '../../utils/GlobalState'
+
 import { ADD_LOAD } from "../../utils/mutations";
 import { TRUCK_ID_IS } from "../../utils/queries";
 import { useForm } from "react-hook-form"
@@ -11,6 +13,7 @@ import { createHttpLink } from "apollo-link-http";
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
 import Select from 'react-select'
+import {ADD_TRUCKER_LOAD } from "../../utils/actions";
 // import { useAsyncTask } from 'react-hooks-async'
 import { ErrorMessage } from '@hookform/error-message'
 // import { QUERY_ME } from "../../utils/queries";
@@ -21,10 +24,10 @@ import { ErrorMessage } from '@hookform/error-message'
 
 // function Trucker_Signup() {
 const Add_Load = () => {
-
+  const [state, dispatch] = useStoreContext();
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', timeDuration: '' });
   const [optionState, setOptionState] = useState({currentStatus: ''})
-  const [addLoad, { error }] = useMutation(ADD_LOAD);
+  const [addLoad, {data:data4, error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
 const [button, setButton] = useState('Open');
@@ -71,6 +74,15 @@ console.log("link", link)
           streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
         }
       })
+        // console.log("data4 from add load is:", data4.addLoad._id)        
+        dispatch({
+          type: ADD_TRUCKER_LOAD,
+          newItem: data4.addLoad._id
+      })
+        
+
+
+
     } catch (e) {
       console.error(e);
       let test = e
