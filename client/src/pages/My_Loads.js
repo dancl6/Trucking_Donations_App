@@ -71,7 +71,7 @@ useEffect(() => {
   }
   
   
-}, [myLoads,data])
+}, [dispatch,data])
 console.log("after is:", test)
 // {setMyLoads(myLoads = data)}
     if (data){

@@ -73,12 +73,14 @@ console.log("link", link)
         variables: {
           streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
         }
-      })
-        // console.log("data4 from add load is:", data4.addLoad._id)        
+      }).then(
         dispatch({
           type: ADD_TRUCKER_LOAD,
           newItem: data4.addLoad._id
       })
+      )
+        // console.log("data4 from add load is:", data4.addLoad._id)        
+
         
 
 
@@ -86,7 +88,7 @@ console.log("link", link)
     } catch (e) {
       console.error(e);
       let test = e
-      console.log("testing error is:", error)
+      console.log("testing error is:", e)
     }
         
 
@@ -137,12 +139,12 @@ console.log("link", link)
   function loadForm() {
 
   return (
-    <div className="container my-1">
-      <Link to="/trucker_login">
+    <div key = "Parent Div" className="container my-1">
+      <Link key = "Parent Link" to="/trucker_login">
         ← Go to Login
       </Link>
 
-      <h2>Add Load</h2>
+      <h2 key = "Parent h2">Add Load</h2>
       {/* <form onSubmit=   {handleSubmit(onSubmit)}> */}
       <form onSubmit = {handleSubmit(onSubmit)}
         
