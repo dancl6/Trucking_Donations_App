@@ -142,9 +142,9 @@ return (
             item  ?
             (
 
-            <div key = "parentDiv1">
+            <div key = {`ParentDiv1_${item._id}`}>
        
-                <div key = "parentDiv2">
+                <div key = {`ParentDiv2_${item._id}`}>
             <Link to={`/modify_load/${item._id}`} key = "link">
             <Button key = {item._id} variant="primary">Update Load</Button>
           </Link>

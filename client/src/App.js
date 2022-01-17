@@ -38,26 +38,26 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
-      <Router>
-        <div>
+    <ApolloProvider key ="appollo_provider" client={client}>
+      <Router key = "router">
+        <div key = "parent_div_appjs">
 
-      <Nav />
-      <StoreProvider>
-      <Switch>
-      <Route exact path="/trucker_signup" component={Trucker_Signup} />
-      <Route exact path="/dock_signup" component={Dock_Signup} />
-      <Route exact path="/trucker_login" component={Trucker_Login} />
-      <Route exact path="/dock_login" component={Dock_Login} />
-      <Route exact path="/add_load" component={Add_Load} />
-      <Route exact path="/load_search" component={Search_Loads} />
-      <Route exact path="/modify_load/:id" component={Modify_Load} />
-      <Route exact path="/my_loads" component={My_Loads} />
-      <Route exact path= "/test_form_fill" component= {Test_Form_Fill} />
+      <Nav key = "nav" />
+      <StoreProvider key = "store_provider">
+      <Switch key = "switch">
+      <Route exact path="/trucker_signup" key = "trucker_signup" component={Trucker_Signup} />
+      <Route exact path="/dock_signup" key = "dock_signup" component={Dock_Signup} />
+      <Route exact path="/trucker_login" key = "trucker_login" component={Trucker_Login} />
+      <Route exact path="/dock_login" key = "dock_login" component={Dock_Login} />
+      <Route exact path="/add_load" key = "add_load" component={Add_Load} />
+      <Route exact path="/load_search" key = "load_search" component={Search_Loads} />
+      <Route exact path="/modify_load/:id" key = "modify_load" component={Modify_Load} />
+      <Route exact path="/my_loads" key = "my_loads" component={My_Loads} />
+      <Route exact path= "/test_form_fill" key = "test_form_fill" component= {Test_Form_Fill} />
       {/* <Route exact path="/add_load" component={Add_Load} /> */}
 
     </Switch>
-      <img src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />
+      <img key = "img" src= {process.env.PUBLIC_URL+"/Truck_Image.png"}  className = "image" />
 
 
     </StoreProvider>

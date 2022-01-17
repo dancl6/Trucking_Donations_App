@@ -56,7 +56,7 @@ const errorLink = onError(({ graphQLErrors, networkError }) => {
 const link = errorLink.concat(requestLink)
 
 
-console.log("link", link)
+// console.log("link", link)
 
 
 
@@ -78,13 +78,10 @@ console.log("link", link)
           type: ADD_TRUCKER_LOAD,
           newItem: data4.addLoad._id
       })
+      ).then (
+        console.log("data4 from add load is:", data4.addLoad._id)   
       )
         // console.log("data4 from add load is:", data4.addLoad._id)        
-
-        
-
-
-
     } catch (e) {
       console.error(e);
       let test = e
