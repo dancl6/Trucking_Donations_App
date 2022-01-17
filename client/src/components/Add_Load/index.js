@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/react-hooks';
 // import { Component } from 'react'
@@ -34,6 +34,10 @@ const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
 
 let test
+
+useEffect(() => {
+  console.log(`RERENDER ADD LOAD: STATE IS`, state);
+}, [state]);
 
 const requestLink = createHttpLink({
   uri: 'http//api.githunt.com/graphql',

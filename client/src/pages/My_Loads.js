@@ -22,15 +22,18 @@ const My_Loads = () => {
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     console.log("data now is:", data?.getTruckerLoads.loads)
     const addToLoads = () => {
-        if(data) {
-            dispatch({
-                type: UPDATE_LOADS,
-                loadsStore : data.getTruckerLoads
+        // if(data) {
+        //     dispatch({
+        //         type: UPDATE_LOADS,
+        //         loadsStore : data.getTruckerLoads
 
-            })
-        }
+        //     })
+        // }
     }
 
+
+
+    
 // const [getLoad2] = useMutation(GET_LOAD2)
     const [state, dispatch] = useStoreContext();
     // const [loadId, setLoadId] = useState('')
@@ -47,30 +50,16 @@ const handleRemoveLoad = async (loadRemoved) => {
 }
 
 useEffect(() => {
-    if (test) {
-        console.log("before is:", test)
-        setTest((test) =>   test = false
-        )
-
-
-    }
-},[test])
-
-useEffect(() => {
   if (data) {
       console.log("my loads in effect is :", data)
-    
+    //   console.log("RERENDER MY LOADS: STATE IS", state)
       dispatch({
         type: UPDATE_TRUCKER_LOADS,
         TruckerLoads: data.getTruckerLoads
     })
-    //   setMyLoads((myLoads) => myLoads =  data)
-    // console.log("my loads in effect after setting is :", myLoads)
-  } else {
 
-  }
-  
-  
+  } else {
+  } 
 }, [dispatch,data])
 console.log("after is:", test)
 // {setMyLoads(myLoads = data)}
@@ -85,7 +74,7 @@ console.log("after is:", test)
     }
 }
 
-console.log("trucker loads from store is:", state.TruckerLoads)
+console.log("trucker loads from store is:", state)
 console.log("my loads with useState is:", myLoads)
     console.log("array id is :", arrayId)
     const loadId = arrayId
