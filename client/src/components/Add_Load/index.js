@@ -77,14 +77,16 @@ const link = errorLink.concat(requestLink)
         variables: {
           streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, timeDuration: data2.timeDuration
         }
-      }).then(
+      })
+        if (data4){
         dispatch({
           type: ADD_TRUCKER_LOAD,
           newItem: data4.addLoad._id
       })
-      ).then (
+    
+      
         console.log("data4 from add load is:", data4.addLoad._id)   
-      )
+    }
         // console.log("data4 from add load is:", data4.addLoad._id)        
     } catch (e) {
       console.error(e);
