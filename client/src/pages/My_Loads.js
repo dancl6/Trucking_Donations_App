@@ -16,7 +16,7 @@ const My_Loads = () => {
     const arrayState = []
     const arrayAddress = []
     const arrayZip = []
-    const [myLoads, setMyLoads] = useState();
+    var [myLoads, setMyLoads] = useState();
     const [test, setTest] = useState(true)
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
@@ -48,7 +48,9 @@ const handleRemoveLoad = async (loadRemoved) => {
         console.error(e)
     }
 }
-
+if (data) {
+    myLoads = state
+}
 useEffect(() => {
   if (data) {
       console.log("my loads in effect is :", data)
@@ -127,7 +129,7 @@ return (
 
           {/* {data? (<div></div>) : null} */}
           
-            {state.TruckerLoads?.map(item =>
+            {myLoads.TruckerLoads?.map(item =>
             item  ?
             (
 
