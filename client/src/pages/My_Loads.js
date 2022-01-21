@@ -10,7 +10,7 @@ import { UPDATE_LOADS } from '../utils/actions'
 // import GetLoad from "./GetLoad"
 // import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
-
+import  LoadList from "./LoadList"
 const My_Loads = () => {
     const arrayId = []
     const arrayState = []
@@ -124,18 +124,9 @@ const handleGetLoad = async (event) => {
     // console.log("data for my loads is:", data?.getTruckerLoads[2].zipcode)
 return (
     <div>
-        {/* {data.getTruckerLoads ?
 
-          (<h1>Add a Workout?</h1>) :
-          (<h1>Current Workout</h1>)} */}
-
-
-        {/* <div> */}
-
-
-          {/* {data? (<div></div>) : null} */}
           
-            {state.TruckerLoads?.map(item =>
+            {/* {state.TruckerLoads?.map(item =>
             item  ?
             (
 
@@ -158,9 +149,9 @@ return (
                 </div>
                 </div>
        
-            ): null)}
+            ): null)} */}
 
-        {/* </div> */}
+
 
 
 
