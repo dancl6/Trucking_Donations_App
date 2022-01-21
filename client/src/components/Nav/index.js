@@ -7,24 +7,57 @@ import decode from 'jwt-decode';
 import  { QUERY_ME, LOAD_QUERY, GET_TRUCKER_LOADS }  from "../../utils/queries";
 import { useQuery } from '@apollo/react-hooks';
 import {Add_Load} from "../../components/Add_Load";
+import { useStoreContext } from '../../utils/GlobalState'
+import { TRUCKER_LOADS, UPDATE_TRUCKER_LOADS } from "../../utils/actions";
 
 
 function Nav() {
   const {data} = useQuery(QUERY_ME);
+  const arrayId = []  
   const {data2} = useQuery(LOAD_QUERY)
+  const [state, dispatch] = useStoreContext();
   const [myLoads, setMyLoads] = useState();
-  const {loading, data3} = useQuery(GET_TRUCKER_LOADS);
-  useEffect(() => {
-    if (data3) {
-        console.log("my loads in effect is :", data3)
-      setMyLoads((myLoads) => myLoads =  data3)
-      // console.log("my loads in effect after setting is :", myLoads)
-    } else {
+
+
+  // useEffect(() => {
+  //   if (data3) {
+  //       console.log("my loads in effect is :", data3)
+  //     setMyLoads((myLoads) => myLoads =  data3)
+  //     // console.log("my loads in effect after setting is :", myLoads)
+  //   } else {
   
+  //   }
+    
+    
+  // }, [myLoads,data3])
+    function UpdateStore() {
+
+      const {loading, data:data3} = useQuery(GET_TRUCKER_LOADS);
+
+      console.log("data hey is:", data3.getTruckerLoads[0],'data length is:', data3.getTruckerLoads.length)
+      for (let i = 0; i < data3.getTruckerLoads.length; i ++ ){
+          if (data3.getTruckerLoads[i] != null) {
+          arrayId.push(data3.getTruckerLoads[i]._id)
+          
+          console.log("pushing is :", data3.getTruckerLoads[i]._id)
+          } else {}
+      }
+
+
+
+      if (data3){
+
+        // console.log("my loads in effect is :", data, myLoads)
+      //   console.log("RERENDER MY LOADS: STATE IS", state)
+        dispatch({
+          type: UPDATE_TRUCKER_LOADS,
+          TruckerLoads: data3.getTruckerLoads
+      })
+      console.log("state in auth logged in is:", state)
+
+    } else {
+    } 
     }
-    
-    
-  }, [myLoads,data3])
     function showNavigation() {
       // console.log("data is here now:", data.me.trucker)
       const trucker_Menu = data?.me.trucker ?  (
@@ -45,8 +78,13 @@ function Nav() {
         </Link>
       </li> */}
       <li className="mx-1">
-        <Link to="/my_loads">
+        <Link onClick = {UpdateStore} to="/my_loads">
           My Loads
+        </Link>
+      </li>
+      <li className="mx-1">
+        <Link to="/test_useEffect_useState">
+          Test Effect
         </Link>
       </li>
       </div>

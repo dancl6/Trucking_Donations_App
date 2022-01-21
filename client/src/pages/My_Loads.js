@@ -16,11 +16,13 @@ const My_Loads = () => {
     const arrayState = []
     const arrayAddress = []
     const arrayZip = []
-    var [myLoads, setMyLoads] = useState();
+    const [state, dispatch] = useStoreContext();
+    var [myLoads, setMyLoads] = useState(state.TruckerLoads);
     const [test, setTest] = useState(true)
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     console.log("data now is:", data?.getTruckerLoads.loads)
+
     const addToLoads = () => {
         // if(data) {
         //     dispatch({
@@ -35,7 +37,7 @@ const My_Loads = () => {
 
     
 // const [getLoad2] = useMutation(GET_LOAD2)
-    const [state, dispatch] = useStoreContext();
+
     // const [loadId, setLoadId] = useState('')
 
 const handleRemoveLoad = async (loadRemoved) => {
@@ -48,21 +50,25 @@ const handleRemoveLoad = async (loadRemoved) => {
         console.error(e)
     }
 }
-if (data) {
-    myLoads = state
-}
-useEffect(() => {
-  if (data) {
-      console.log("my loads in effect is :", data)
-    //   console.log("RERENDER MY LOADS: STATE IS", state)
-      dispatch({
-        type: UPDATE_TRUCKER_LOADS,
-        TruckerLoads: data.getTruckerLoads
-    })
+// const handleShow = () => setShow(true);
+// if (data) {
+    // setMyLoads (
+    //     state.TruckerLoads
+    // )
 
-  } else {
-  } 
-}, [dispatch,data])
+// }
+// useEffect(() => {
+//   if (data) {
+//       console.log("my loads in effect is :", data, myLoads)
+//     //   console.log("RERENDER MY LOADS: STATE IS", state)
+//       dispatch({
+//         type: UPDATE_TRUCKER_LOADS,
+//         TruckerLoads: data.getTruckerLoads
+//     })
+ 
+//   } else {
+//   } 
+// }, [myLoads])
 console.log("after is:", test)
 // {setMyLoads(myLoads = data)}
     if (data){
@@ -129,7 +135,7 @@ return (
 
           {/* {data? (<div></div>) : null} */}
           
-            {myLoads.TruckerLoads?.map(item =>
+            {state.TruckerLoads?.map(item =>
             item  ?
             (
 
