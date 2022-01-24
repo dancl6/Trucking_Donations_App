@@ -17,8 +17,22 @@ function Nav() {
   const {data2} = useQuery(LOAD_QUERY)
   const [state, dispatch] = useStoreContext();
   const [myLoads, setMyLoads] = useState();
-
-
+  const {loading, data:data5} = useQuery(GET_TRUCKER_LOADS);
+ console.log("state for my loads update store is:",state?.TruckerLoads)
+  const onClickMyLoads = async() => {
+    try {
+      if (data5){
+        dispatch({
+          type: UPDATE_TRUCKER_LOADS,
+          TruckerLoads: data5.getTruckerLoads
+      })
+    }
+  } catch (e) {
+    console.error(e);
+    let test = e
+    console.log("testing error is:", e)
+  }
+  }
 
     // function UpdateStore() {
 
@@ -67,7 +81,7 @@ function Nav() {
         </Link>
       </li> */}
       <li className="mx-1">
-        <Link onClick = {LoadList} to="/my_loads">
+        <Link onClick = {onClickMyLoads} to="/my_loads">
           My Loads
         </Link>
       </li>

@@ -126,7 +126,7 @@ return (
     <div>
 
           
-            {/* {state.TruckerLoads?.map(item =>
+            {state.TruckerLoads?.map(item =>
             item  ?
             (
 
@@ -149,7 +149,7 @@ return (
                 </div>
                 </div>
        
-            ): null)} */}
+            ): null)}
 
 
 
