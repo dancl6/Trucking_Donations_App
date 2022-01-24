@@ -22,7 +22,7 @@ const My_Loads = () => {
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     console.log("data now is:", data?.getTruckerLoads.loads)
-
+    
     const addToLoads = () => {
         // if(data) {
         //     dispatch({
@@ -126,7 +126,7 @@ return (
     <div>
 
           
-            {state.TruckerLoads?.map(item =>
+            {myLoads?.map(item =>
             item  ?
             (
 
