@@ -83,7 +83,7 @@ console.log("after is:", test)
 }
 
 console.log("trucker loads from store is:", state)
-console.log("my loads with useState is:", myLoads)
+console.log("my loads with useState is:", myLoads?.[0])
     console.log("array id is :", arrayId)
     const loadId = arrayId
     // const loadId = test

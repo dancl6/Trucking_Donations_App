@@ -19,9 +19,10 @@ function Nav() {
   const [myLoads, setMyLoads] = useState();
   const {loading, data:data5} = useQuery(GET_TRUCKER_LOADS);
  console.log("state for my loads update store is:",state?.TruckerLoads)
+ console.log("data 5 is:", data5)
   const onClickMyLoads = async() => {
     try {
-      if (data5){
+      if (data5.getTruckerLoads){
         dispatch({
           type: UPDATE_TRUCKER_LOADS,
           TruckerLoads: data5.getTruckerLoads
