@@ -17,7 +17,7 @@ const My_Loads = () => {
     const arrayAddress = []
     const arrayZip = []
     const [state, dispatch] = useStoreContext();
-    var [myLoads, setMyLoads] = useState(state.TruckerLoads);
+    var [myLoads, setMyLoads] = useState();
     const [test, setTest] = useState(true)
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
@@ -45,7 +45,10 @@ const handleRemoveLoad = async (loadRemoved) => {
         await removeLoad({
             variables: {loadRemoved}
         })
-
+        if(data) {
+        setMyLoads(
+            data.getTruckerLoads
+        )}
     } catch (e) {
         console.error(e)
     }
@@ -57,18 +60,17 @@ const handleRemoveLoad = async (loadRemoved) => {
     // )
 
 // }
-// useEffect(() => {
-//   if (data) {
-//       console.log("my loads in effect is :", data, myLoads)
-//     //   console.log("RERENDER MY LOADS: STATE IS", state)
-//       dispatch({
-//         type: UPDATE_TRUCKER_LOADS,
-//         TruckerLoads: data.getTruckerLoads
-//     })
+useEffect(() => {
+  if (data) {
+      console.log("my loads in effect is :", data, myLoads)
+    //   console.log("RERENDER MY LOADS: STATE IS", state)
+    setMyLoads(
+        data.getTruckerLoads
+    )
  
-//   } else {
-//   } 
-// }, [myLoads])
+  } else {
+  } 
+}, [data,setMyLoads,myLoads])
 console.log("after is:", test)
 // {setMyLoads(myLoads = data)}
     if (data){
