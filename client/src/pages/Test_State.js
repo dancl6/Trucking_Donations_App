@@ -37,29 +37,33 @@ const Test_State = () => {
         try {
               if (data) {
                setCars(data.getTruckerLoads)
+            // setCount(100)
 
-          }}
+          }
+        }
           catch(error){console.error(error)};
-      }, []);
+      }, [data]);
 
     return (
+        <div>
         <button onClick={() => setCount(count + 1)}>
             {count}
         </button>
     
 
-    //     <div id="listcontainer">
-    //     <h6>Car List</h6>
-    //     <table>
-    //       <thead>
-    //         <tr className="theaderrow">
-    //           <th id="th-cell-left">ID</th>
+        <div id="listcontainer">
+        <h6>Car List</h6>
+        <table>
+          <thead>
+            <tr className="theaderrow">
+              <th id="th-cell-left">ID</th>
 
-    //         </tr>
-    //       </thead>
-    //       <tbody>{cars.map(car => <Car key={car._id} {...car} />)}</tbody>
-    //     </table>
-    //   </div>
+            </tr>
+          </thead>
+          <tbody>{cars.map(car => <Car key={car._id} {...car} />)}</tbody>
+        </table>
+      </div>
+      </div>
 
             // <div>
             //   <ul className="list-group list-group-flush">
