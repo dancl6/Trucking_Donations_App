@@ -76,6 +76,11 @@ function Nav() {
           Test Preload
         </Link>
         </li>
+        <li className = "mx-1">
+        <Link to = "/test_state">
+          Test State
+        </Link>
+        </li>
       {/* <li className="mx-1">
         <Link to={`/modify_load/`}>
           Modify Load

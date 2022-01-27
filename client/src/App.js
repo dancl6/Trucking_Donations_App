@@ -19,6 +19,7 @@ import { StoreProvider } from "./utils/GlobalState";
 import My_Loads from './pages/My_Loads';
 import Test_Form_Fill from './pages/Test_Form_FIll';
 import Test_Effect from './pages/Test_Effect'
+import Test_State from './pages/Test_State'
 // import { addTypenameToDocument } from '@apollo/client/utilities';
 // import { cache } from './cache'
 
@@ -57,6 +58,7 @@ function App() {
       <Route exact path="/my_loads" key = "my_loads" component={My_Loads} />
       <Route exact path="/test_useEffect_useState" key = "test_effect" component={Test_Effect} />
       <Route exact path= "/test_form_fill" key = "test_form_fill" component= {Test_Form_Fill} />
+      <Route exact path= "/test_state" key = "test_state" component= {Test_State} />
       {/* <Route exact path="/add_load" component={Add_Load} /> */}
 
     </Switch>
