@@ -6,14 +6,24 @@ import Button from 'react-bootstrap/Button'
 const Test_State = () => {
     const [cars, setCars] = useState([])
     const [count, setCount] = useState(1)
+    const [arr1, setArr1] = useState([
+
+     ])
     // let test = 4
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     // posts = data?.getTruckerLoads.map((post, i) => (
     //     <li key={i} className="list-group-item">{post.text}</li>
     //   ));
+    // arr1 = [
+    //     {id:'124',name:'qqq'},
+    //     {id:'589',name:'www'},
+    //     {id:'45',name:'eee'},
+    //     {id:'567',name:'rrr'}
+    //  ];
+
 
       const Car = ({ 
-        _id
+        id
         // Model, 
         // Make, 
         // Registration, 
@@ -22,7 +32,7 @@ const Test_State = () => {
         // previousOwners
       }) => (
         <tr>
-          <td>{_id}</td>
+          <td>{id}</td>
           {/* <td>{Model}</td>
           <td>{Make}</td>
           <td>{Registration}</td>
@@ -35,21 +45,38 @@ const Test_State = () => {
 
       useEffect(() => {
         try {
+            setArr1 (
+                {id:'124',name:'qqq'},
+                {id:'589',name:'www'},
+                {id:'45',name:'eee'},
+                {id:'567',name:'rrr'}
+            )
               if (data) {
-               setCars(data.getTruckerLoads)
-            // setCount(100)
+            //    setCars(data.getTruckerLoads)
+            setCount(100)
 
           }
         }
           catch(error){console.error(error)};
       }, [data]);
 
+      
     return (
         <div>
-        <button onClick={() => setCount(count + 1)}>
+        <button onClick={() => 
+            setCount(count + 1)
+            // cars.filter(cars => cars.getTruckerLoads.id !== )
+            
+            }>
             {count}
+
         </button>
     
+    <button onClick ={() => 
+    //  console.log("test")
+     arr1.shift()
+     } > Shift
+    </button>
 
         <div id="listcontainer">
         <h6>Car List</h6>
@@ -60,7 +87,7 @@ const Test_State = () => {
 
             </tr>
           </thead>
-          <tbody>{cars.map(car => <Car key={car._id} {...car} />)}</tbody>
+          <tbody>{arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}</tbody>
         </table>
       </div>
       </div>
