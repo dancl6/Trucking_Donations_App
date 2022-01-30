@@ -20,8 +20,9 @@ const Test_State = () => {
     //     {id:'45',name:'eee'},
     //     {id:'567',name:'rrr'}
     //  ];
-
-
+     if (arr1) {
+    console.log("arr1 is:", arr1)
+     }
       const Car = ({ 
         id
         // Model, 
@@ -51,6 +52,7 @@ const Test_State = () => {
                 {id:'45',name:'eee'},
                 {id:'567',name:'rrr'}
             )
+            
               if (data) {
             //    setCars(data.getTruckerLoads)
             setCount(100)
@@ -87,7 +89,10 @@ const Test_State = () => {
 
             </tr>
           </thead>
-          <tbody>{arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}</tbody>
+          <tbody>
+              
+              
+              {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}</tbody>
         </table>
       </div>
       </div>
