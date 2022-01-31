@@ -47,7 +47,10 @@ const handleRemoveLoad = async (loadRemoved) => {
         })
         if(data) {
         setMyLoads(
-            ...data.getTruckerLoads
+            ...data.getTruckerLoads,
+            myLoads: myLoads.filter(test =>{
+                return test == "hello"
+            })
         )}
     } catch (e) {
         console.error(e)
