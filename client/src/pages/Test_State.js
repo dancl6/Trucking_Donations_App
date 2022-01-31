@@ -89,10 +89,10 @@ const Test_State = () => {
 
             </tr>
           </thead>
-          <tbody>
+          {/* <tbody>
               
               
-              {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}</tbody>
+              {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}</tbody> */}
         </table>
       </div>
       </div>

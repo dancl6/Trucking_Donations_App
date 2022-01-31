@@ -47,7 +47,7 @@ const handleRemoveLoad = async (loadRemoved) => {
         })
         if(data) {
         setMyLoads(
-            data.getTruckerLoads
+            ...data.getTruckerLoads
         )}
     } catch (e) {
         console.error(e)
@@ -86,6 +86,12 @@ console.log("after is:", test)
 function checkAdult(age) {
     return age >= 2;
   }
+const updateField = e => {
+    setMyLoads({
+        ...myLoads,
+        [e.target.name]: e.target.value
+    })
+}
 console.log("trucker loads from store is:", state)
 console.log("my loads with useState is:", myLoads?.[0])
     console.log("array id is :", arrayId)
