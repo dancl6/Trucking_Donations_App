@@ -46,11 +46,12 @@ const handleRemoveLoad = async (loadRemoved) => {
             variables: {loadRemoved}
         })
         if(data) {
-        setMyLoads(
-            ...data.getTruckerLoads,
-            myLoads: myLoads.filter(test =>{
-                return test == "hello"
+            let newLoads = myLoads.filter(test =>{
+                return test !== loadRemoved
             })
+            let returnState = { myLoads: newLoads}
+        setMyLoads(
+            ...returnState
         )}
     } catch (e) {
         console.error(e)
