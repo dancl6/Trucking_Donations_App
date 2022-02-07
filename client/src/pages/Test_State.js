@@ -47,10 +47,10 @@ const Test_State = () => {
       useEffect(() => {
         try {
             setArr1 (
-                {id:'124',name:'qqq'},
+                [{id:'124',name:'qqq'},
                 {id:'589',name:'www'},
                 {id:'45',name:'eee'},
-                {id:'567',name:'rrr'}
+                {id:'567',name:'rrr'}]
             )
             
               if (data) {
