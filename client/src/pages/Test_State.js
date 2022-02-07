@@ -66,11 +66,15 @@ const Test_State = () => {
     return (
         <div>
         <button onClick={() => 
-            setCount(count + 1)
+            // setCount(count + 1)
+            setArr1([{id:'123',name:'qqq'},
+            {id:'589',name:'www'},
+            {id:'45',name:'eee'},
+            {id:'567',name:'rrr'}])
             // cars.filter(cars => cars.getTruckerLoads.id !== )
             
             }>
-            {count}
+            {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}
 
         </button>
     
