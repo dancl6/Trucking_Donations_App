@@ -9,6 +9,12 @@ const Test_State = () => {
     const [arr1, setArr1] = useState([
 
      ])
+    const setFirstIndex = e => {
+        setArr1(existingValues => ({
+            ...existingValues,
+            id: e.target.value,
+        }))
+    }
     // let test = 4
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     // posts = data?.getTruckerLoads.map((post, i) => (
@@ -32,8 +38,8 @@ const Test_State = () => {
         // Address, 
         // previousOwners
       }) => (
-        <tr>
-          <td>{id}</td>
+        <tr key = "trparent">
+          <td key = "tdparent">{id}</td>
           {/* <td>{Model}</td>
           <td>{Make}</td>
           <td>{Registration}</td>
@@ -60,34 +66,37 @@ const Test_State = () => {
           }
         }
           catch(error){console.error(error)};
-      }, [data]);
+      }, []);
 
       
     return (
-        <div>
-        <button onClick={() => 
+        <div key = "parentdiv">
+        <button key = "button1" onClick={() => 
             // setArr1([{id:'123',name:'qqq'},
             // {id:'589',name:'www'},
             // {id:'45',name:'eee'},
             // {id:'567',name:'rrr'}])
-            console.log("arr1 is now:", arr1)
+            console.log("arr1 is now:", setArr1)
             }>
             {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}
 
         </button>
-    
-    <button onClick ={() => 
+        <input 
+        value = {arr1.id}
+        onChange = {setFirstIndex}
+        >Click This</input>
+    <button key = "button2" onClick ={() => 
     //  console.log("test")
      arr1.shift()
      } > Shift
     </button>
 
-        <div id="listcontainer">
-        <h6>Car List</h6>
-        <table>
-          <thead>
-            <tr className="theaderrow">
-              <th id="th-cell-left">ID</th>
+        <div key = "listcontainer" id="listcontainer">
+        <h6 key = "h6">Car List</h6>
+        <table key = "table">
+          <thead key = "thead">
+            <tr key = "tr" className="theaderrow">
+              <th key = "th" id="th-cell-left">ID</th>
 
             </tr>
           </thead>
