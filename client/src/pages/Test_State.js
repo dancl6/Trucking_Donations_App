@@ -81,10 +81,12 @@ const Test_State = () => {
             {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}
 
         </button>
+        <form onSubmit = {setFirstIndex}>
         <input 
         value = {arr1.id}
-        onChange = {setFirstIndex}
-        >Click This</input>
+        // onChange = {setFirstIndex}
+        ></input>
+        </form>
     <button key = "button2" onClick ={() => 
     //  console.log("test")
      arr1.shift()
