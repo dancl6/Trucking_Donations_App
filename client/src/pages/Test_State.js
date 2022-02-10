@@ -10,10 +10,11 @@ const Test_State = () => {
 
      ])
     const setFirstIndex = e => {
-        setArr1(existingValues => ({
-            ...existingValues,
-            id: e.target.value,
-        }))
+        // setArr1(existingValues => ({
+        //     ...existingValues,
+        //     id: e.target.value,
+        // }))
+        setArr1([...arr1, {id:"124", name: "dannyman" } ])
     }
     // let test = 4
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
@@ -81,8 +82,16 @@ const Test_State = () => {
             {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}
 
         </button>
-        <form onSubmit = {setFirstIndex}>
+        <form onSubmit = {setFirstIndex()}>
         <input 
+        onChange = {(event) => {
+            const { name, value } = event.target
+            setFirstIndex({
+                ...arr1,
+                id: "123",
+                [name]: value
+            })
+        }}
         value = {arr1.id}
         // onChange = {setFirstIndex}
         ></input>
