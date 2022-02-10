@@ -86,6 +86,9 @@ const Test_State = () => {
         value = {arr1.id}
         // onChange = {setFirstIndex}
         ></input>
+        <button>
+            Click
+        </button>
         </form>
     <button key = "button2" onClick ={() => 
     //  console.log("test")
