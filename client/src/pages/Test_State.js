@@ -9,12 +9,19 @@ const Test_State = () => {
     const [arr1, setArr1] = useState([
 
      ])
-    const setFirstIndex = e => {
+    const setFirstIndex = (key,value,index) => {
         // setArr1(existingValues => ({
         //     ...existingValues,
         //     id: e.target.value,
         // }))
-        setArr1([...arr1, {id:"124", name: "dannyman" } ])
+        const array = arr1[index]
+        array[key] = value
+        setArr1([
+            // ...arr1, {id:"124", name: "dannyman" } 
+        ...arr1.slice(0, index),
+        array,
+        ...arr1.slice(index + 1, arr1.length)
+        ])
     }
     // let test = 4
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
