@@ -6,9 +6,15 @@ import Button from 'react-bootstrap/Button'
 const Test_State = () => {
     const [cars, setCars] = useState([])
     const [count, setCount] = useState(1)
-    const [arr1, setArr1] = useState([
-
-     ])
+    const [arr1, setArr1] = useState(                
+        [{id:'124',name:'qqq'},
+    {id:'589',name:'www'},
+    {id:'45',name:'eee'},
+    {id:'567',name:'rrr'}]
+    )
+     let key = "id"
+     let value = "me"
+     let index = 1
     const setFirstIndex = (key,value,index) => {
         // setArr1(existingValues => ({
         //     ...existingValues,
@@ -89,7 +95,7 @@ const Test_State = () => {
             {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}
 
         </button>
-        <form onSubmit = {setFirstIndex("id","me",1)}>
+        <form onSubmit = {() => setFirstIndex(key,value,index)} >
         <input 
         onChange = {(event) => {
             const { name, value } = event.target
