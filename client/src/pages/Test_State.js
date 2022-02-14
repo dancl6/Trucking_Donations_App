@@ -95,7 +95,7 @@ const Test_State = () => {
             {arr1.map(arr1 => <Car key={arr1._id} {...arr1} />)}
 
         </button>
-        <form onSubmit = {() => setFirstIndex(key,value,index)} >
+        <form  >
         <input 
         onChange = {(event) => {
             const { name, value } = event.target
@@ -108,7 +108,7 @@ const Test_State = () => {
         value = {arr1.id}
         // onChange = {setFirstIndex}
         ></input>
-        <button>
+        <button onSubmit = {() => setFirstIndex(key,value,index)}>
             Click
         </button>
         </form>
