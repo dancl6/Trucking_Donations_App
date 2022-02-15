@@ -12,6 +12,11 @@ const Test_State = () => {
     {id:'45',name:'eee'},
     {id:'567',name:'rrr'}]
     )
+    const handleRemoveItem = (e) => {
+        // const name = e.target.getAttribute("name")
+         setArr1(arr1.filter(item => item.id !== "45"));
+         console.log("arr1 is on handle remove:", arr1)
+       };
      let key = "id"
      let value = "me"
      let index = 1
@@ -108,7 +113,8 @@ const Test_State = () => {
         value = {arr1.id}
         // onChange = {setFirstIndex}
         ></input>
-        <button onSubmit = {() => setFirstIndex(key,value,index)}>
+        {/* <button onClick = {() => setFirstIndex(key,value,index)}> */}
+        <button onClick = {handleRemoveItem}>
             Click
         </button>
         </form>
