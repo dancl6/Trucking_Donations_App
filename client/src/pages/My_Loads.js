@@ -6,7 +6,7 @@ import { REMOVE_LOAD } from "../utils/mutations";
 import { GET_TRUCKER_LOADS} from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
 import { TRUCKER_LOADS, UPDATE_TRUCKER_LOADS } from "../utils/actions";
-import { UPDATE_LOADS } from '../utils/actions'
+import { UPDATE_LOADS, REMOVE_TRUCKER_LOAD } from '../utils/actions'
 // import GetLoad from "./GetLoad"
 // import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
@@ -47,6 +47,13 @@ const handleRemoveLoad = async (loadRemoved) => {
             variables: {loadRemoved}
         })
         if(data) {
+
+            dispatch({
+                type: REMOVE_TRUCKER_LOAD,
+                loadsStore : data.getTruckerLoads.filter(item => item.id !== "45"  )
+
+            })
+
             let newLoads = myLoads.filter(test =>{
                 return test !== loadRemoved
             })
@@ -144,7 +151,7 @@ return (
 
           
             { 
-            myLoads?.map(item =>
+            state.loadsStore?.map(item =>
             item  ?
             (
 
