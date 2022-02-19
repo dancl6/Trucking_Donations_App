@@ -42,6 +42,7 @@ const My_Loads = () => {
 
 const handleRemoveLoad = async (loadRemoved) => {
     try {
+        setMyLoads(myLoads.filter(item => item._id !== loadRemoved));
         await removeLoad({
             variables: {loadRemoved}
         })
@@ -68,13 +69,15 @@ useEffect(() => {
   if (data) {
       console.log("my loads in effect is :", data, myLoads)
     //   console.log("RERENDER MY LOADS: STATE IS", state)
-    setMyLoads(
-        data.getTruckerLoads
-    )
+    dispatch({
+                 type: UPDATE_LOADS,
+                 loadsStore : data.getTruckerLoads
+
+             })
  
   } else {
   } 
-}, [data,setMyLoads,myLoads])
+}, [])
 console.log("after is:", test)
 // {setMyLoads(myLoads = data)}
     if (data){
@@ -140,7 +143,8 @@ return (
     <div>
 
           
-            {myLoads?.map(item =>
+            { 
+            myLoads?.map(item =>
             item  ?
             (
 
