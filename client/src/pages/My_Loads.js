@@ -42,7 +42,7 @@ const My_Loads = () => {
 
 const handleRemoveLoad = async (loadRemoved) => {
     try {
-        setMyLoads(myLoads.filter(item => item._id !== loadRemoved));
+        // setMyLoads(myLoads.filter(item => item._id !== loadRemoved));
         await removeLoad({
             variables: {loadRemoved}
         })
@@ -106,7 +106,7 @@ const updateField = e => {
         [e.target.name]: e.target.value
     })
 }
-console.log("trucker loads from store is:", state.TruckerLoads[0]?._id)
+// console.log("trucker loads from store is:", state.TruckerLoads[0]?._id)
 console.log("my loads with useState is:", myLoads?.[0])
     console.log("array id is :", arrayId)
     const loadId = arrayId
@@ -165,7 +165,7 @@ return (
             <Button   onClick={() => {
                 let loadRemoved = item._id
                 handleRemoveLoad(loadRemoved)
-                myLoads = myLoads.filter(test => {return test._id !== loadRemoved} )
+                // myLoads = myLoads.filter(test => {return test._id !== loadRemoved} )
                 let test = [1,2,4,6]
                 test.filter(test => {
                     return test !== 2;
