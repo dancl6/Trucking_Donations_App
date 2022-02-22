@@ -106,7 +106,7 @@ const updateField = e => {
         [e.target.name]: e.target.value
     })
 }
-console.log("trucker loads from store is:", state)
+console.log("trucker loads from store is:", state.TruckerLoads[0]._id)
 console.log("my loads with useState is:", myLoads?.[0])
     console.log("array id is :", arrayId)
     const loadId = arrayId
@@ -151,7 +151,7 @@ return (
 
           
             { 
-            state.loadsStore?.map(item =>
+            state.TruckerLoads?.map(item =>
             item  ?
             (
 
