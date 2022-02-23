@@ -28,6 +28,7 @@
     "react-hook-form-input": "^1.1.10",
     "react-hook-form-resolvers": "0.0.1",
     "react-input-component": "^0.2.0",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-router-form": "^3.0.0",
     "react-scripts": "4.0.3",

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
+import {useSelector} from "react-redux"
 import { REMOVE_LOAD } from "../utils/mutations";
 import { GET_TRUCKER_LOADS} from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState'
@@ -12,6 +13,8 @@ import { UPDATE_LOADS, REMOVE_TRUCKER_LOAD } from '../utils/actions'
 import Button from 'react-bootstrap/Button'
 import  LoadList from "./LoadList"
 const My_Loads = () => {
+    const currentChannel = useSelector(state => state.TruckerLoads)
+    const currentChannelName = currentChannel._id
     const arrayId = []
     const arrayState = []
     const arrayAddress = []
