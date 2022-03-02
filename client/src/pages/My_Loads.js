@@ -20,7 +20,9 @@ const My_Loads = () => {
     const arrayAddress = []
     const arrayZip = []
     const [state, dispatch] = useStoreContext();
-    var [myLoads, setMyLoads] = useState();
+    var [myLoads, setMyLoads] = useState({
+        [currentChannelName] : true
+    });
     const [test, setTest] = useState(true)
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
@@ -77,6 +79,7 @@ const handleRemoveLoad = async (loadRemoved) => {
 // }
 useEffect(() => {
   if (data) {
+
       console.log("my loads in effect is :", data, myLoads)
     //   console.log("RERENDER MY LOADS: STATE IS", state)
     dispatch({
@@ -85,9 +88,18 @@ useEffect(() => {
 
              })
  
+
+
   } else {
   } 
 }, [])
+
+useEffect(() => {
+    if (currentChannelName) {
+        setMyLoads({[currentChannelName]: true})
+    }
+}, [currentChannelName])
+
 console.log("after is:", test)
 // {setMyLoads(myLoads = data)}
     if (data){
