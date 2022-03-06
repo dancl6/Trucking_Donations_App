@@ -7,7 +7,7 @@ import { REMOVE_FROM_CURRENT_WORKOUT } from '../../utils/actions';
 import Button from 'react-bootstrap/Button';
 import { UPDATE_LOADS, REMOVE_TRUCKER_LOAD } from '../utils/actions'
 
-function ExerciseInWorkoutList() {
+function LoadListRemove() {
   const [state, dispatch] = useStoreContext();
   const [removeLoad] = useMutation(REMOVE_LOAD);
   const handleDeleteLoad = async (loadRemoved) => {
@@ -35,22 +35,25 @@ function ExerciseInWorkoutList() {
   return (
     <div className="my-2">
       <div className="flex-row">
-        {state.TruckerLoads.map(exercise => (
+        {state.TruckerLoads.map(load => (
+            
           <p
             className="workout-text"
-            key={exercise._id}
+            key={load._id}
           >
-            <span style={{ fontWeight: "bolder" }}>{exercise.name} -</span>
-            {exercise.distance ? (<span > Distance: {exercise.distance}</span>) : ''}
-            {exercise.time ? (<span> Time: {exercise.time}sec</span>) : ''}
-            {exercise.reps ? (<span> Reps: {exercise.reps}</span>) : ''}
-            {exercise.weight ? (<span> Weight: {exercise.weight}lbs</span>) : ''}
+            <span style={{ fontWeight: "bolder" }}>{load._id} -</span>
+            {load.state ? (<span > State: {load.state}</span>) : ''}
+            {load.zipcode ? (<span> Zipcode: {load.zipcode}sec</span>) : ''}
+
 
             <Button
+            // onClick={() => {
+            //     let loadRemoved = load._id}}
               variant="danger"
               className="float-right"
               onClick={() => {
-                handleDeleteLoad(exercise._id, state.currentWorkout._id)
+                let loadRemoved = load._id
+                handleDeleteLoad(loadRemoved)
               }}
             >X</Button>
           </p>
@@ -60,4 +63,4 @@ function ExerciseInWorkoutList() {
   );
 };
 
-export default ExerciseInWorkoutList;
+export default LoadListRemove;
