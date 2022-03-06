@@ -26,6 +26,7 @@ const My_Loads = () => {
     const [test, setTest] = useState(true)
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
+    const loads =  data?.loads || []
     console.log("data now is:", data?.getTruckerLoads.loads)
     
     const addToLoads = () => {
