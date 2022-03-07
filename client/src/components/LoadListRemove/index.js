@@ -5,7 +5,7 @@ import { useMutation } from '@apollo/react-hooks';
 import { useStoreContext } from '../../utils/GlobalState';
 import { REMOVE_FROM_CURRENT_WORKOUT } from '../../utils/actions';
 import Button from 'react-bootstrap/Button';
-import { UPDATE_LOADS, REMOVE_TRUCKER_LOAD } from '../utils/actions'
+import { UPDATE_LOADS, REMOVE_TRUCKER_LOAD } from '../../utils/actions'
 
 function LoadListRemove() {
   const [state, dispatch] = useStoreContext();

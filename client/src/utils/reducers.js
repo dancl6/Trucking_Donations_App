@@ -6,17 +6,19 @@ export const reducer = (state, action) => {
         case UPDATE_TRUCKER_LOADS:
             return {
                 ...state,
-                TruckerLoads: [...action.TruckerLoads]
+                loadsStore: [...action.TruckerLoads]
               };
         case ADD_TRUCKER_LOAD:
             return {
                 ...state,
-                TruckerLoads: [...state.TruckerLoads, action.newItem]
+                loadsStore: [...state.TruckerLoads, action.newItem]
               };
         case REMOVE_TRUCKER_LOAD:
             return {
-                ...state.TruckerLoads.slice(0, action.payload),
-                ...state.TruckerLoads.slice(action.payload + 1)
+                ...state.loadsStore.slice(0, action.payload),
+                ...state.loadsStore.slice(action.payload + 1)
+
+                
                 // TruckerLoads: [...action.TruckerLoads]
               };
       // case LOAD_LIST:
