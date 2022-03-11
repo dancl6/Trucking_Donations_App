@@ -6,7 +6,7 @@
 
 ## Description
 
-Web app that helps communication between truck drivers who have a damaged load that they are able to donate and available docks who can accept their donation.  Technologies used consist of JWT authentication, MongoDB, React and GraphQL.
+Web app that helps communication between truck drivers who have a damaged load that they are able to donate and available docks who can accept their donation.  Technologies used consist of JWT authentication, MongoDB, React and GraphQL. (Did not yet complete, non-functional).
 
 ## Table of Contents
 * [Badges](#badges)
