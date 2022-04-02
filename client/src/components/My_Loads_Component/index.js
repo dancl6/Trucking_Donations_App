@@ -47,6 +47,13 @@ const My_Loads_Component = () => {
 
     // const [loadId, setLoadId] = useState('')
 
+const removeLoad2 = item => {
+    dispatch({
+        type: REMOVE_TRUCKER_LOAD,
+        _id: item._id
+    })
+}
+
 const handleRemoveLoad = async (loadRemoved) => {
     try {
         // setMyLoads(myLoads.filter(item => item._id !== loadRemoved));
@@ -57,8 +64,8 @@ const handleRemoveLoad = async (loadRemoved) => {
 
             dispatch({
                 type: REMOVE_TRUCKER_LOAD,
-                loadsStore : data.getTruckerLoads.filter(item => item.id !== loadRemoved  )
-
+                // loadsStore : data.getTruckerLoads.filter(item => item.id !== loadRemoved  )
+                
             })
 
         //     let newLoads = myLoads.filter(test =>{
@@ -94,8 +101,8 @@ useEffect(() => {
 }, [])
 
 useEffect(() => {
-    console.log('STATE from Workout useEffect loads store is', state.loadsStore)    
-}, [state.loadsStore])
+    console.log('STATE from Workout useEffect loads store is', state.TruckerLoads)    
+}, [state.TruckerLoads])
 
 // useEffect(() => {
 //     if (currentChannelName) {
@@ -169,7 +176,7 @@ return (
 
           
             { 
-            state.loadsStore?.map(item =>
+            state.TruckerLoads?.map(item =>
             item  ?
             (
 

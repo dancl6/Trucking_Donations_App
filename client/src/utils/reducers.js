@@ -6,7 +6,7 @@ export const reducer = (state, action) => {
         case UPDATE_TRUCKER_LOADS:
             return {
                 ...state,
-                loadsStore: [...action.TruckerLoads]
+                TruckerLoads: [...action.TruckerLoads]
               };
         case ADD_TRUCKER_LOAD:
             return {
@@ -14,10 +14,16 @@ export const reducer = (state, action) => {
                 loadsStore: [...state.TruckerLoads, action.newItem]
               };
         case REMOVE_TRUCKER_LOAD:
-            return {
-                ...state.loadsStore.slice(0, action.payload),
-                ...state.loadsStore.slice(action.payload + 1)
 
+        let newLoadState = state.TruckerLoads.filter(load => {
+            return load._id !== action._id
+        })
+
+        return {
+                // ...state.loadsStore.slice(0, action.payload),
+                // ...state.loadsStore.slice(action.payload + 1)
+                ...state,
+                TruckerLoads: newLoadState
                 
                 // TruckerLoads: [...action.TruckerLoads]
               };
