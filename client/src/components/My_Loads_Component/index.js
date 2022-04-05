@@ -25,34 +25,20 @@ const My_Loads_Component = () => {
     //     [currentChannelName] : true
     // });
     const [test, setTest] = useState(true)
+    const [reduxState, setReduxState] = useState()
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     const loads =  data?.loads || []
     console.log("data now is:", data?.getTruckerLoads.loads)
     
     const addToLoads = () => {
-        // if(data) {
-        //     dispatch({
-        //         type: UPDATE_LOADS,
-        //         loadsStore : data.getTruckerLoads
 
-        //     })
-        // }
     }
 
 
 
     
-// const [getLoad2] = useMutation(GET_LOAD2)
 
-    // const [loadId, setLoadId] = useState('')
-
-const removeLoad2 = item => {
-    dispatch({
-        type: REMOVE_TRUCKER_LOAD,
-        _id: item._id
-    })
-}
 
 const handleRemoveLoad = async (loadRemoved) => {
     try {
@@ -64,51 +50,41 @@ const handleRemoveLoad = async (loadRemoved) => {
 
             dispatch({
                 type: REMOVE_TRUCKER_LOAD,
+                _id: loadRemoved
                 // loadsStore : data.getTruckerLoads.filter(item => item.id !== loadRemoved  )
                 
             })
 
-        //     let newLoads = myLoads.filter(test =>{
-        //         return test !== loadRemoved
-        //     })
-        //     let returnState = { myLoads: newLoads}
-        // setMyLoads(
-        //     ...returnState
-        // )
+
     }
     } catch (e) {
         console.error(e)
     }
 }
-// const handleShow = () => setShow(true);
-// if (data) {
-    // setMyLoads (
-    //     state.TruckerLoads
-    // )
-
-// }
-useEffect(() => {
-  if (data) {
-
-      console.log("my loads in effect is :", data)
-    //   console.log("RERENDER MY LOADS: STATE IS", state)
-    dispatch({
-                 type: UPDATE_LOADS,
-                 loadsStore : data.getTruckerLoads
-
-             })
-  } 
-}, [])
-
-useEffect(() => {
-    console.log('STATE from Workout useEffect loads store is', state.TruckerLoads)    
-}, [state.TruckerLoads])
 
 // useEffect(() => {
-//     if (currentChannelName) {
-//         setMyLoads({[currentChannelName]: true})
-//     }
-// }, [currentChannelName])
+//   if (data) {
+
+//       console.log("my loads in effect is :", data.getTruckerLoads)
+//     //   console.log("RERENDER MY LOADS: STATE IS", state)
+//     dispatch({
+//                  type: UPDATE_LOADS,
+//                  loadsStore : data.getTruckerLoads
+
+//              })
+//     console.log("my state is:", state.TruckerLoads)
+//   } 
+// //   window.location.reload(false);
+// },[data.getTruckerLoads])
+
+useEffect(() => {
+    console.log('STATE from Workout useEffect loads store is', data?.getTruckerLoads)   
+    // window.location.reload(false); 
+}, [data?.getTruckerLoads])
+
+// useEffect(() => {
+//     console.log('database is:', data?.getTruckerLoads.length)
+// }, [data?.getTruckerLoads.length])
 
 console.log("after is:", test)
 // {setMyLoads(myLoads = data)}
@@ -122,46 +98,12 @@ console.log("after is:", test)
         } else {}
     }
 }
-// function checkAdult(age) {
-//     return age >= 2;
-//   }
-// const updateField = e => {
-//     setMyLoads({
-//         ...myLoads,
-//         [e.target.name]: e.target.value
-//     })
-// }
-// console.log("trucker loads from store is:", state.TruckerLoads[0]?._id)
-// console.log("my loads with useState is:", myLoads?.[0])
+
     console.log("array id is :", arrayId)
     const loadId = arrayId
-    // const loadId = test
 
-    // console.log("test is now:", test?.[0]._id)
-    // const {loading: loading2, data: data2 } = useQuery(GET_LOAD, {
-    //     variables: {loadId},
-    // })
-    // useEffect(() => {
-    //     if (data2) {
-    //         console.log("data2 is:", data2)
-    //         dispatchEvent({
-    //             type: TRUCKER_LOADS,
-    //             loads: data2.load
-    //         })
-    //     }
-
-    // }, [data2, loading2, dispatch])
 const handleGetLoad = async (event) => {
-    // loadId = "6142bdb9b88e8e5794462379"
 
-    // setLoadId(event)    
-    // const res = await data2({
-    //     variables: {loadId}
-    // })
-    // const loads = res.data;
-    // this.setState({
-    //     Loads: loads
-    // })
 
 
 }
@@ -176,7 +118,7 @@ return (
 
           
             { 
-            state.TruckerLoads?.map(item =>
+            data?.getTruckerLoads.map(item =>
             item  ?
             (
 
