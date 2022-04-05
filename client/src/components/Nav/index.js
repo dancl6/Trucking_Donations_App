@@ -33,6 +33,7 @@ function Nav() {
     let test = e
     console.log("testing error is:", e)
   }
+  
   }
 
     // function UpdateStore() {

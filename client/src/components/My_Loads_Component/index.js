@@ -60,6 +60,7 @@ const handleRemoveLoad = async (loadRemoved) => {
     } catch (e) {
         console.error(e)
     }
+    window.location.reload(false)
 }
 
 // useEffect(() => {
@@ -81,6 +82,8 @@ useEffect(() => {
     console.log('STATE from Workout useEffect loads store is', data?.getTruckerLoads)   
     // window.location.reload(false); 
 }, [data?.getTruckerLoads])
+
+
 
 // useEffect(() => {
 //     console.log('database is:', data?.getTruckerLoads.length)
