@@ -94,7 +94,7 @@ const link = errorLink.concat(requestLink)
       console.log("testing error is:", e)
     }
         
-
+    window.location.reload(false)
     
   }
 
