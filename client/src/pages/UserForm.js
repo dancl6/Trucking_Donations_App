@@ -276,13 +276,11 @@ const handleChange = event => {
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
         <div className="flex-row space-between my-2">
-        <label htmlFor="timeDuration">Time Interval for Drop Off:</label>
+        <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
           <input 
-          type = "timeDuration" 
-          ref = {register}
+          type = "number" 
           {...register(
-                  "timeDuration",
-                  {required: true},
+                  "timeStart",
                   {       
                     setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
@@ -292,7 +290,49 @@ const handleChange = event => {
 
 
             onChange={handleChange}
-            name = "timeDuration"
+            key = "timeStart"
+          />
+
+
+            {errors.rating ? <div>{errors.rating.message}</div> : null}
+        </div>
+        <div className="flex-row space-between my-2">
+        <label htmlFor="dateEnd">End Date for Load Drop Off:</label>
+          <input 
+          type = "number" 
+          {...register(
+                  "dateEnd",
+                  {       
+                    setValueAs: v => parseFloat(v)   ,
+                    // min: { value: 1, message: "Rating must not be less than 1"},
+                    // max: { value: 5, message: "Rating must not be greater than 5"},    
+       
+                  })} 
+
+
+            onChange={handleChange}
+            key = "dateEnd"
+          />
+
+
+            {errors.rating ? <div>{errors.rating.message}</div> : null}
+        </div>
+        <div className="flex-row space-between my-2">
+        <label htmlFor="timeEnd">End Time for Load Drop Off:</label>
+          <input 
+          type = "number" 
+          {...register(
+                  "timeEnd",
+                  {       
+                    setValueAs: v => parseFloat(v)   ,
+                    // min: { value: 1, message: "Rating must not be less than 1"},
+                    // max: { value: 5, message: "Rating must not be greater than 5"},    
+       
+                  })} 
+
+
+            onChange={handleChange}
+            key = "timeEnd"
           />
 
 

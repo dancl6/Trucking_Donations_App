@@ -28,7 +28,8 @@ type Load {
     confirmed: Boolean
     dateStart: Float
     timeStart: Float
-    timeDuration: Float
+    dateEnd: Float
+    timeEnd: Float
 }
 
 type LoadForQueries {
@@ -43,7 +44,7 @@ type LoadForQueries {
   currentStatus: String
   dock: Dock_User
   rating: Float
-  timeDuration: Float
+  
 }
 
 type Trucking_User {
@@ -131,7 +132,7 @@ type Query {
 
 
 type Mutation {
-addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean!, dateStart: Float!, timeStart: Float!, timeDuration: Float!): Load
+addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean!, dateStart: Float!, timeStart: Float!, dateEnd: Float!, timeEnd: Float!): Load
 addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth_Trucking
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 truckingLogin(userName: String!, password: String!): Auth_Trucking
@@ -141,7 +142,7 @@ addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadFromTrucker( loadRemoved: ID!, truckerId: ID!) : Load
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: Float!, timeStart: Float!, timeDuration: Float!): Load
+updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: Float!, timeStart: Float!, dateEnd: Float!, timeEnd: Float!): Load
 getLoad2(loadId: ID!): Load
 removeNullTruckerLoad: Trucking_User
 removeLoad(loadRemoved: ID!) : Load

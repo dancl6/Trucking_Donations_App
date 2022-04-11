@@ -60,7 +60,11 @@ const loadSchema = new Schema({
         type: Number,
         required: true
     },
-    timeDuration: {
+    dateEnd: {
+        type: Number,
+        required: true
+    },
+    timeEnd: {
         type: Number,
         required: true
     }
