@@ -36,9 +36,6 @@ const {data} = useQuery(TRUCK_ID_IS);
 
 let test
 
-function setPause () {
-  setTimeout(console.log("hi"), 10000)
-}
 
 
 useEffect(() => {
@@ -305,10 +302,10 @@ const link = errorLink.concat(requestLink)
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 input-group date" data-provide = "datepicker" >
         <label htmlFor="timeEnd">End Time for Load Drop Off:</label>
           <input 
-          type = "number" 
+          type = "text" className = "form-control datepicker" data-date-format = "mm/dd/yyyy" id= "datepicker" placeholder = "Enter a Date" 
           {...register(
                   "timeEnd",
                   {       
@@ -351,9 +348,7 @@ const link = errorLink.concat(requestLink)
 
 
         <div className="flex-row flex-end">
-          <button type="submit" onClick = {() => {
-            setPause()
-          }}>
+          <button type="submit" >
             Submit
           </button>
         </div>
