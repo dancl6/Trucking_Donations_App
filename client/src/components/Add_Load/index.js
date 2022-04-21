@@ -129,8 +129,8 @@ const link = errorLink.concat(requestLink)
     console.log(error)
   }
 
-  const handleChangeDate2= (date) => {
-    console.log("event  from date 2 is:", typeof(moment(date).format()))
+  const handleChangeDate2= (event,date) => {
+    console.log("event  from date 2 is:", event.target)
     // const { name } = event.target;
     setFormState({
       ...formState,

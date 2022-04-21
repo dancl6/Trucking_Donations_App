@@ -9,6 +9,9 @@ import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
 import { useParams } from 'react-router-dom'
 import { createHttpLink } from "apollo-link-http";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import moment from 'moment';
 
 export function  UserForm({preloadedValues}) {
 // const preloadedValues = {
@@ -28,7 +31,8 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 });
 console.log("data from get load is this:", loadData.getLoad._id)
 const {data} = useQuery(TRUCK_ID_IS);
-const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:parseInt(loadData.getLoad.dateStart), timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
+const [startDate, setStartDate] = useState(new Date());
+const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
 const onSubmit = async(data2) => {
   console.log("data 2 is on submit",data2, formState.streetAddress)
@@ -39,7 +43,7 @@ console.log("testing one two", data?.trucker_Id.truck)
     await updateLoad({
       // variables: { ...data }
       variables: {
-       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: parseInt(data2.dateStart), timeStart: parseInt(data2.timeStart), timeDuration: parseInt(data2.timeDuration)
+       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: formState.dateStart, timeStart: parseInt(data2.timeStart), timeDuration: parseInt(data2.timeDuration)
       }
     })
   } catch (e) {
@@ -51,6 +55,16 @@ console.log("testing one two", data?.trucker_Id.truck)
 
   
 }
+
+const handleChangeDate2= (event,date) => {
+  console.log("event  from date 2 is:", event.target)
+  // const { name } = event.target;
+  setFormState({
+    ...formState,
+  dateStart  : moment(date).format()
+  });
+};
+
 
 // const [formState, setFormState] = useState({LoadId: "607f8255c8bb1c7408eba11e",streetAddress: "", state: "WHY NOW" , zipcode: null , donationItem: "", number: 45 , dock:"607f8204c8bb1c7408eba11d", trucker: "607f81e9c8bb1c7408eba11c", currentStatus: "", confirmed: true, dateStart:76, timeStart: 86, timeDuration: 35 });
 const handleChange = event => {
@@ -231,7 +245,32 @@ const handleChange = event => {
 
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
-          <input 
+        <DatePicker  
+              ref = {register}
+              {...register("dateStart", {required: true})}
+              name="dateStart"
+              type="dateStart"
+              id="dateStart"
+              key = "dateStart"
+              selected={startDate}
+              onChange={(date) => {
+                // setStartDate(date)
+                // console.log("value for datepicker is:", value)
+                handleChangeDate2(date)
+              }}
+              // onChange =   {handleChange}
+
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+        
+ 
+        
+        />
+
+          {/* <input 
             ref = {register}
           type = "dateStart" 
           {...register(
@@ -248,7 +287,7 @@ const handleChange = event => {
 
             onChange={handleChange}
             name = "dateStart"
-          />
+          /> */}
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
