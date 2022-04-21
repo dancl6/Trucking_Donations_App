@@ -36,6 +36,7 @@ const Add_Load = () => {
 const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
 const [startDate, setStartDate] = useState(new Date());
+const [value, onChange] = useState('10:00');
 let test
 
 
@@ -266,6 +267,7 @@ const link = errorLink.concat(requestLink)
         </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
+        <TimePicker onChange={onChange} value={value} />
           <input 
           type = "number" 
           {...register(
