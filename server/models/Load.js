@@ -53,19 +53,19 @@ const loadSchema = new Schema({
         required: true
     },
     dateStart: {
-        type: Number,
+        type: String,
         required: true
     },
     timeStart: {
-        type: Number,
+        type: String,
         required: true
     },
     dateEnd: {
-        type: Number,
+        type: String,
         required: true
     },
     timeEnd: {
-        type: Number,
+        type: String,
         required: true
     }
     

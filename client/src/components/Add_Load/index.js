@@ -81,7 +81,7 @@ const link = errorLink.concat(requestLink)
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: data2.dateStart, timeStart: data2.timeStart, dateEnd: data2.dateEnd, timeEnd: data2.timeEnd 
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: formState.dateStart, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
         }
       })
         if (data4){
@@ -252,7 +252,7 @@ const link = errorLink.concat(requestLink)
           {...register(
                   "dateStart",
                   {       
-                    setValueAs: v => parseFloat(v)   ,
+                    // setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
                     // max: { value: 5, message: "Rating must not be greater than 5"},    
        
@@ -273,7 +273,7 @@ const link = errorLink.concat(requestLink)
           {...register(
                   "timeStart",
                   {       
-                    setValueAs: v => parseFloat(v)   ,
+                    // setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
                     // max: { value: 5, message: "Rating must not be greater than 5"},    
        
@@ -294,7 +294,7 @@ const link = errorLink.concat(requestLink)
           {...register(
                   "dateEnd",
                   {       
-                    setValueAs: v => parseFloat(v)   ,
+                    // setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
                     // max: { value: 5, message: "Rating must not be greater than 5"},    
        
@@ -315,7 +315,7 @@ const link = errorLink.concat(requestLink)
           {...register(
                   "timeEnd",
                   {       
-                    setValueAs: v => parseFloat(v)   ,
+                    // setValueAs: v => parseFloat(v)   ,
                     // min: { value: 1, message: "Rating must not be less than 1"},
                     // max: { value: 5, message: "Rating must not be greater than 5"},    
        

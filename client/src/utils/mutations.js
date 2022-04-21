@@ -23,7 +23,7 @@ export const ADD_TRUCKING_USER = gql`
 `;
 
 export const ADD_LOAD = gql`
-mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating:Float, $confirmed: Boolean!, $dateStart: Float!, $timeStart: Float!, $dateEnd: Float!, $timeEnd: Float!) {
+mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating:Float, $confirmed: Boolean!, $dateStart: String!, $timeStart: String!, $dateEnd: String!, $timeEnd: String!) {
   addLoad(streetAddress: $streetAddress, state: $state, zipcode: $zipcode, donationItem: $donationItem, trucker:$trucker, currentStatus:$currentStatus, number:$number, comments:$comments, dock:$dock, rating:$rating, confirmed: $confirmed, dateStart: $dateStart, timeStart: $timeStart, dateEnd: $dateEnd, timeEnd: $timeEnd) {
     _id
     
@@ -62,7 +62,7 @@ export const LOGIN_DOCK = gql`
 `;
 
 export const UPDATE_LOAD = gql`
-mutation updateLoad($LoadId: ID!,$streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating:Float, $confirmed: Boolean!, $dateStart: Float!, $timeStart: Float!, $dateEnd: Float!, $timeEnd: Float!) {
+mutation updateLoad($LoadId: ID!,$streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating:Float, $confirmed: Boolean!, $dateStart: String!, $timeStart: String!, $dateEnd: String!, $timeEnd: String!) {
   updateLoad(LoadId: $LoadId,streetAddress: $streetAddress, state: $state, zipcode: $zipcode, donationItem: $donationItem, trucker:$trucker, currentStatus:$currentStatus, number:$number, comments:$comments, dock:$dock, rating:$rating, confirmed: $confirmed, dateStart: $dateStart, timeStart: $timeStart, dateEnd: $dateEnd, timeEnd: $timeEnd) {
    _id
     
