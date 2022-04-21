@@ -14,6 +14,7 @@ import { onError } from "apollo-link-error"
 import { createHttpLink } from "apollo-link-http";
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
+import moment from 'moment';
 import Select from 'react-select'
 import {ADD_TRUCKER_LOAD } from "../../utils/actions";
 // import { useAsyncTask } from 'react-hooks-async'
@@ -39,7 +40,12 @@ const [startDate, setStartDate] = useState(new Date());
 const [value, onChange] = useState('10:00');
 let test
 
-
+var handleChangeDate = date => {
+  const valueOfInput = moment(date).format();
+  ///...
+  console.log("value of input is:", valueOfInput)
+  // return valueOfInput
+};
 
 useEffect(() => {
   console.log(`RERENDER ADD LOAD: STATE IS`, state);
@@ -122,10 +128,21 @@ const link = errorLink.concat(requestLink)
     }
     console.log(error)
   }
-  
-  
+
+  const handleChangeDate2= (date) => {
+    console.log("event  from date 2 is:", typeof(moment(date).format()))
+    // const { name } = event.target;
+    setFormState({
+      ...formState,
+    dateStart  : moment(date).format()
+    });
+  };
+
+
   const handleChange = event => {
+    console.log("event target is:", event.target)
     const { name, value } = event.target;
+    
     setFormState({
       ...formState,
       [name]: value
@@ -232,7 +249,7 @@ const link = errorLink.concat(requestLink)
           <label htmlFor="currentStatus">Current Status:</label>
 
           <DropdownButton title = {button} onSelect = {function (evt) {
-            console.log("the new and nice value is:", evt)
+            console.log("the new value is:", evt)
 
              setButton(evt)
           }}
@@ -245,20 +262,30 @@ const link = errorLink.concat(requestLink)
 
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
-        {/* <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} /> */}
+
         <DatePicker  
+              name="dateStart"
+              type="dateStart"
+              id="dateStart"
+              key = "dateStart"
               selected={startDate}
-              onChange={(date) => setStartDate(date)}
+              onChange={(date) => {
+                setStartDate(date)
+                console.log("value for datepicker is:", value)
+                handleChangeDate2(date)
+              }}
+              // onChange =   {handleChange}
+
               showTimeSelect
               timeFormat="HH:mm"
               timeIntervals={15}
               timeCaption="time"
               dateFormat="MMMM d, yyyy h:mm aa"
         
-        // showTimeSelect selected={startDate} onChange={(date) => setStartDate(date)} 
+ 
         
         />
-          <input 
+          {/* <input 
           type = "number" 
           {...register(
                   "dateStart",
@@ -272,13 +299,13 @@ const link = errorLink.concat(requestLink)
 
             onChange={handleChange}
             key = "dateStart"
-          />
+          /> */}
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
-        <TimePicker onChange={onChange} value={value} />
+        {/* <TimePicker onChange={onChange} value={value} /> */}
           <input 
           type = "number" 
           {...register(
