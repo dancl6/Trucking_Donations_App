@@ -246,7 +246,18 @@ const link = errorLink.concat(requestLink)
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
         {/* <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} /> */}
-        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
+        <DatePicker  
+              selected={startDate}
+              onChange={(date) => setStartDate(date)}
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+        
+        // showTimeSelect selected={startDate} onChange={(date) => setStartDate(date)} 
+        
+        />
           <input 
           type = "number" 
           {...register(
