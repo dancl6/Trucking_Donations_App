@@ -4,7 +4,9 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 // import { Component } from 'react'
 // import Auth from "../utils/auth";
 import { useStoreContext } from '../../utils/GlobalState'
-
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import TimePicker from 'react-time-picker';
 import { ADD_LOAD } from "../../utils/mutations";
 import { TRUCK_ID_IS } from "../../utils/queries";
 import { useForm } from "react-hook-form"
@@ -33,7 +35,7 @@ const Add_Load = () => {
 } = useForm();
 const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
-
+const [startDate, setStartDate] = useState(new Date());
 let test
 
 
@@ -242,6 +244,8 @@ const link = errorLink.concat(requestLink)
 
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
+        {/* <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(date)} /> */}
+        <DatePicker selected={startDate} onChange={(date) => setStartDate(date)} />
           <input 
           type = "number" 
           {...register(
