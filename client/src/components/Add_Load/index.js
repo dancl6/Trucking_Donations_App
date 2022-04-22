@@ -134,7 +134,7 @@ const link = errorLink.concat(requestLink)
     // const { name } = event.target;
     setFormState({
       ...formState,
-    dateStart  : moment(date).format()
+    dateStart  : moment(date).toISOString()
     });
   };
 

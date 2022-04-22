@@ -29,14 +29,21 @@ const [updateLoad, {error}] = useMutation(UPDATE_LOAD)
 const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
   variables: { _id: id }
 });
-console.log("data from get load is this:", loadData.getLoad._id)
+console.log("data from get load is this:", loadData.getLoad.dateStart)
 const {data} = useQuery(TRUCK_ID_IS);
 const [startDate, setStartDate] = useState(new Date());
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
+function parseISOString(s) {
+  console.log("date is this:", loadData.getLoad.dateStart)
+  var b = s.split(/\D+/);
+  console.log("new date is this:",new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6])) )
+  return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+}
 const onSubmit = async(data2) => {
   console.log("data 2 is on submit",data2, formState.streetAddress)
 console.log("testing one two", data?.trucker_Id.truck)
+
 
   try {
 //  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
@@ -252,7 +259,7 @@ const handleChange = event => {
               type="dateStart"
               id="dateStart"
               key = "dateStart"
-              selected={startDate}
+              selected={parseISOString(loadData.getLoad.dateStart)}
               onChange={(date) => {
                 // setStartDate(date)
                 // console.log("value for datepicker is:", value)
