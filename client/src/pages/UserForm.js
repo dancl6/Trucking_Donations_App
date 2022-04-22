@@ -35,10 +35,11 @@ const [startDate, setStartDate] = useState(new Date());
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
 function parseISOString(s) {
-  console.log("date is this:", loadData.getLoad.dateStart)
-  var b = s.split(/\D+/);
-  console.log("new date is this:",new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6])) )
-  return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
+  return moment(s).format('MMMM d, YYYY h:mm a')
+  // console.log("date is this:", loadData.getLoad.dateStart)
+  // var b = s.split(/\D+/);
+  // console.log("new date is this:",new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6])) )
+  // return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
 }
 const onSubmit = async(data2) => {
   console.log("data 2 is on submit",data2, formState.streetAddress)

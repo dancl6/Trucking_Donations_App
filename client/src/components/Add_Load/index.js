@@ -130,11 +130,11 @@ const link = errorLink.concat(requestLink)
   }
 
   const handleChangeDate2= (event,date) => {
-    console.log("event  from date 2 is:", event.target)
+    console.log("event  from date 2 is:", moment(date))
     // const { name } = event.target;
     setFormState({
       ...formState,
-    dateStart  : moment(date).toISOString()
+    dateStart  : moment(date).format('MMMM d, YYYY h:mm a')
     });
   };
 
