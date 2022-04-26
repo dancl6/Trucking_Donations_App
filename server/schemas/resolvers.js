@@ -2,9 +2,13 @@ const { AuthenticationError } = require('apollo-server-express');
 const { Trucking_User, Dock_User, Load } = require('../models');
 const { findById } = require('../models/Dock_User');
 const { signTokenTrucker, signTokenDock } = require('../utils/auth');
+const { resolvers: scalarResolvers } = require('graphql-scalars');
+const { ScalarNameResolver } = require('graphql-scalars');
 // import {GraphQLList} from 'graphql'
 
 const resolvers = {
+
+  ScalarName: ScalarNameResolver,
     // Test1 : new GraphQLObjectType({
     //   name: "test",
     //   args: {

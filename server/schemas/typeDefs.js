@@ -1,7 +1,18 @@
 const { gql } = require('apollo-server-express');
+const { ScalarNameTypeDefinition } = require('graphql-scalars');
+const { ScalarNameResolver } = require('graphql-scalars');
+const { typeDefs: scalarTypeDefs } = require('graphql-scalars');
 // import {GraphQLList} from 'graphql'
 
-const typeDefs = gql`
+
+
+const typeDefs = [
+
+ScalarNameTypeDefinition,
+//  ...scalarTypeDefs,
+
+gql`
+
 
 type Auth_Trucking {
     token: ID
@@ -26,10 +37,10 @@ type Load {
     dock: Dock_User
     rating: Float
     confirmed: Boolean
-    dateStart: String
-    timeStart: String
-    dateEnd: String
-    timeEnd: String
+    dateStart: Date
+    timeStart: Date
+    dateEnd: Date
+    timeEnd: Date
 }
 
 type LoadForQueries {
@@ -132,7 +143,7 @@ type Query {
 
 
 type Mutation {
-addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean!, dateStart: String!, timeStart: String!, dateEnd: String!, timeEnd: String!): Load
+addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean!, dateStart: Date!, timeStart: Date!, dateEnd: Date!, timeEnd: Date!): Load
 addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth_Trucking
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 truckingLogin(userName: String!, password: String!): Auth_Trucking
@@ -142,12 +153,12 @@ addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadFromTrucker( loadRemoved: ID!, truckerId: ID!) : Load
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: String!, timeStart: String!, dateEnd: String!, timeEnd: String!): Load
+updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: Date!, timeStart:Date!, dateEnd: Date!, timeEnd: Date!): Load
 getLoad2(loadId: ID!): Load
 removeNullTruckerLoad: Trucking_User
 removeLoad(loadRemoved: ID!) : Load
 removeLoadFromTruck(loadId: ID!, truckerId: ID!) : Trucking_User
 }
-`;
+`];
 
 module.exports = typeDefs
