@@ -8,7 +8,7 @@ const { ScalarNameResolver } = require('graphql-scalars');
 
 const resolvers = {
 
-  ScalarName: ScalarNameResolver,
+  // ScalarName: ScalarNameResolver,
     // Test1 : new GraphQLObjectType({
     //   name: "test",
     //   args: {
