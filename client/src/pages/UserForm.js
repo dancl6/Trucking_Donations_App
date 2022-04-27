@@ -69,7 +69,7 @@ const handleChangeDate2= (event,date) => {
   // const { name } = event.target;
   setFormState({
     ...formState,
-  dateStart  : moment(date).format()
+  dateStart  : date
   });
 };
 
@@ -260,7 +260,7 @@ const handleChange = event => {
               type="dateStart"
               id="dateStart"
               key = "dateStart"
-              selected={parseISOString(loadData.getLoad.dateStart)}
+              selected={loadData.getLoad.dateStart}
               onChange={(date) => {
                 // setStartDate(date)
                 // console.log("value for datepicker is:", value)
