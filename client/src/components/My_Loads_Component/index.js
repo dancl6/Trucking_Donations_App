@@ -11,8 +11,8 @@ import { UPDATE_LOADS, REMOVE_TRUCKER_LOAD } from '../../utils/actions'
 // import GetLoad from "./GetLoad"
 // import { Link } from "react-router-dom";
 import Button from 'react-bootstrap/Button'
-import  LoadList from "../../pages/LoadList"
-import LoadListRemove from '../LoadListRemove';
+// import  LoadList from "../../pages/LoadList"
+// import LoadListRemove from '../LoadListRemove';
 const My_Loads_Component = () => {
     // const currentChannel = useSelector(state => state.TruckerLoads)
     // const currentChannelName = currentChannel._id

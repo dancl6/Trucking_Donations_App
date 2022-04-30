@@ -37,7 +37,7 @@ const Add_Load = () => {
 const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
 const [startDate, setStartDate] = useState(new Date());
-var startDate2 = startDate.toDateString()
+var startDate2 = "Wed Apr 27 2022 10:23:22 GMT-0400 (Eastern Daylight Time)"
 const [value, onChange] = useState('10:00');
 let test
 
@@ -107,7 +107,7 @@ const link = errorLink.concat(requestLink)
       console.log("testing error is:", e)
     }
         
-    window.location.reload(false)
+    // window.location.reload(false)
     
   }
 
@@ -271,9 +271,9 @@ const link = errorLink.concat(requestLink)
               key = "dateStart"
               selected={startDate}
               onChange={(date) => {
-                setStartDate(date)
-                console.log("value for datepicker is:", value)
-                handleChangeDate2(date)
+                setStartDate(moment(date))
+                console.log("value for datepicker is:", date)
+                handleChangeDate2(moment(date))
               }}
               // onChange =   {handleChange}
 

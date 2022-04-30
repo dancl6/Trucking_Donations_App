@@ -9,7 +9,7 @@ import { useQuery } from '@apollo/react-hooks';
 import {Add_Load} from "../../components/Add_Load";
 import { useStoreContext } from '../../utils/GlobalState'
 import { TRUCKER_LOADS, UPDATE_TRUCKER_LOADS } from "../../utils/actions";
-import  LoadList from "../../pages/LoadList"
+// import  LoadList from "../../pages/LoadList"
 
 function Nav() {
   const {data} = useQuery(QUERY_ME);
@@ -72,16 +72,7 @@ function Nav() {
           Add Load
         </Link>
       </li>
-      <li className = "mx-1">
-        <Link to = "/test_form_fill">
-          Test Preload
-        </Link>
-        </li>
-        <li className = "mx-1">
-        <Link to = "/test_state">
-          Test State
-        </Link>
-        </li>
+
       {/* <li className="mx-1">
         <Link to={`/modify_load/`}>
           Modify Load
@@ -92,11 +83,7 @@ function Nav() {
           My Loads
         </Link>
       </li>
-      <li className="mx-1">
-        <Link to="/test_useEffect_useState">
-          Test Effect
-        </Link>
-      </li>
+
       </div>
       ): null;
       const docker_Menu = data?.me.docker ?  (

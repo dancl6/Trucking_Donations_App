@@ -51,7 +51,7 @@ console.log("testing one two", data?.trucker_Id.truck)
     await updateLoad({
       // variables: { ...data }
       variables: {
-       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: formState.dateStart, timeStart: parseInt(data2.timeStart), timeDuration: parseInt(data2.timeDuration)
+       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: formState.dateStart, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
       }
     })
   } catch (e) {
