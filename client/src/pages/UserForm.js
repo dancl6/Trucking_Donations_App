@@ -64,6 +64,8 @@ console.log("testing one two", data?.trucker_Id.truck)
   
 }
 
+console.log("stored date is:",loadData.getLoad.dateStart)
+
 const handleChangeDate2= (event,date) => {
   console.log("event  from date 2 is:", event.target)
   // const { name } = event.target;
@@ -260,7 +262,7 @@ const handleChange = event => {
               type="dateStart"
               id="dateStart"
               key = "dateStart"
-              selected={loadData.getLoad.dateStart}
+              selected={startDate}
               onChange={(date) => {
                 // setStartDate(date)
                 // console.log("value for datepicker is:", value)

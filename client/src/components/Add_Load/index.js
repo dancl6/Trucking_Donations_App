@@ -15,7 +15,7 @@ const Add_Load = () => {
 
 
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', dateEnd: '', timeEnd: '' });
-
+  const [formDateStart, setFormDateStart] = useState({month:'', day:'', year:'',hour:'',minute:''})
   const [addLoad, {data:data4, error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
 } = useForm();
@@ -25,6 +25,7 @@ const [startDate, setStartDate] = useState(new Date());
 const [value, onChange] = useState('10:00');
 let test
 
+const d = new Date(2018, 1, 24, 10, 33, 30, 0);
 
 
   const onSubmit = async(data2) => {
@@ -53,12 +54,14 @@ let test
 
 
   const handleChangeDate2= (event,date) => {
-    console.log("event  from date 2 is:", moment(date))
+    console.log("event  from date 2 is:", moment(date).day(), moment(date).format('D'), moment(date).month(), moment(date).year(), moment(date).hour(), moment(date).minute())
+    // let newDate = new Date(date._d)
     // const { name } = event.target;
     setFormState({
       ...formState,
-    dateStart  : moment(date).format('MMMM d, YYYY h:mm a')
-    });
+    // dateStart  : moment(date).format('MMMM d, YYYY h:mm a')
+      dateStart  : moment(date)
+  });
   };
 
 

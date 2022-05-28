@@ -24,9 +24,11 @@ const My_Loads_Component = () => {
     // var [myLoads, setMyLoads] = useState({
     //     [currentChannelName] : true
     // });
+    const [ totalLoads, setTotalLoads ] = useState(useQuery(GET_TRUCKER_LOADS))
     const [test, setTest] = useState(true)
     const [reduxState, setReduxState] = useState()
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
+
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     const loads =  data?.loads || []
     console.log("data now is:", data?.getTruckerLoads.loads)
