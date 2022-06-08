@@ -24,7 +24,7 @@ const {data} = useQuery(TRUCK_ID_IS);
 const [startDate, setStartDate] = useState(new Date());
 const [value, onChange] = useState('10:00');
 let test
-
+let dateStart = {hour:"", minute:"", day:"", year:"", month:""}
 const d = new Date(2018, 1, 24, 10, 33, 30, 0);
 
 
@@ -48,20 +48,27 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
       console.log("testing error is:", e)
     }
         
-    window.location.reload(false)
+    // window.location.reload(false)
     
   }
 
 
   const handleChangeDate2= (event,date) => {
+    console.log("the date object format is:", new Date())
     console.log("event  from date 2 is:", moment(date).day(), moment(date).format('D'), moment(date).month(), moment(date).year(), moment(date).hour(), moment(date).minute())
     // let newDate = new Date(date._d)
     // const { name } = event.target;
-    setFormState({
-      ...formState,
+    setFormDateStart({
+      ...formDateStart,
     // dateStart  : moment(date).format('MMMM d, YYYY h:mm a')
-      dateStart  : moment(date)
+      // dateStart  : moment(date)
+      month: moment(date).month, day: moment(date).date(), hour: moment(date).hour(), minute: moment(date).minute(), year: moment(date).year()
   });
+  dateStart.day = formDateStart.day
+  dateStart.month = formDateStart.month
+  dateStart.hour = formDateStart.hour
+  dateStart.minute = formDateStart.minute
+  dateStart.year = formDateStart.year
   };
 
 

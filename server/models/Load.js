@@ -53,7 +53,7 @@ const loadSchema = new Schema({
         required: true
     },
     dateStart: {
-        type: Date,
+        type: Schema.Types.ObjectId,
         required: true
     },
     timeStart: {

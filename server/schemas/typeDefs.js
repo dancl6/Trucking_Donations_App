@@ -24,6 +24,15 @@ type Auth_Dock {
     dockUser: Dock_User
 }
 
+type DateType {
+  day: Int
+  year: Int
+  hour: Int
+  minute: Int
+  month: Int
+
+}
+
 type Load {
     _id: ID
     streetAddress: String
