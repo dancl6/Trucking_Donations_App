@@ -78,7 +78,7 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
     year: moment(date).year()
   })
   dateStart.day = moment(date).date()
-  dateStart.month = moment(date).month
+  dateStart.month = moment(date).month()
   dateStart.hour = moment(date).hour()
   dateStart.minute = moment(date).minute()
   dateStart.year = moment(date).year()

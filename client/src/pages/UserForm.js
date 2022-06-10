@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useMutation, useQuery } from '@apollo/react-hooks';
 import { useForm } from "react-hook-form"
@@ -32,6 +32,27 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 console.log("data from get load is this:", loadData.getLoad.dateStart)
 const {data} = useQuery(TRUCK_ID_IS);
 const [startDate, setStartDate] = useState(new Date());
+// setStartDate(
+//  dateStart: loadData.getLoad.dateStart
+// )
+// setStartDate({
+//   ...startDate,
+//   month:moment(date).month(),
+//   day: moment(date).date(),
+//   hour: moment(date).hour(),
+//   minute: moment(date).minute(),
+//   year: moment(date).year()
+// })
+useEffect(() => {
+  setStartDate(
+  startDate.setHours(loadData.getLoad.dateStart.hour),
+  startDate.setMinutes(loadData.getLoad.dateStart.minute),
+  startDate.setFullYear(loadData.getLoad.dateStart.year),
+  startDate.setMonth(loadData.getLoad.dateStart.month),
+  startDate.setDate(loadData.getLoad.dateStart.day)
+  )
+},[])
+
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
 function parseISOString(s) {
