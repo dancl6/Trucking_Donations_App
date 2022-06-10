@@ -71,7 +71,7 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
   // });
   setFormDateStart({
     ...formDateStart,
-    month:12,
+    month:moment(date).month(),
     day: moment(date).date(),
     hour: moment(date).hour(),
     minute: moment(date).minute(),
