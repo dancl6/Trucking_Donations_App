@@ -24,13 +24,12 @@ type Auth_Dock {
     dockUser: Dock_User
 }
 
-type DateType {
+input DateType {
   day: Int
-  year: Int
+  month: Int
   hour: Int
   minute: Int
-  month: Int
-
+  year: Int
 }
 
 type Load {

@@ -37,7 +37,13 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false, dateStart: formState.dateStart, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: {
+            hour: formDateStart.hour,
+            minute: formDateStart.minute,
+            day: formDateStart.day,
+            year: formDateStart.year,
+            month: formDateStart.month
+        }, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
         }
       })
 
@@ -48,7 +54,7 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
       console.log("testing error is:", e)
     }
         
-    // window.location.reload(false)
+    window.location.reload(false)
     
   }
 
@@ -58,17 +64,24 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
     console.log("event  from date 2 is:", moment(date).day(), moment(date).format('D'), moment(date).month(), moment(date).year(), moment(date).hour(), moment(date).minute())
     // let newDate = new Date(date._d)
     // const { name } = event.target;
-    setFormDateStart({
-      ...formDateStart,
-    // dateStart  : moment(date).format('MMMM d, YYYY h:mm a')
-      // dateStart  : moment(date)
-      month: moment(date).month, day: moment(date).date(), hour: moment(date).hour(), minute: moment(date).minute(), year: moment(date).year()
-  });
-  dateStart.day = formDateStart.day
-  dateStart.month = formDateStart.month
-  dateStart.hour = formDateStart.hour
-  dateStart.minute = formDateStart.minute
-  dateStart.year = formDateStart.year
+  //   setFormDateStart({
+  //     ...formDateStart,
+  //     // month: moment(date).month, day: moment(date).date(), hour: moment(date).hour(), minute: moment(date).minute(), year: moment(date).year()
+  //     month: 11, day: 25, hour: 4, minute: 34, year: 1999
+  // });
+  setFormDateStart({
+    ...formDateStart,
+    month:12,
+    day: moment(date).date(),
+    hour: moment(date).hour(),
+    minute: moment(date).minute(),
+    year: moment(date).year()
+  })
+  dateStart.day = moment(date).date()
+  dateStart.month = moment(date).month
+  dateStart.hour = moment(date).hour()
+  dateStart.minute = moment(date).minute()
+  dateStart.year = moment(date).year()
   };
 
 

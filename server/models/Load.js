@@ -53,10 +53,31 @@ const loadSchema = new Schema({
         required: true
     },
     dateStart: {
-        type: Schema.Types.ObjectId,
-        required: true
+        day: {
+            type: Number,
+            required: true
+        },
+        month: {
+            type: Number,
+            required: true
+        },
+        hour: {
+            type: Number,
+            required: true
+        },
+        minute: {
+            type: Number,
+            required: true
+        },
+        year: {
+            type: Number,
+            required: true
+        }
     },
     timeStart: {
+
+
+
         type: Date,
         required: true
     },
