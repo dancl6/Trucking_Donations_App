@@ -43,7 +43,15 @@ const [startDate, setStartDate] = useState(new Date());
 //   minute: moment(date).minute(),
 //   year: moment(date).year()
 // })
+
+
 useEffect(() => {
+  console.log("starting date now is:", loadData.getLoad.dateStart.year)
+  // startDate = new Date()
+  console.log("start date now is:", startDate.getFullYear())
+  // test1.setFullYear(1000)
+  // test1.setHours(11)
+  // console.log("test full year is:", test1.getFullYear())
   setStartDate(
   startDate.setHours(loadData.getLoad.dateStart.hour),
   startDate.setMinutes(loadData.getLoad.dateStart.minute),
@@ -51,7 +59,8 @@ useEffect(() => {
   startDate.setMonth(loadData.getLoad.dateStart.month),
   startDate.setDate(loadData.getLoad.dateStart.day)
   )
-},[])
+  console.log("start date after setting is:", startDate.getFullYear())
+},[startDate, loadData])
 
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
@@ -88,7 +97,8 @@ console.log("testing one two", data?.trucker_Id.truck)
 console.log("stored date is:",loadData.getLoad.dateStart)
 
 const handleChangeDate2= (event,date) => {
-  console.log("event  from date 2 is:", event.target)
+  console.log("event  from date 2 is:", moment(event).format('YMMDD000000'))
+  console.log("starting date is:", moment(startDate), "this date is:", moment(date).format('YMMDD000000'))
   // const { name } = event.target;
   setFormState({
     ...formState,

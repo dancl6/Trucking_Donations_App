@@ -60,6 +60,7 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
 
 
   const handleChangeDate2= (event,date) => {
+    console.log("event is :", moment(event).month())
     console.log("the date object format is:", new Date())
     console.log("event  from date 2 is:", moment(date).day(), moment(date).format('D'), moment(date).month(), moment(date).year(), moment(date).hour(), moment(date).minute())
     // let newDate = new Date(date._d)
@@ -71,17 +72,17 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
   // });
   setFormDateStart({
     ...formDateStart,
-    month:moment(date).month(),
-    day: moment(date).date(),
-    hour: moment(date).hour(),
-    minute: moment(date).minute(),
-    year: moment(date).year()
+    month:moment(event).month(),
+    day: moment(event).date(),
+    hour: moment(event).hour(),
+    minute: moment(event).minute(),
+    year: moment(event).year()
   })
-  dateStart.day = moment(date).date()
-  dateStart.month = moment(date).month()
-  dateStart.hour = moment(date).hour()
-  dateStart.minute = moment(date).minute()
-  dateStart.year = moment(date).year()
+  // dateStart.day = moment(date).date()
+  // dateStart.month = moment(date).month()
+  // dateStart.hour = moment(date).hour()
+  // dateStart.minute = moment(date).minute()
+  // dateStart.year = moment(date).year()
   };
 
 
