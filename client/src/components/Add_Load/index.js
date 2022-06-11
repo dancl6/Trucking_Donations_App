@@ -21,12 +21,15 @@ const Add_Load = () => {
 } = useForm();
 const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
-const [startDate, setStartDate] = useState(new Date());
+const [startDefault, setStartDefault] = useState(new Date());
+const [startDate, setStartDate] = useState();
 const [value, onChange] = useState('10:00');
 let test
-let dateStart = {hour:"", minute:"", day:"", year:"", month:""}
+// let dateStart = {hour:"", minute:"", day:"", year:"", month:""}
 const d = new Date(2018, 1, 24, 10, 33, 30, 0);
+useEffect(() => {
 
+},[startDate])
 
   const onSubmit = async(data2) => {
     console.log(data2.number, formState.streetAddress)
@@ -37,13 +40,7 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: {
-            hour: formDateStart.hour,
-            minute: formDateStart.minute,
-            day: formDateStart.day,
-            year: formDateStart.year,
-            month: formDateStart.month
-        }, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: startDate, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
         }
       })
 
@@ -60,9 +57,13 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
 
 
   const handleChangeDate2= (event,date) => {
-    console.log("event is :", moment(event).month())
-    console.log("the date object format is:", new Date())
-    console.log("event  from date 2 is:", moment(date).day(), moment(date).format('D'), moment(date).month(), moment(date).year(), moment(date).hour(), moment(date).minute())
+   console.log("event to iso is:", event.toISOString())
+
+    setStartDate(
+      event.toISOString()
+    )
+
+
     // let newDate = new Date(date._d)
     // const { name } = event.target;
   //   setFormDateStart({
@@ -70,19 +71,22 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
   //     // month: moment(date).month, day: moment(date).date(), hour: moment(date).hour(), minute: moment(date).minute(), year: moment(date).year()
   //     month: 11, day: 25, hour: 4, minute: 34, year: 1999
   // });
-  setFormDateStart({
-    ...formDateStart,
-    month:moment(event).month(),
-    day: moment(event).date(),
-    hour: moment(event).hour(),
-    minute: moment(event).minute(),
-    year: moment(event).year()
-  })
+  // setFormDateStart({
+  //   ...formDateStart,
+  //   month:moment(event).month(),
+  //   day: moment(event).date(),
+  //   hour: moment(event).hour(),
+  //   minute: moment(event).minute(),
+  //   year: moment(event).year()
+  // })
   // dateStart.day = moment(date).date()
   // dateStart.month = moment(date).month()
   // dateStart.hour = moment(date).hour()
   // dateStart.minute = moment(date).minute()
   // dateStart.year = moment(date).year()
+
+  
+
   };
 
 
@@ -203,9 +207,9 @@ const d = new Date(2018, 1, 24, 10, 33, 30, 0);
               type="dateStart"
               id="dateStart"
               key = "dateStart"
-              selected={startDate}
+              selected={new Date(startDate)}
               onChange={(date) => {
-                setStartDate(date)
+                // setStartDate(date)
                 console.log("value for datepicker is:", value)
                 handleChangeDate2(date)
               }}

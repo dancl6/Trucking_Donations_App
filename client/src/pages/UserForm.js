@@ -31,7 +31,7 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 });
 console.log("data from get load is this:", loadData.getLoad.dateStart)
 const {data} = useQuery(TRUCK_ID_IS);
-const [startDate, setStartDate] = useState(new Date());
+const [startDate, setStartDate] = useState(new Date(loadData.getLoad.dateStart));
 // setStartDate(
 //  dateStart: loadData.getLoad.dateStart
 // )
@@ -46,20 +46,15 @@ const [startDate, setStartDate] = useState(new Date());
 
 
 useEffect(() => {
-  console.log("starting date now is:", loadData.getLoad.dateStart.year)
+  // console.log("starting date now is:", loadData.getLoad.dateStart.year)
   // startDate = new Date()
-  console.log("start date now is:", startDate.getFullYear())
+
+  // console.log("start date now is:", startDate.getHours())
   // test1.setFullYear(1000)
   // test1.setHours(11)
   // console.log("test full year is:", test1.getFullYear())
-  setStartDate(
-  startDate.setHours(loadData.getLoad.dateStart.hour),
-  startDate.setMinutes(loadData.getLoad.dateStart.minute),
-  startDate.setFullYear(loadData.getLoad.dateStart.year),
-  startDate.setMonth(loadData.getLoad.dateStart.month),
-  startDate.setDate(loadData.getLoad.dateStart.day)
-  )
-  console.log("start date after setting is:", startDate.getFullYear())
+ 
+  // console.log("start date after setting is:", startDate.getFullYear())
 },[startDate, loadData])
 
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
