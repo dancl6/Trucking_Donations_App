@@ -22,7 +22,8 @@ const Add_Load = () => {
 const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
 const [startDefault, setStartDefault] = useState(new Date());
-const [startDate, setStartDate] = useState();
+const [startDate, setStartDate] = useState(new Date());
+const [holdDate, setHoldDate] = useState()
 const [value, onChange] = useState('10:00');
 let test
 // let dateStart = {hour:"", minute:"", day:"", year:"", month:""}
@@ -40,7 +41,7 @@ useEffect(() => {
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: startDate, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: holdDate, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
         }
       })
 
@@ -51,7 +52,7 @@ useEffect(() => {
       console.log("testing error is:", e)
     }
         
-    window.location.reload(false)
+    // window.location.reload(false)
     
   }
 
@@ -59,8 +60,8 @@ useEffect(() => {
   const handleChangeDate2= (event,date) => {
    console.log("event to iso is:", event.toISOString())
 
-    setStartDate(
-      event.toISOString()
+    setHoldDate(
+      date.toISOString()
     )
 
 
@@ -207,11 +208,12 @@ useEffect(() => {
               type="dateStart"
               id="dateStart"
               key = "dateStart"
-              selected={new Date(startDate)}
+              selected={startDate}
               onChange={(date) => {
-                // setStartDate(date)
-                console.log("value for datepicker is:", value)
-                handleChangeDate2(date)
+                setStartDate(date)
+                setHoldDate(date.toISOString())
+                // console.log("value for datepicker is:", value)
+                // handleChangeDate2(date)
               }}
               // onChange =   {handleChange}
 

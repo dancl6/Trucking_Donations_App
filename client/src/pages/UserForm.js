@@ -48,14 +48,16 @@ const [startDate, setStartDate] = useState(new Date(loadData.getLoad.dateStart))
 useEffect(() => {
   // console.log("starting date now is:", loadData.getLoad.dateStart.year)
   // startDate = new Date()
-
+  setStartDate(
+    new Date(loadData.getLoad.dateStart)
+  )
   // console.log("start date now is:", startDate.getHours())
   // test1.setFullYear(1000)
   // test1.setHours(11)
   // console.log("test full year is:", test1.getFullYear())
  
   // console.log("start date after setting is:", startDate.getFullYear())
-},[startDate, loadData])
+},[loadData])
 
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
