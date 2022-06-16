@@ -32,6 +32,12 @@ const { loading: loadingLoad, data: loadData } = useQuery(GET_LOAD, {
 console.log("data from get load is this:", loadData.getLoad.dateStart)
 const {data} = useQuery(TRUCK_ID_IS);
 const [startDate, setStartDate] = useState(new Date(loadData.getLoad.dateStart));
+// const [startDate, setStartDate] = useState(new Date());
+const [endDate, setEndDate] = useState(new Date(loadData.getLoad.dateEnd));
+const [holdStartDate, setHoldStartDate] = useState()
+const [holdEndDate, setHoldEndDate] = useState()
+console.log("ending date is:", loadData.getLoad.dateEnd)
+console.log("starting date is:", loadData.getLoad.dateStart)
 // setStartDate(
 //  dateStart: loadData.getLoad.dateStart
 // )
@@ -51,6 +57,9 @@ useEffect(() => {
   setStartDate(
     new Date(loadData.getLoad.dateStart)
   )
+  setEndDate(
+    new Date(loadData.getLoad.dateEnd)
+  )
   // console.log("start date now is:", startDate.getHours())
   // test1.setFullYear(1000)
   // test1.setHours(11)
@@ -59,7 +68,7 @@ useEffect(() => {
   // console.log("start date after setting is:", startDate.getFullYear())
 },[loadData])
 
-const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
+const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, dateEnd:loadData.getLoad.dateEnd,timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
 function parseISOString(s) {
   return moment(s).format('MMMM d, YYYY h:mm a')
@@ -78,7 +87,7 @@ console.log("testing one two", data?.trucker_Id.truck)
     await updateLoad({
       // variables: { ...data }
       variables: {
-       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: formState.dateStart, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
+       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: holdStartDate, timeStart: formState.timeStart, dateEnd: holdEndDate, timeEnd: formState.timeEnd 
       }
     })
   } catch (e) {
@@ -292,9 +301,8 @@ const handleChange = event => {
               key = "dateStart"
               selected={startDate}
               onChange={(date) => {
-                // setStartDate(date)
-                // console.log("value for datepicker is:", value)
-                handleChangeDate2(date)
+                setStartDate(date)
+                setHoldStartDate(date.toISOString())
               }}
               // onChange =   {handleChange}
 
@@ -375,21 +383,28 @@ const handleChange = event => {
         </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="dateEnd">End Date for Load Drop Off:</label>
-          <input 
-          type = "number" 
-          {...register(
-                  "dateEnd",
-                  {       
-                    setValueAs: v => parseFloat(v)   ,
-                    // min: { value: 1, message: "Rating must not be less than 1"},
-                    // max: { value: 5, message: "Rating must not be greater than 5"},    
-       
-                  })} 
+        <DatePicker  
+              name="dateEnd"
+              type="dateEnd"
+              id="dateEnd"
+              key = "dateEnd"
+              selected={endDate}
+              onChange={(date) => {
+                setEndDate(date)
+                setHoldEndDate(date.toISOString())
 
+              }}
+              // onChange =   {handleChange}
 
-            onChange={handleChange}
-            key = "dateEnd"
-          />
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+        
+ 
+        
+        />
 
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}

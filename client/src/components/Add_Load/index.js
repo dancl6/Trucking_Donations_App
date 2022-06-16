@@ -23,7 +23,9 @@ const [button, setButton] = useState('Open');
 const {data} = useQuery(TRUCK_ID_IS);
 const [startDefault, setStartDefault] = useState(new Date());
 const [startDate, setStartDate] = useState(new Date());
-const [holdDate, setHoldDate] = useState()
+const [endDate, setEndDate] = useState(new Date());
+const [holdStartDate, setHoldStartDate] = useState()
+const [holdEndDate, setHoldEndDate] = useState()
 const [value, onChange] = useState('10:00');
 let test
 // let dateStart = {hour:"", minute:"", day:"", year:"", month:""}
@@ -41,7 +43,7 @@ useEffect(() => {
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: holdDate, timeStart: formState.timeStart, dateEnd: formState.dateEnd, timeEnd: formState.timeEnd 
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: holdStartDate, timeStart: formState.timeStart, dateEnd: holdEndDate, timeEnd: formState.timeEnd 
         }
       })
 
@@ -60,7 +62,7 @@ useEffect(() => {
   const handleChangeDate2= (event,date) => {
    console.log("event to iso is:", event.toISOString())
 
-    setHoldDate(
+    setHoldStartDate(
       date.toISOString()
     )
 
@@ -211,7 +213,7 @@ useEffect(() => {
               selected={startDate}
               onChange={(date) => {
                 setStartDate(date)
-                setHoldDate(date.toISOString())
+                setHoldStartDate(date.toISOString())
                 // console.log("value for datepicker is:", value)
                 // handleChangeDate2(date)
               }}
@@ -254,21 +256,30 @@ useEffect(() => {
         </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="dateEnd">End Date for Load Drop Off:</label>
-          <input 
-          type = "number" 
-          {...register(
-                  "dateEnd",
-                  {       
-                    // setValueAs: v => parseFloat(v)   ,
-                    // min: { value: 1, message: "Rating must not be less than 1"},
-                    // max: { value: 5, message: "Rating must not be greater than 5"},    
-       
-                  })} 
+        <DatePicker  
+              name="dateEnd"
+              type="dateEnd"
+              id="dateEnd"
+              key = "dateEnd"
+              selected={endDate}
+              onChange={(date) => {
+                setEndDate(date)
+                setHoldEndDate(date.toISOString())
+                console.log("at picker and end iso is:", date.toISOString())
+                // console.log("value for datepicker is:", value)
+                // handleChangeDate2(date)
+              }}
+              // onChange =   {handleChange}
 
-
-            onChange={handleChange}
-            key = "dateEnd"
-          />
+              showTimeSelect
+              timeFormat="HH:mm"
+              timeIntervals={15}
+              timeCaption="time"
+              dateFormat="MMMM d, yyyy h:mm aa"
+        
+ 
+        
+        />
 
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
