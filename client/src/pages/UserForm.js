@@ -68,7 +68,7 @@ useEffect(() => {
   // console.log("start date after setting is:", startDate.getFullYear())
 },[loadData])
 
-const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, dateEnd:loadData.getLoad.dateEnd,timeStart: parseInt(loadData.getLoad.timeStart), timeDuration: parseInt(loadData.getLoad.timeDuration) });
+const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, dateEnd:loadData.getLoad.dateEnd, timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
 function parseISOString(s) {
   return moment(s).format('MMMM d, YYYY h:mm a')
@@ -84,10 +84,11 @@ console.log("testing one two", data?.trucker_Id.truck)
 
   try {
 //  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
+    console.log("hold start date is:", holdStartDate, "hold end date is:", holdEndDate)
     await updateLoad({
       // variables: { ...data }
       variables: {
-       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: holdStartDate, timeStart: formState.timeStart, dateEnd: holdEndDate, timeEnd: formState.timeEnd 
+       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), dateStart: holdStartDate,  dateEnd: holdEndDate 
       }
     })
   } catch (e) {
@@ -337,50 +338,8 @@ const handleChange = event => {
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
-        <div className="flex-row space-between my-2">
-        <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
-          <input 
-          type = "timeStart" 
-          ref = {register}
-          {...register(
-                  "timeStart",
-                  {required: true},
-                  {       
-                    setValueAs: v => parseFloat(v)   ,
-                    // min: { value: 1, message: "Rating must not be less than 1"},
-                    // max: { value: 5, message: "Rating must not be greater than 5"},    
        
-                  })} 
 
-
-            onChange={handleChange}
-            name = "timeStart"
-          />
-
-
-            {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div>
-        <div className="flex-row space-between my-2">
-        <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
-          <input 
-          type = "number" 
-          {...register(
-                  "timeStart",
-                  {       
-                    setValueAs: v => parseFloat(v)   ,
-                    // min: { value: 1, message: "Rating must not be less than 1"},
-                    // max: { value: 5, message: "Rating must not be greater than 5"},    
-       
-                  })} 
-
-
-            onChange={handleChange}
-            key = "timeStart"
-          />
-
-
-            {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="dateEnd">End Date for Load Drop Off:</label>
         <DatePicker  
@@ -389,6 +348,8 @@ const handleChange = event => {
               id="dateEnd"
               key = "dateEnd"
               selected={endDate}
+              ref = {register}
+              {...register("dateEnd", {required: true})}
               onChange={(date) => {
                 setEndDate(date)
                 setHoldEndDate(date.toISOString())
@@ -409,27 +370,7 @@ const handleChange = event => {
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
-        <div className="flex-row space-between my-2">
-        <label htmlFor="timeEnd">End Time for Load Drop Off:</label>
-          <input 
-          type = "number" 
-          {...register(
-                  "timeEnd",
-                  {       
-                    setValueAs: v => parseFloat(v)   ,
-                    // min: { value: 1, message: "Rating must not be less than 1"},
-                    // max: { value: 5, message: "Rating must not be greater than 5"},    
-       
-                  })} 
-
-
-            onChange={handleChange}
-            key = "timeEnd"
-          />
-
-
-            {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div>
+      
 
         <div className="flex-row flex-end">
           <button type="submit">

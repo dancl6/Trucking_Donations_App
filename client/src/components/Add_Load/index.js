@@ -14,7 +14,7 @@ import moment from 'moment';
 const Add_Load = () => {
 
 
-  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', timeStart: '', dateEnd: '', timeEnd: '' });
+  const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', dateEnd: '' });
   const [formDateStart, setFormDateStart] = useState({month:'', day:'', year:'',hour:'',minute:''})
   const [addLoad, {data:data4, error }] = useMutation(ADD_LOAD);
   const { register, handleSubmit, formState: { errors }
@@ -43,7 +43,7 @@ useEffect(() => {
       await addLoad({
         // variables: { ...data }
         variables: {
-          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: holdStartDate, timeStart: formState.timeStart, dateEnd: holdEndDate, timeEnd: formState.timeEnd 
+          streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: data2.number,  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: data2.rating, confirmed: false,  dateStart: holdStartDate, dateEnd: holdEndDate
         }
       })
 
@@ -232,28 +232,7 @@ useEffect(() => {
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
-        <div className="flex-row space-between my-2">
-        <label htmlFor="timeStart">Start Time for Load Drop Off:</label>
-        {/* <TimePicker onChange={onChange} value={value} /> */}
-          <input 
-          type = "number" 
-          {...register(
-                  "timeStart",
-                  {       
-                    // setValueAs: v => parseFloat(v)   ,
-                    // min: { value: 1, message: "Rating must not be less than 1"},
-                    // max: { value: 5, message: "Rating must not be greater than 5"},    
        
-                  })} 
-
-
-            onChange={handleChange}
-            key = "timeStart"
-          />
-
-
-            {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div>
         <div className="flex-row space-between my-2">
         <label htmlFor="dateEnd">End Date for Load Drop Off:</label>
         <DatePicker  
@@ -284,27 +263,7 @@ useEffect(() => {
 
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
-        <div className="flex-row space-between my-2 input-group date" data-provide = "datepicker" >
-        <label htmlFor="timeEnd">End Time for Load Drop Off:</label>
-          <input 
-          type = "text" className = "form-control datepicker" data-date-format = "mm/dd/yyyy" id= "datepicker" placeholder = "Enter a Date" 
-          {...register(
-                  "timeEnd",
-                  {       
-                    // setValueAs: v => parseFloat(v)   ,
-                    // min: { value: 1, message: "Rating must not be less than 1"},
-                    // max: { value: 5, message: "Rating must not be greater than 5"},    
-       
-                  })} 
-
-
-            onChange={handleChange}
-            key = "timeEnd"
-          />
-
-
-            {errors.rating ? <div>{errors.rating.message}</div> : null}
-        </div>
+      
 
 
 

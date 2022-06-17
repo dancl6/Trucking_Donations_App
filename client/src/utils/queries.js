@@ -74,9 +74,9 @@ query getLoad($_id:ID!){
     rating
     confirmed
     dateStart
-    timeStart
+
     dateEnd
-    timeEnd
+
  } 
  }
 `;
@@ -101,9 +101,9 @@ export const GET_TRUCKER_LOADS = gql`
     rating
     confirmed
     dateStart
-    timeStart
+
     dateEnd
-    timeEnd
+
   }
 }
 `;
