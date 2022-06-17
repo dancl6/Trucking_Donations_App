@@ -12,6 +12,10 @@ const truckingUserSchema = new Schema({
         trim: true,
         unique: true
       },
+      rating: {
+        type: Number,
+        required: false
+    },
     //   lastName: {
     //     type: String,
     //     required: true,
