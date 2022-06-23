@@ -138,11 +138,7 @@ return (
                 let loadRemoved = item._id
                 handleRemoveLoad(loadRemoved)
                 // myLoads = myLoads.filter(test => {return test._id !== loadRemoved} )
-                let test = [1,2,4,6]
-                test.filter(test => {
-                    return test !== 2;
-                  })
-                console.log("filter test is:", test)
+
                 // console.log(" my new loads after delete is:", myLoads)
             }
               }  key = {item._id} variant="primary">Remove Load</Button>
