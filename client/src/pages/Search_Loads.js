@@ -12,21 +12,31 @@ const Search_Loads = () => {
   const [formState, setFormState] = useState({ state: '' });
 const {data} = useQuery(LOAD_QUERY);
 console.log("data for loads is:", data)
-
+const [savedLoads, setSavedLoads] = useState();
 
   const handleFormSubmit = async event => {
     event.preventDefault();
-
+    let stateInput = document.getElementById('state').value
+    let savedLoads2 = []
     try {
     //   const { data } = await addTruckingUser({
     //     variables: { ...formState }
     //   });
-      console.log("event is:", event)
-      console.log("Data is:", data?.length)
+    for ( let i = 0 ; i < data.loads.length; i ++ ) {
+      console.log("data cons is :", data.loads[i])
+      if(data.loads[i].state === stateInput) {
+        savedLoads2.push(data.loads[i])
+      }
+    }
+      console.log("input is:", document.getElementById('state').value)
+      console.log("Data is:", data)
+      console.log("saved loads is:", savedLoads2) 
     } catch (e) {
       console.error(e);
     }
     // console.log(error)
+    setSavedLoads(savedLoads2)
+    console.log("saved laosds is:", savedLoads)
   }
   
   const handleChange = event => {
@@ -92,7 +102,7 @@ console.log("data for loads is:", data)
     </div>
           
             { 
-            data?.loads.map(item =>
+            savedLoads?.map(item =>
             item  ?
             (
 
