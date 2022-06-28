@@ -26,6 +26,10 @@ const truckingUserSchema = new Schema({
         required: true,
         minlength: 5
       },
+      paid: {
+        type: Boolean,
+        required: false
+    },
       loads: [
           {
         type: Schema.Types.ObjectId,

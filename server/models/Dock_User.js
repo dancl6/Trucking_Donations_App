@@ -30,6 +30,10 @@ const dockUserSchema = new Schema({
         type: Number,
         required: false
     },
+    paid: {
+        type: Boolean,
+        required: false
+    },
     password: {
         type: String,
         required: true,
