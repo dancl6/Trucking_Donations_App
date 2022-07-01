@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
-import { LOAD_QUERY } from "../utils/queries";
+import { LOAD_QUERY, QUERY_ME } from "../utils/queries";
 import { useStoreContext } from '../utils/GlobalState';
 
 import Button from 'react-bootstrap/Button'
@@ -11,6 +11,7 @@ const Search_Loads = () => {
   const [state] = useStoreContext();
   const [formState, setFormState] = useState({ state: '' });
 const {data} = useQuery(LOAD_QUERY);
+const {data: data2} = useQuery(QUERY_ME);
 console.log("data for loads is:", data)
 const [savedLoads, setSavedLoads] = useState();
 
@@ -47,7 +48,7 @@ const [savedLoads, setSavedLoads] = useState();
     });
   };
 
-
+  if (Auth.loggedIn() && data2?.me.docker) {
   return (
     <div>
       <h4 className='card-header center_text'>Search For Loads In This State</h4>
@@ -129,7 +130,7 @@ const [savedLoads, setSavedLoads] = useState();
 
     </div>
   );
-
+            } else { return null}
 }
 
 export default Search_Loads;
