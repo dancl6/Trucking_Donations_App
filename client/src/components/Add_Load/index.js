@@ -4,16 +4,17 @@ import { useMutation, useQuery } from '@apollo/react-hooks';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { ADD_LOAD } from "../../utils/mutations";
-import { TRUCK_ID_IS } from "../../utils/queries";
+import { TRUCK_ID_IS, QUERY_ME } from "../../utils/queries";
 import { useForm } from "react-hook-form"
 import DropdownButton from 'react-bootstrap/DropdownButton'
 import MenuItem from 'react-bootstrap/DropdownItem'
 import moment from 'moment';
+import Auth  from "../../utils/auth";
 
 
 const Add_Load = () => {
 
-
+  const {data: data2} = useQuery(QUERY_ME);
   const [formState, setFormState] = useState({streetAddress: '', state: '' , zipcode: '' , donationItem: '', number: '' , trucker: '', currentStatus: '', confirmed: false, dateStart:'', dateEnd: '' });
   const [formDateStart, setFormDateStart] = useState({month:'', day:'', year:'',hour:'',minute:''})
   const [addLoad, {data:data4, error }] = useMutation(ADD_LOAD);
@@ -105,7 +106,7 @@ useEffect(() => {
 
 
   function loadForm() {
-
+    if (Auth.loggedIn() && data2?.me.trucker) {
   return (
     <div key = "Parent Div" className="container my-1">
       <Link key = "Parent Link" to="/trucker_login">
@@ -274,7 +275,7 @@ useEffect(() => {
         </div>
       </form>
     </div>
-  );
+  ); } else {}
       }
     
     return (
