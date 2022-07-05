@@ -136,6 +136,7 @@ type OneLoad {
 
 type Query {
     truckingUser: Trucking_User
+    dockUser2: [Dock_User]
     dockUser: Dock_User
     truckingUsers: [Trucking_User]
     dockUsers: [Dock_User]
@@ -154,7 +155,7 @@ addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Aut
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 truckingLogin(userName: String!, password: String!): Auth_Trucking
 dockLogin(name: String!, password: String!): Auth_Dock
-addLoadToDock(Dock_User: ID!, loadAdded: ID!) : Dock_User
+addLoadToDock(loadAdded: ID!) : Dock_User
 addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadFromTrucker( loadRemoved: ID!, truckerId: ID!) : Load
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User

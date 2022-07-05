@@ -32,6 +32,15 @@ mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $d
 `;
 
 
+export const ADD_LOAD_DOCK = gql `
+mutation addLoadToDock( $loadAdded: ID!){
+       addLoadToDock( loadAdded: $loadAdded){
+    _id
+  }
+}
+`
+
+
 export const ADD_USER = gql`
   mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {
     addUser(firstName: $firstName, lastName: $lastName, email: $email, password: $password) {

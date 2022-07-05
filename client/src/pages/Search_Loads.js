@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { LOAD_QUERY, QUERY_ME } from "../utils/queries";
+import { ADD_LOAD_DOCK } from "../utils/mutations"
 import { useStoreContext } from '../utils/GlobalState';
 
 import Button from 'react-bootstrap/Button'
@@ -12,8 +13,34 @@ const Search_Loads = () => {
   const [formState, setFormState] = useState({ state: '' });
 const {data} = useQuery(LOAD_QUERY);
 const {data: data2} = useQuery(QUERY_ME);
+const [addLoadToDock, {data:data4, error }] = useMutation(ADD_LOAD_DOCK);
 console.log("data for loads is:", data)
 const [savedLoads, setSavedLoads] = useState();
+
+const handleAddLoad = async(data2) => {
+  console.log("data 2 for add load dock is:",data2)
+
+
+  try {
+// console.log("trucking id is this:", data?.trucker_Id.truck)
+    await addLoadToDock({
+      // variables: { ...data }
+      variables: {
+         loadAdded: data2 
+      }
+    })
+
+      // console.log("data4 from add load is:", data4.addLoad._id)        
+  } catch (e) {
+    console.error(e);
+    let test = e
+    console.log("testing error is:", e)
+  }
+      
+  // window.location.reload(false)
+  
+}
+
 
   const handleFormSubmit = async event => {
     event.preventDefault();
@@ -116,7 +143,12 @@ const [savedLoads, setSavedLoads] = useState();
           <div >
 
           </div>
-                <Button key = {item._id}> Request To Add Load In The State Of 
+                <Button 
+                 onClick={() => {
+                let loadAdded = item._id
+                handleAddLoad(loadAdded)}}
+                
+                key = {item._id}> Request To Add Load In The State Of 
                   {item.state} For The Item Of {item.donationItem} 
                 </Button>
                 </div>
