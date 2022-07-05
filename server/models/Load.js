@@ -44,7 +44,11 @@ const loadSchema = new Schema({
         ref: 'Dock_User',
         required: false
     },
-    rating: {
+    rating_dock: {
+        type: Number,
+        required: false
+    },
+    rating_trucker: {
         type: Number,
         required: false
     },
