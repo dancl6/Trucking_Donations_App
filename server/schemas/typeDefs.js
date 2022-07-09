@@ -165,6 +165,7 @@ getLoad2(loadId: ID!): Load
 removeNullTruckerLoad: Trucking_User
 removeLoad(loadRemoved: ID!) : Load
 removeLoadFromTruck(loadId: ID!, truckerId: ID!) : Trucking_User
+addRequestedDocks(loadId: ID!) : Load
 }
 `];
 

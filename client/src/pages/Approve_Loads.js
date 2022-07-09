@@ -8,7 +8,7 @@ import { useStoreContext } from '../utils/GlobalState';
 
 import Button from 'react-bootstrap/Button'
 // // function Trucker_Signup() {
-const Search_Loads = () => {
+const Approve_Loads = () => {
   const [state] = useStoreContext();
   const [formState, setFormState] = useState({ state: '' });
 const {data} = useQuery(LOAD_QUERY);
@@ -135,4 +135,4 @@ const handleAddLoad = async(data2) => {
             } else { return null}
 }
 
-export default Search_Loads;
+export default Approve_Loads;

@@ -305,6 +305,13 @@ const resolvers = {
             //   Load.findByIdAndUpdate( {$unset: keys})
             // }
             Load.remove(null)
+          },
+          addRequestedDocks : async (parent, args, context ) => {
+            if (context.user) {
+              console.log("context.user is:", context.user )
+              console.log("args is :", args.loadAdded)
+              return await Load.findByIdAndUpdate(context.user,  { $addToSet: {dock_Requests: {_id: args.loadAdded}}} )
+            }
           }
       
     }

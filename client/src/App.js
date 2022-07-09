@@ -17,6 +17,7 @@ import  Add_Load from "./components/Add_Load"
 import Search_Loads from './pages/Search_Loads';
 import { StoreProvider } from "./utils/GlobalState";
 import My_Loads from './pages/My_Loads';
+import Approve_Loads from './pages/Approve_Loads'
 // import Test_Form_Fill from './pages/Test_Form_FIll';
 // import Test_Effect from './pages/Test_Effect'
 // import Test_State from './pages/Test_State'
@@ -56,6 +57,7 @@ function App() {
       <Route exact path="/load_search" key = "load_search" component={Search_Loads} />
       <Route exact path="/modify_load/:id" key = "modify_load" component={Modify_Load} />
       <Route exact path="/my_loads" key = "my_loads" component={My_Loads} />
+      <Route exact path="/approve_loads" key = "approve_loads" component={Approve_Loads} />
 
 
     </Switch>

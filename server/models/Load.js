@@ -64,7 +64,14 @@ const loadSchema = new Schema({
     dateEnd: {
         type: String,
         required: true
-    }
+    },
+    dock_Requests: [
+        {
+      type: Schema.Types.ObjectId,
+      ref: 'Dock_User',
+      required: false
+  }
+ ]
     
 })
 

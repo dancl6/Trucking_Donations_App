@@ -73,11 +73,11 @@ function Nav() {
         </Link>
       </li>
 
-      {/* <li className="mx-1">
-        <Link to={`/modify_load/`}>
-          Modify Load
+      <li className="mx-1">
+        <Link to={`/approve_loads`}>
+          Loads To Approve
         </Link>
-      </li> */}
+      </li>
       <li className="mx-1">
         <Link onClick = {onClickMyLoads} to="/my_loads">
           My Loads
