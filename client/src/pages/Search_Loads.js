@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { LOAD_QUERY, QUERY_ME } from "../utils/queries";
-import { ADD_LOAD_DOCK } from "../utils/mutations"
+import { ADD_LOAD_DOCK,ADD_REQ_LOAD_TO_DOCK } from "../utils/mutations"
 import { useStoreContext } from '../utils/GlobalState';
 
 import Button from 'react-bootstrap/Button'
@@ -13,7 +13,7 @@ const Search_Loads = () => {
   const [formState, setFormState] = useState({ state: '' });
 const {data} = useQuery(LOAD_QUERY);
 const {data: data2} = useQuery(QUERY_ME);
-const [addLoadToDock, {data:data4, error }] = useMutation(ADD_LOAD_DOCK);
+const [addRequestedDocks, {data:data4, error }] = useMutation(ADD_REQ_LOAD_TO_DOCK);
 console.log("data for loads is:", data)
 const [savedLoads, setSavedLoads] = useState();
 
@@ -23,10 +23,10 @@ const handleAddLoad = async(data2) => {
 
   try {
 // console.log("trucking id is this:", data?.trucker_Id.truck)
-    await addLoadToDock({
+    await addRequestedDocks({
       // variables: { ...data }
       variables: {
-         loadAdded: data2 
+         loadId: data2 
       }
     })
 

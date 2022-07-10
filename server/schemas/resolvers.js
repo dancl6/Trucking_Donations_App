@@ -308,9 +308,9 @@ const resolvers = {
           },
           addRequestedDocks : async (parent, args, context ) => {
             if (context.user) {
-              console.log("context.user is:", context.user )
-              console.log("args is :", args.loadAdded)
-              return await Load.findByIdAndUpdate(context.user,  { $addToSet: {dock_Requests: {_id: args.loadAdded}}} )
+              console.log("context.user is:", context.user._id )
+              // console.log("args is :", args.loadAdded)
+              return await Load.findByIdAndUpdate(  {_id: args.loadId},  { $addToSet: {dock_Requests: {_id: context.user._id}}} )
             }
           }
       

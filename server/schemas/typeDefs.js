@@ -47,6 +47,7 @@ type Load {
     confirmed: Boolean
     dateStart: String
     dateEnd: String
+    dock_Requests: [String]
 }
 
 type LoadForQueries {
@@ -61,6 +62,8 @@ type LoadForQueries {
   currentStatus: String
   dock: Dock_User
   rating: Float
+
+  dock_Requests: [String]
   
 }
 
