@@ -40,7 +40,7 @@ mutation addLoadToDock( $loadAdded: ID!){
 }
 `
 
-export const ADD_REQ_LOAD_TO_DOCK = gql `
+export const ADD_REQ_DOCK_TO_LOAD = gql `
 mutation addRequestedDocks($loadId: ID!){
             addRequestedDocks(loadId: $loadId){
     _id

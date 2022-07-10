@@ -62,7 +62,7 @@ type LoadForQueries {
   currentStatus: String
   dock: Dock_User
   rating: Float
-
+  confirmed: Boolean
   dock_Requests: [String]
   
 }

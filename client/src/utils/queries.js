@@ -32,6 +32,8 @@ export const LOAD_QUERY = gql`
 {
 	loads {
 _id 
+confirmed
+currentStatus
  number
  dock_Requests
 state

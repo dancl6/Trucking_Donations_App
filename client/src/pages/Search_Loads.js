@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { LOAD_QUERY, QUERY_ME } from "../utils/queries";
-import { ADD_LOAD_DOCK,ADD_REQ_LOAD_TO_DOCK } from "../utils/mutations"
+import { ADD_LOAD_DOCK,ADD_REQ_DOCK_TO_LOAD } from "../utils/mutations"
 import { useStoreContext } from '../utils/GlobalState';
 
 import Button from 'react-bootstrap/Button'
@@ -13,7 +13,7 @@ const Search_Loads = () => {
   const [formState, setFormState] = useState({ state: '' });
 const {data} = useQuery(LOAD_QUERY);
 const {data: data2} = useQuery(QUERY_ME);
-const [addRequestedDocks, {data:data4, error }] = useMutation(ADD_REQ_LOAD_TO_DOCK);
+const [addRequestedDocks] = useMutation(ADD_REQ_DOCK_TO_LOAD);
 console.log("data for loads is:", data)
 const [savedLoads, setSavedLoads] = useState();
 
@@ -52,7 +52,7 @@ const handleAddLoad = async(data2) => {
     //   });
     for ( let i = 0 ; i < data.loads.length; i ++ ) {
       console.log("data cons is :", data.loads[i])
-      if(data.loads[i].state === stateInput) {
+      if(data.loads[i].state === stateInput && data.loads[i].confirmed !== true && data.loads[i].currentStatus === "Open") {
         savedLoads2.push(data.loads[i])
       }
     }
