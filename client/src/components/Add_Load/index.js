@@ -55,7 +55,7 @@ useEffect(() => {
       console.log("testing error is:", e)
     }
         
-    // window.location.reload(false)
+    window.location.reload(false)
     
   }
 

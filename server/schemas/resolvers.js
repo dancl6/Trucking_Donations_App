@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { Trucking_User, Dock_User, Load } = require('../models');
+const { Trucking_User, Dock_User, Load, Load_Test } = require('../models');
 const { findById } = require('../models/Dock_User');
 const { signTokenTrucker, signTokenDock } = require('../utils/auth');
 const { resolvers: scalarResolvers } = require('graphql-scalars');
@@ -52,10 +52,18 @@ const resolvers = {
           truckingUsers: async () => {
             return await Trucking_User.find({})
           },
-          loads: async () => {
-             let load = await Load.find({})
-            // console.log("all loads is :", load)
+          loads: async (context) => {
+          //  let load
+          console.log("context here is:", context)
+            if (context.user.name === "test_dock" || context.user.name === "test_trucker" ){
+             let load = await Load_Test.find({})
              return load
+            } else {
+            let load = await Load.find({})
+             return load
+          }
+            // console.log("all loads is :", load)
+
           },
           me: async (parent, args, context) => {
             userId = context.user
@@ -89,39 +97,82 @@ const resolvers = {
             // let loadIs = args.TheLoad
           //  let TheLoad =  await Load.findById( args.this)
             // console.log("the load is:", loadIs)
-            const {_id} = args._id
-            const ObjectId = require('mongodb').ObjectID
-            let _idObject = ObjectId(args._id)
-            let test = []
-            console.log("args length is:", args._id.length)
-            for (let i = 0; i < args._id.length; i ++ ) {
-              test.push(Load.findById(args._id[i]))
+            if (context.user.name === "test_dock" || context.user.name === "test_trucker"){
+
+              const {_id} = args._id
+              const ObjectId = require('mongodb').ObjectID
+              let _idObject = ObjectId(args._id)
+              let test = []
+              console.log("args length is:", args._id.length)
+              for (let i = 0; i < args._id.length; i ++ ) {
+                test.push(Load_Test.findById(args._id[i]))
+              }
+              let test2 = await Load_Test.findById(args._id)
+              // return await Load.findById(args.loadId)
+              console.log("long array is:", test)
+              let test3 = await Load_Test.findById(args._id)
+              // return test.list()
+              return test3
+
+            } else {
+              const {_id} = args._id
+              const ObjectId = require('mongodb').ObjectID
+              let _idObject = ObjectId(args._id)
+              let test = []
+              console.log("args length is:", args._id.length)
+              for (let i = 0; i < args._id.length; i ++ ) {
+                test.push(Load.findById(args._id[i]))
+              }
+              let test2 = await Load.findById(args._id)
+              // return await Load.findById(args.loadId)
+              console.log("long array is:", test)
+              let test3 = await Load.findById(args._id)
+              // return test.list()
+              return test3
+
+
             }
-            let test2 = await Load.findById(args._id)
-            // return await Load.findById(args.loadId)
-            console.log("long array is:", test)
-            let test3 = await Load.findById(args._id)
-            // return test.list()
-            return test3
+
           },
           getTruckerLoads: async (parent, args, context) => {
             // console.log("context user for get trucker loads is:", context.user)
-            let test =  await Trucking_User.findById(context.user._id)
-            console.log("trucking user data is:", test)
-            // console.log("load is in state:", test.loads[2])
-            // console.log("list before emptying is this:", list)
-            let list = []
-            console.log("cleared list is this:", list)
-            // console.log("the load at i is:", test.loads[1])
-            console.log("length of loads list is this", test.loads.length)
+            if (context.user.name === "test_dock" || context.user.name === "test_trucker"){
+              let test =  await Trucking_User.findById(context.user._id)
+              console.log("trucking user data is:", test)
+              // console.log("load is in state:", test.loads[2])
+              // console.log("list before emptying is this:", list)
+              let list = []
+              console.log("cleared list is this:", list)
+              // console.log("the load at i is:", test.loads[1])
+              console.log("length of loads list is this", test.loads.length)
+  
+              for ( let i = 0 ; i < test.loads.length; i ++ ) {
+                
+                list.push(await Load_Test.findById(test.loads[i]))
+                // console.log("load in for loop  is", test.loads[i])
+              }
+              console.log("load list is this:", list)
+              return list
+            } else {
+              let test =  await Trucking_User.findById(context.user._id)
+              console.log("trucking user data is:", test)
+              // console.log("load is in state:", test.loads[2])
+              // console.log("list before emptying is this:", list)
+              let list = []
+              console.log("cleared list is this:", list)
+              // console.log("the load at i is:", test.loads[1])
+              console.log("length of loads list is this", test.loads.length)
+  
+              for ( let i = 0 ; i < test.loads.length; i ++ ) {
+                
+                list.push(await Load.findById(test.loads[i]))
+                // console.log("load in for loop  is", test.loads[i])
+              }
+              console.log("load list is this:", list)
+              return list
 
-            for ( let i = 0 ; i < test.loads.length; i ++ ) {
-              
-              list.push(await Load.findById(test.loads[i]))
-              // console.log("load in for loop  is", test.loads[i])
             }
-            console.log("load list is this:", list)
-            return list
+
           },
           getLoads: async (parent, args, context) => {
             let loads = await Load.find({})
@@ -186,6 +237,29 @@ const resolvers = {
             return await Load.findById(args.loadId)
           },
           addLoad: async (parent, args, context) => {
+            if (context.user.name === "test_dock" || context.user.name === "test_trucker"){
+            // console.log("context is :", context)
+            const loadOne = await Load_Test.create(args);
+            // console.log("load one is:", loadOne)
+            // let loadAdded =   await Load.findById()
+            console.log("context from load is:", context.user._id)
+            console.log("load one is again:", loadOne)
+            // await Dock_User.findByIdAndUpdate(
+            //   {_id: args.dock},
+            //   { $addToSet: {loads: {_id: loadOne._id}}},
+            //   {new: true, upsert: true}
+            // // }
+            // )
+
+            await Trucking_User.findByIdAndUpdate(
+              {_id: context.user._id},
+              { $addToSet: { loads: {_id: loadOne._id}}},
+              {new: true, upsert: true}
+            )
+            // const token = signToken(dockUser);
+      
+            return { _id: loadOne._id };            
+            } else {
             // console.log("context is :", context)
             const loadOne = await Load.create(args);
             // console.log("load one is:", loadOne)
@@ -207,13 +281,24 @@ const resolvers = {
             // const token = signToken(dockUser);
       
             return { _id: loadOne._id };
+            }
+
           },
           updateLoad: async (parent, args, context) => {
-            console.log("update load context user is :", context.user)
-            // if (context.user) {
-              await Load.findByIdAndUpdate({_id: args.LoadId},args, { new: true });
-            // }
-            return {_id: args.LoadId}
+            if (context.user.name === "test_dock" || context.user.name === "test_trucker"){
+              console.log("update load context user is :", context.user)
+              // if (context.user) {
+                await Load_Test.findByIdAndUpdate({_id: args.LoadId},args, { new: true });
+              // }
+              return {_id: args.LoadId}            
+            } else {
+              console.log("update load context user is :", context.user)
+              // if (context.user) {
+                await Load.findByIdAndUpdate({_id: args.LoadId},args, { new: true });
+              // }
+              return {_id: args.LoadId}
+            }
+
           },
           addLoadToDock: async (parent, args, context) => {
             if (context.user) {
@@ -232,7 +317,32 @@ const resolvers = {
           
           },
           removeLoad: async (parent, args, context) => {
-            const ObjectId = require('mongodb').ObjectID
+            if (context.user.name === "test_dock" || context.user.name === "test_trucker"){
+              const ObjectId = require('mongodb').ObjectID
+              console.log("load removed is :", args.loadRemoved)
+              let load1 = Load_Test.findById(args.loadRemoved)
+
+            //  await Trucking_User.findByIdAndUpdate( "607f81e9c8bb1c7408eba11c"  , {$pull: {loads: {_id:  "611f2411bf291f612cb49eab"}}}  ,      { safe: true })
+            //  await Trucking_User.updateMany({_id:"607f81e9c8bb1c7408eba11c"},{$pull:{loads: {$in: [ObjectId("60f8b9e7eff9725b88f3925c")]}}}) 
+            await Trucking_User.findByIdAndUpdate("60919d55fb7b079dbcba2bf9", {$pull: {loads:{$in: [ObjectId("607f8289c8bb1c7408eba11f")]}}})
+            
+              let test = await Dock_User.find({})
+              // console.log("dock  users is:", test[0]._id)
+              if (test) {
+              for ( let i = 0 ; i < test.length; i ++ ) {
+              await    Dock_User.findByIdAndUpdate(test[i]._id,{$pull: { loads: {$in : [ObjectId(args.loadRemoved)]}}})
+              }
+            }
+
+              let test2 = await Trucking_User.find({})
+              if (test2) {
+              for ( let i = 0 ; i < test2.length; i ++ ) {
+              await  Trucking_User.findByIdAndUpdate(test2[i]._id,{$pull: { loads: {$in : [ObjectId(args.loadRemoved)]}}})
+              }
+            }
+              await Load_Test.findByIdAndRemove({_id: args.loadRemoved})           
+            } else {
+              const ObjectId = require('mongodb').ObjectID
               console.log("load removed is :", args.loadRemoved)
               let load1 = Load.findById(args.loadRemoved)
 
@@ -255,6 +365,9 @@ const resolvers = {
               }
             }
               await Load.findByIdAndRemove({_id: args.loadRemoved})
+
+            }
+
           },
           truckingLogin: async (parent, { userName, password }) => {
             const user = await Trucking_User.findOne( { userName } );
@@ -307,11 +420,20 @@ const resolvers = {
             Load.remove(null)
           },
           addRequestedDocks : async (parent, args, context ) => {
-            if (context.user) {
-              console.log("context.user is:", context.user._id )
-              // console.log("args is :", args.loadAdded)
-              return await Load.findByIdAndUpdate(  {_id: args.loadId},  { $addToSet: {dock_Requests: {_id: context.user._id}}} )
+            if (context.user.name === "test_dock" || context.user.name === "test_trucker"){
+              if (context.user) {
+                console.log("context.user is:", context.user.name )
+                // console.log("args is :", args.loadAdded)
+                return await Load_Test.findByIdAndUpdate(  {_id: args.loadId},  { $addToSet: {dock_Requests: {_id: context.user._id}}} )
+              }
+            } else {
+              if (context.user) {
+                console.log("context.user is:", context.user.name )
+                // console.log("args is :", args.loadAdded)
+                return await Load.findByIdAndUpdate(  {_id: args.loadId},  { $addToSet: {dock_Requests: {_id: context.user._id}}} )
+              }              
             }
+
           }
       
     }
