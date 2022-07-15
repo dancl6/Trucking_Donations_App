@@ -6,7 +6,8 @@ import { LOAD_QUERY, QUERY_ME,GET_TRUCKER_LOADS } from "../utils/queries";
 import { ADD_LOAD_DOCK, ADD_DOCK_TO_LOAD } from "../utils/mutations"
 import { useStoreContext } from '../utils/GlobalState';
 
-import Button from 'react-bootstrap/Button'
+import Button  from 'react-bootstrap/Button'
+import Accordion from 'react-bootstrap/Accordion'
 // // function Trucker_Signup() {
 const Approve_Loads = () => {
   const [state] = useStoreContext();
@@ -16,6 +17,8 @@ const {data: data2} = useQuery(QUERY_ME);
 const [addDockToLoad, {data:data4, error }] = useMutation(ADD_DOCK_TO_LOAD);
 console.log("data for loads is:", data)
 const [savedLoads, setSavedLoads] = useState();
+const [ dockApprove, setDockApprove ] = useState();
+const [ loadApprove, setLoadApprove ] = useState();
 let dock_Req = []
 for ( let i = 0 ; i < data?.getTruckerLoads.length; i ++ ) {  
   if(data.getTruckerLoads[i].dock_Requests.length > 0){
@@ -23,9 +26,12 @@ for ( let i = 0 ; i < data?.getTruckerLoads.length; i ++ ) {
   }
 }
 console.log("dock recks is:", dock_Req)
-const handleApproveLoad = async(data2) => {
-  console.log("data 2 for add load dock is:",data2)
 
+
+
+const handleApproveLoad = async() => {
+  console.log("data 2 for add load dock is:",data2)
+  console.log("data for load is:", loadApprove, "data for dock is:", dockApprove)
 
 
 
@@ -34,7 +40,7 @@ const handleApproveLoad = async(data2) => {
     await addDockToLoad({
       // variables: { ...data }
       variables: {
-         loadId: data2 
+         loadId: loadApprove, dockId: dockApprove
       }
     })
 
@@ -114,22 +120,40 @@ const handleApproveLoad = async(data2) => {
             item  ?
             (
 
-            <div key = {`ParentDiv1_${item._id}`}>
+            <div key = {`ParentDiv1_${item._id}`}   onClick={() => {
+              // let dockApprove = item._id
+              console.log("iteming 2 is:", item)
+              setLoadApprove(item._id)
+             }}  >
        
                 <div key = {`ParentDiv2_${item._id}`}>
             <Link to={`/modify_load/${item._id}`} key = "link">
             {/* <Button key = {item._id} variant="primary">Update Load</Button> */}
           </Link>
-          <div >
-            <Button   onClick={() => {
-                let loadApprove = item._id
+          <div>
+              {item?.dock_Requests.map(item2 => 
+                  <div>{item2}
+                  
+                  <Button   onClick={() => {
+                // let loadApprove = item._id
+                console.log("iteming is:", item2)
+                setDockApprove(item2)
                 
-                handleApproveLoad(loadApprove)
+                handleApproveLoad()
                 // myLoads = myLoads.filter(test => {return test._id !== loadRemoved} )
 
                 // console.log(" my new loads after delete is:", myLoads)
             }
               }  key = {item._id} variant="primary">Approve</Button>
+                  
+                  
+                  </div>      
+              )}
+
+
+          </div>
+          <div >
+
           </div>
                 <div key = {item._id}>
                   {item.state} {item.currentStatus} {item._id}

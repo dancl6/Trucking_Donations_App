@@ -48,8 +48,8 @@ mutation addRequestedDocks($loadId: ID!){
 }
 `
 export const ADD_DOCK_TO_LOAD = gql `
-mutation addDockToLoad($loadId: ID!){
-            addDockToLoad(loadId: $loadId){
+mutation addDockToLoad($loadId: ID!, $dockId: ID!){
+            addDockToLoad(loadId: $loadId, dockId: $dockId){
     _id
   }
 }
