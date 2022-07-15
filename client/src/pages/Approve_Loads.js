@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useQuery, useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
-import { LOAD_QUERY, QUERY_ME } from "../utils/queries";
-import { ADD_LOAD_DOCK } from "../utils/mutations"
+import { LOAD_QUERY, QUERY_ME,GET_TRUCKER_LOADS } from "../utils/queries";
+import { ADD_LOAD_DOCK, ADD_DOCK_TO_LOAD } from "../utils/mutations"
 import { useStoreContext } from '../utils/GlobalState';
 
 import Button from 'react-bootstrap/Button'
@@ -11,22 +11,30 @@ import Button from 'react-bootstrap/Button'
 const Approve_Loads = () => {
   const [state] = useStoreContext();
   const [formState, setFormState] = useState({ state: '' });
-const {data} = useQuery(LOAD_QUERY);
+const {data} = useQuery(GET_TRUCKER_LOADS);
 const {data: data2} = useQuery(QUERY_ME);
-const [addLoadToDock, {data:data4, error }] = useMutation(ADD_LOAD_DOCK);
+const [addDockToLoad, {data:data4, error }] = useMutation(ADD_DOCK_TO_LOAD);
 console.log("data for loads is:", data)
 const [savedLoads, setSavedLoads] = useState();
-
-const handleAddLoad = async(data2) => {
+let dock_Req = []
+for ( let i = 0 ; i < data?.getTruckerLoads.length; i ++ ) {  
+  if(data.getTruckerLoads[i].dock_Requests.length > 0){
+      dock_Req.push(data.getTruckerLoads[i])
+  }
+}
+console.log("dock recks is:", dock_Req)
+const handleApproveLoad = async(data2) => {
   console.log("data 2 for add load dock is:",data2)
+
+
 
 
   try {
 // console.log("trucking id is this:", data?.trucker_Id.truck)
-    await addLoadToDock({
+    await addDockToLoad({
       // variables: { ...data }
       variables: {
-         loadAdded: data2 
+         loadId: data2 
       }
     })
 
@@ -75,10 +83,10 @@ const handleAddLoad = async(data2) => {
     });
   };
 
-  if (Auth.loggedIn() && data2?.me.docker) {
+  if (Auth.loggedIn() && data2?.me.trucker) {
   return (
     <div>
-      <h4 className='card-header center_text'>Search For Loads In This State</h4>
+      {/* <h4 className='card-header center_text'>Search For Loads In This State</h4>
       <div className='card-body center_text'>
       <form onSubmit={handleFormSubmit}>
         <div className="flex-row space-between my-2 center_text">
@@ -97,36 +105,42 @@ const handleAddLoad = async(data2) => {
           </button>
         </div>
       </form>
-    </div>
+    </div> */}
+          <div>
           
-            { 
-            savedLoads?.map(item =>
+          
+          { 
+            dock_Req?.map(item =>
             item  ?
             (
 
             <div key = {`ParentDiv1_${item._id}`}>
        
                 <div key = {`ParentDiv2_${item._id}`}>
-            {/* <Link to={`/modify_load/${item._id}`} key = "link"> */}
-            {/* <Button key = {item._id} variant="primary">Update Load</Button> */}
-          {/* </Link> */}
+            <Link to={`/modify_load/${item._id}`} key = "link">
+            <Button key = {item._id} variant="primary">Update Load</Button>
+          </Link>
           <div >
-
-          </div>
-                <Button 
-                 onClick={() => {
-                let loadAdded = item._id
-                handleAddLoad(loadAdded)}}
+            <Button   onClick={() => {
+                let loadApprove = item._id
                 
-                key = {item._id}> Request To Add Load In The State Of 
-                  {item.state} For The Item Of {item.donationItem} 
-                </Button>
+                handleApproveLoad(loadApprove)
+                // myLoads = myLoads.filter(test => {return test._id !== loadRemoved} )
+
+                // console.log(" my new loads after delete is:", myLoads)
+            }
+              }  key = {item._id} variant="primary">Approve</Button>
+          </div>
+                <div key = {item._id}>
+                  {item.state} {item.currentStatus} {item._id}
+                </div>
                 </div>
                 </div>
        
             ): null)}
 
 
+          </div>
 
 
 

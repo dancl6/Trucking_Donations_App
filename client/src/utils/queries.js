@@ -107,7 +107,7 @@ export const GET_TRUCKER_LOADS = gql`
     dateStart
 
     dateEnd
-
+    dock_Requests
   }
 }
 `;

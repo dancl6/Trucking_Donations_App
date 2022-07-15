@@ -50,8 +50,9 @@ const handleAddLoad = async(data2) => {
     //   const { data } = await addTruckingUser({
     //     variables: { ...formState }
     //   });
+    console.log("data loads length is:", data.loads.length)
     for ( let i = 0 ; i < data.loads.length; i ++ ) {
-      console.log("data cons is :", data.loads[i])
+      console.log("data cons is :", data.loads[i].confirmed)
       if(data.loads[i].state === stateInput && data.loads[i].confirmed !== true && data.loads[i].currentStatus === "Open") {
         savedLoads2.push(data.loads[i])
       }

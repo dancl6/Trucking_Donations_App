@@ -47,6 +47,14 @@ mutation addRequestedDocks($loadId: ID!){
   }
 }
 `
+export const ADD_DOCK_TO_LOAD = gql `
+mutation addDockToLoad($loadId: ID!){
+            addDockToLoad(loadId: $loadId){
+    _id
+  }
+}
+`
+
 
 export const ADD_USER = gql`
   mutation addUser($firstName: String!, $lastName: String!, $email: String!, $password: String!) {

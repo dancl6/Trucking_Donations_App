@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 // const Trucking_User = require("./Trucking_User")
 // const Dock_User = require("./Dock_User")
 
-const loadSchema = new Schema({
+const loadSchema2 = new Schema({
     streetAddress: {
         type: String,
         required: true
@@ -75,6 +75,6 @@ const loadSchema = new Schema({
     
 })
 
-const Load_Test = mongoose.model('Load_Test', loadSchema);
+const Load_Test = mongoose.model('Load_Test', loadSchema2);
 
 module.exports = Load_Test;
