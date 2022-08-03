@@ -31,7 +31,7 @@ console.log("dock recks is:", dock_Req)
 
 const handleApproveLoad = async() => {
   console.log("data 2 for add load dock is:",data2)
-  console.log("data for load is:", loadApprove, "data for dock is:", dockApprove)
+
 
 
 
@@ -52,6 +52,8 @@ const handleApproveLoad = async() => {
   }
       
   // window.location.reload(false)
+  
+  console.log("data for load is:", loadApprove, "data for dock is:", dockApprove)
   
 }
 
@@ -120,25 +122,21 @@ const handleApproveLoad = async() => {
             item  ?
             (
 
-            <div key = {`ParentDiv1_${item._id}`}   onClick={() => {
-              // let dockApprove = item._id
-              console.log("iteming 2 is:", item)
-              setLoadApprove(item._id)
-             }}  >
+            <div key = {`ParentDiv1_${item._id}`}     >
        
                 <div key = {`ParentDiv2_${item._id}`}>
-            <Link to={`/modify_load/${item._id}`} key = "link">
+            {/* <Link to={`/modify_load/${item._id}`} key = "link"> */}
             {/* <Button key = {item._id} variant="primary">Update Load</Button> */}
-          </Link>
+          {/* </Link> */}
           <div>
               {item?.dock_Requests.map(item2 => 
                   <div>{item2}
                   
                   <Button   onClick={() => {
                 // let loadApprove = item._id
-                console.log("iteming is:", item2)
-                setDockApprove(item2)
-                
+                console.log("iteming is 2:", item2)
+                setLoadApprove(item2)
+                setDockApprove(item._id)
                 handleApproveLoad()
                 // myLoads = myLoads.filter(test => {return test._id !== loadRemoved} )
 
