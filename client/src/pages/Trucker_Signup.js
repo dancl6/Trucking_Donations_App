@@ -17,7 +17,7 @@ const Trucker_Signup = () => {
 
     try {
       const { data } = await addTruckingUser({
-        variables: { ...formState }
+        variables: { userName: formState.userName, phoneNumber: formState.phoneNumber, password: formState.password, dot: Number(formState.dot)}
       });
       
       Auth.login(data.addTruckingUser.token);
@@ -37,7 +37,7 @@ const Trucker_Signup = () => {
 
 
   return (
-    <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
+    <main className='flex-row justify-center mb-4 d-flex justify-content-center see_through'>
       <div className='col-12 col-md-6 '>
         <div className='card'>
       {/* <Link to="/trucker_login">
@@ -46,7 +46,7 @@ const Trucker_Signup = () => {
 
       <h4 className='card-header center_text'>Trucker Signup</h4>
       <div className='card-body center_text'>
-      <form onSubmit = {handleSubmit(handleFormSubmit)}>
+      <form onSubmit = {handleSubmit(handleFormSubmit)} >
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="userName">Username:</label>
           <input
@@ -90,14 +90,6 @@ const Trucker_Signup = () => {
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="dot">DOT Number:</label>
           <input
-
-          {...register(
-                  "dot",
-                  {       
-                    setValueAs: v => parseFloat(v)       
-       
-                  })} 
-
             placeholder="DOT Number"
             name="dot"
             type="dot"

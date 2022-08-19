@@ -108,7 +108,7 @@ useEffect(() => {
   function loadForm() {
     if (Auth.loggedIn() && data2?.me.trucker) {
   return (
-    <div key = "Parent Div" className="container my-1 white">
+    <div key = "Parent Div" className="container my-1 white see_through">
       {/* <Link key = "Parent Link" to="/trucker_login">
         ← Go to Login
       </Link> */}

@@ -37,7 +37,7 @@ const Trucker_Login = (props) => {
   
 
   return (
-    <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
+    <main className='flex-row justify-center mb-4 d-flex justify-content-center see_through'>
       <div className='col-12 col-md-6 '>
         <div className='card'>
           <h4 className='card-header center_text'>Trucker Login</h4>

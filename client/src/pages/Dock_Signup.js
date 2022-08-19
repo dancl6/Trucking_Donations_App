@@ -36,7 +36,7 @@ const Dock_Signup = () => {
 
 
   return (
-    <main className='flex-row justify-center mb-4 d-flex justify-content-center'>
+    <main className='flex-row justify-center mb-4 d-flex justify-content-center see_through'>
       <div className='col-12 col-md-6 '>
         <div className='card'>
       {/* <Link to="/trucker_login">

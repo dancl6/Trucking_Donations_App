@@ -40,3 +40,7 @@ code {
 .white {
   color: white;
 }
+
+.see_through {
+opacity: 0.5;
+}
