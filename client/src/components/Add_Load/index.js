@@ -109,9 +109,9 @@ useEffect(() => {
     if (Auth.loggedIn() && data2?.me.trucker) {
   return (
     <div key = "Parent Div" className="container my-1">
-      <Link key = "Parent Link" to="/trucker_login">
+      {/* <Link key = "Parent Link" to="/trucker_login">
         ← Go to Login
-      </Link>
+      </Link> */}
 
       <h2 key = "Parent h2">Add Load</h2>
       {/* <form onSubmit=   {handleSubmit(onSubmit)}> */}

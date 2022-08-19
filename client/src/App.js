@@ -7,7 +7,7 @@ import ApolloClient from 'apollo-boost';
 
 import { ApolloProvider } from '@apollo/react-hooks';
 // import { ApolloClient } from '@apollo/client';
-import Nav from "./components/Nav";
+import NavComp from "./components/NavComp";
 import  Trucker_Signup from "./pages/Trucker_Signup"
 import  Modify_Load from "./pages/Modify_Load"
 import  Trucker_Login from "./pages/Trucker_Login"
@@ -46,7 +46,7 @@ function App() {
 
 
       <StoreProvider key = "store_provider">
-      <Nav key = "nav" />
+      <NavComp key = "nav" />
       <Switch key = "switch">
 
       <Route exact path="/trucker_signup" key = "trucker_signup" component={Trucker_Signup} />
