@@ -93,7 +93,7 @@ const handleApproveLoad = async() => {
 
   if (Auth.loggedIn() && data2?.me.trucker) {
   return (
-    <div>
+    <div className="white">
       {/* <h4 className='card-header center_text'>Search For Loads In This State</h4>
       <div className='card-body center_text'>
       <form onSubmit={handleFormSubmit}>

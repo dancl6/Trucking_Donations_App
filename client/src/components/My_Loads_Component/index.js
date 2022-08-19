@@ -119,7 +119,7 @@ const handleGetLoad = async (event) => {
 
     // console.log("data for my loads is:", data?.getTruckerLoads[2].zipcode)
 return (
-    <div>
+    <div className="white">
 
           
             { 
