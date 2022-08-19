@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import { useMutation } from '@apollo/react-hooks';
 import Auth from "../utils/auth";
 import { ADD_TRUCKING_USER } from "../utils/mutations";
-
+import { useForm } from "react-hook-form"
 // function Trucker_Signup() {
 const Trucker_Signup = () => {
-  const [formState, setFormState] = useState({ userName: '', phoneNumber: '', password: '' });
+  const [formState, setFormState] = useState({ userName: '', phoneNumber: '', password: '', dot:'' });
   const [addTruckingUser, { error }] = useMutation(ADD_TRUCKING_USER);
 
-
+  const { register, handleSubmit, formState: { errors }
+} = useForm();
 
   const handleFormSubmit = async event => {
-    event.preventDefault();
+    // event.preventDefault();
 
     try {
       const { data } = await addTruckingUser({
@@ -45,7 +46,7 @@ const Trucker_Signup = () => {
 
       <h4 className='card-header center_text'>Trucker Signup</h4>
       <div className='card-body center_text'>
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit = {handleSubmit(handleFormSubmit)}>
         <div className="flex-row space-between my-2 center_text">
           <label htmlFor="userName">Username:</label>
           <input
@@ -83,6 +84,24 @@ const Trucker_Signup = () => {
             name="password"
             type="password"
             id="password"
+            onChange={handleChange}
+          />
+        </div>
+        <div className="flex-row space-between my-2 center_text">
+          <label htmlFor="dot">DOT Number:</label>
+          <input
+
+          {...register(
+                  "dot",
+                  {       
+                    setValueAs: v => parseFloat(v)       
+       
+                  })} 
+
+            placeholder="DOT Number"
+            name="dot"
+            type="dot"
+            id="dot"
             onChange={handleChange}
           />
         </div>

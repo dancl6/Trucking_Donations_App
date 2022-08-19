@@ -12,8 +12,8 @@ export const ADD_DOCK_USER = gql`
 `;
 
 export const ADD_TRUCKING_USER = gql`
-  mutation addTruckingUser($userName: String!, $phoneNumber: String!, $password: String! ) {
-      addTruckingUser(userName: $userName, phoneNumber: $phoneNumber , password: $password) {
+  mutation addTruckingUser($userName: String!, $phoneNumber: String!, $password: String!, $dot: Int! ) {
+      addTruckingUser(userName: $userName, phoneNumber: $phoneNumber , password: $password, dot: $dot) {
       token
       truckingUser {
           _id

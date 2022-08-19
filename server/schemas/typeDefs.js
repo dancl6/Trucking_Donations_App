@@ -73,6 +73,7 @@ type Trucking_User {
     password: String
     phoneNumber: String
     loads: [Load]
+    dot: Int
 
 }
 
@@ -154,7 +155,7 @@ type Query {
 
 type Mutation {
 addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean!, dateStart: String!,  dateEnd: String!): Load
-addTruckingUser(userName: String!, password: String!,  phoneNumber: String): Auth_Trucking
+addTruckingUser(userName: String!, password: String!,  phoneNumber: String, dot: Int): Auth_Trucking
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 truckingLogin(userName: String!, password: String!): Auth_Trucking
 dockLogin(name: String!, password: String!): Auth_Dock

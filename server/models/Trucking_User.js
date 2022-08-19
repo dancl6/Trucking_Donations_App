@@ -40,7 +40,11 @@ const truckingUserSchema = new Schema({
        phoneNumber : {
         type: String,
         required: false
-    }
+    },
+    dot : {
+      type: Number,
+      required: true
+  }
     });
   
 
