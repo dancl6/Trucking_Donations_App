@@ -23,8 +23,8 @@ export const ADD_TRUCKING_USER = gql`
 `;
 
 export const ADD_LOAD = gql`
-mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating:Float, $confirmed: Boolean!, $dateStart: String!, $dateEnd: String!) {
-  addLoad(streetAddress: $streetAddress, state: $state, zipcode: $zipcode, donationItem: $donationItem, trucker:$trucker, currentStatus:$currentStatus, number:$number, comments:$comments, dock:$dock, rating:$rating, confirmed: $confirmed, dateStart: $dateStart,  dateEnd: $dateEnd) {
+mutation addLoad($streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating_trucker: Boolean, $rating_dock: Boolean, $confirmed: Boolean!, $dateStart: String!, $dateEnd: String!) {
+  addLoad(streetAddress: $streetAddress, state: $state, zipcode: $zipcode, donationItem: $donationItem, trucker:$trucker, currentStatus:$currentStatus, number:$number, comments:$comments, dock:$dock, rating_trucker: $rating_trucker, rating_dock:$rating_dock, confirmed: $confirmed, dateStart: $dateStart,  dateEnd: $dateEnd) {
     _id
     
   }
@@ -86,8 +86,8 @@ export const LOGIN_DOCK = gql`
 `;
 
 export const UPDATE_LOAD = gql`
-mutation updateLoad($LoadId: ID!,$streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating:Float, $confirmed: Boolean!, $dateStart: String!, $dateEnd: String!) {
-  updateLoad(LoadId: $LoadId,streetAddress: $streetAddress, state: $state, zipcode: $zipcode, donationItem: $donationItem, trucker:$trucker, currentStatus:$currentStatus, number:$number, comments:$comments, dock:$dock, rating:$rating, confirmed: $confirmed, dateStart: $dateStart,  dateEnd: $dateEnd) {
+mutation updateLoad($LoadId: ID!,$streetAddress: String!, $state: String!, $zipcode: String!, $donationItem: String!, $trucker:ID!, $currentStatus: String!, $number: Int!,$comments:String, $dock:ID, $rating_trucker:Boolean, $rating_dock: Boolean, $confirmed: Boolean!, $dateStart: String!, $dateEnd: String!) {
+  updateLoad(LoadId: $LoadId,streetAddress: $streetAddress, state: $state, zipcode: $zipcode, donationItem: $donationItem, trucker:$trucker, currentStatus:$currentStatus, number:$number, comments:$comments, dock:$dock, rating_trucker:$rating_trucker, rating_dock: $rating_dock, confirmed: $confirmed, dateStart: $dateStart,  dateEnd: $dateEnd) {
    _id
     
   }

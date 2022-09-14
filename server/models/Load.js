@@ -45,11 +45,11 @@ const loadSchema = new Schema({
         required: false
     },
     rating_dock: {
-        type: Number,
+        type: Boolean,
         required: false
     },
     rating_trucker: {
-        type: Number,
+        type: Boolean,
         required: false
     },
     confirmed: {

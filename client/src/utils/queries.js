@@ -75,7 +75,8 @@ query getLoad($_id:ID!){
     dock {
       _id
     }
-    rating
+    rating_trucker
+    rating_dock
     confirmed
     dateStart
 
@@ -102,7 +103,8 @@ export const GET_TRUCKER_LOADS = gql`
     dock {
       _id
     }
-    rating
+    rating_trucker
+    rating_dock
     confirmed
     dateStart
 

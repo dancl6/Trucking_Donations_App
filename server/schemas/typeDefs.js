@@ -43,7 +43,8 @@ type Load {
     trucker: Trucking_User
     currentStatus: String
     dock: Dock_User
-    rating: Float
+    rating_dock: Boolean
+    rating_trucker: Boolean
     confirmed: Boolean
     dateStart: String
     dateEnd: String
@@ -61,7 +62,8 @@ type LoadForQueries {
   trucker: Trucking_User
   currentStatus: String
   dock: Dock_User
-  rating: Float
+  rating_dock: Boolean
+  rating_trucker: Boolean
   confirmed: Boolean
   dock_Requests: [String]
   
@@ -154,7 +156,7 @@ type Query {
 
 
 type Mutation {
-addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean!, dateStart: String!,  dateEnd: String!): Load
+addLoad(streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID,  confirmed: Boolean!, dateStart: String!,  dateEnd: String!): Load
 addTruckingUser(userName: String!, password: String!,  phoneNumber: String, dot: Int): Auth_Trucking
 addDockUser(name: String!, streetAddress: String!, state: String!,  zipcode: String!, rating: Float, password: String!,  phoneNumber: String ): Auth_Dock
 truckingLogin(userName: String!, password: String!): Auth_Trucking
@@ -164,7 +166,7 @@ addLoadToTrucker(Trucking_User: ID!, loadAdded: ID!) : Trucking_User
 removeLoadFromTrucker( loadRemoved: ID!, truckerId: ID!) : Load
 removeLoadDock(Dock_User: ID!, loadRemoved: ID!) : Dock_User
 addUser(firstName: String!, lastName: String!, email: String!, password: String!): Auth
-updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating: Float, confirmed: Boolean, dateStart: String!, dateEnd: String!): Load
+updateLoad(LoadId: ID!, streetAddress: String!, state: String!, zipcode: String!, donationItem: String!, number: Int!, comments: String, trucker: ID!, currentStatus: String!, dock:ID, rating_trucker: Boolean, rating_dock: Boolean, confirmed: Boolean, dateStart: String!, dateEnd: String!): Load
 getLoad2(loadId: ID!): Load
 removeNullTruckerLoad: Trucking_User
 removeLoad(loadRemoved: ID!) : Load
