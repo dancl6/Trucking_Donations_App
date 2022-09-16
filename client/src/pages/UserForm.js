@@ -79,6 +79,7 @@ useEffect(() => {
 
 const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, dateEnd:loadData.getLoad.dateEnd, timeDuration: parseInt(loadData.getLoad.timeDuration) });
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
+const [button2, setButton2] = useState(loadData?.getLoad.rating_dock)
 function parseISOString(s) {
   return moment(s).format('MMMM d, YYYY h:mm a')
   // console.log("date is this:", loadData.getLoad.dateStart)
@@ -300,6 +301,25 @@ const handleChange = event => {
         </div>
 
         <div className="flex-row space-between my-2">
+          <label htmlFor="rating_dock">Rating:</label>
+          
+          <DropdownButton title = {button2}  onClick = {handleApprove} 
+            onSelect = {function (evt) {
+            console.log("the new and nice value is:", evt)
+              setThumbsUp(evt)
+             setButton2(evt)
+          }}
+          ref = {register}
+          {...register("rating_dock", {required: true})}
+          name = "rating_dock"
+          type = "rating_dock"
+          > <MenuItem eventKey = "Approve">👍</MenuItem>
+              <MenuItem eventKey = "Disapprove">👎</MenuItem>
+              <MenuItem eventKey = "No Rating">No Rating</MenuItem>
+          </DropdownButton>
+        </div>
+
+        <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
           
           <DropdownButton title = {button} onSelect = {function (evt) {
@@ -315,7 +335,7 @@ const handleChange = event => {
               <MenuItem eventKey = "In Progress">In Progress</MenuItem>
               <MenuItem eventKey = "Closed">Closed</MenuItem>
           </DropdownButton>
-        </div>
+        </div>        
 
         <div className="flex-row space-between my-2">
         <label htmlFor="dateStart">Start Date for Load Drop Off:</label>
