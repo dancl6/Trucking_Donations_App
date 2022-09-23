@@ -28,7 +28,7 @@ const My_Loads_Component = () => {
     const [test, setTest] = useState(true)
     const [reduxState, setReduxState] = useState()
     const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
-
+    const [userData, setUserData] = useState()
     const {loading, data} = useQuery(GET_TRUCKER_LOADS);
     const loads =  data?.loads || []
     console.log("data now is:", data?.getTruckerLoads.loads)
@@ -82,6 +82,7 @@ const handleRemoveLoad = async (loadRemoved) => {
 
 useEffect(() => {
     console.log('STATE from Workout useEffect loads store is', data?.getTruckerLoads)   
+    setUserData(data)
     // window.location.reload(false); 
 }, [data?.getTruckerLoads])
 

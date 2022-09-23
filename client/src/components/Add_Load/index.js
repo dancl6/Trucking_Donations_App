@@ -108,19 +108,19 @@ useEffect(() => {
   function loadForm() {
     if (Auth.loggedIn() && data2?.me.trucker) {
   return (
-    <div key = "Parent Div" className="container my-1 white see_through">
+    <div key = "Parent Div" className="container my-1 white ">
       {/* <Link key = "Parent Link" to="/trucker_login">
         ← Go to Login
       </Link> */}
 
-      <h2 key = "Parent h2">Add Load</h2>
+      <h2 key = "Parent h2" className = "see_through">Add Load</h2>
       {/* <form onSubmit=   {handleSubmit(onSubmit)}> */}
       <form onSubmit = {handleSubmit(onSubmit)}
         
         
 
         >
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 see_through">
           <label htmlFor="streetAddress">Street Address:</label>
           <input
             placeholder="streetAddress"
@@ -132,7 +132,7 @@ useEffect(() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 see_through">
           <label htmlFor="state">State:</label>
           <input
             placeholder="state"
@@ -144,7 +144,7 @@ useEffect(() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 see_through">
           <label htmlFor="zipcode">Zipcode:</label>
           <input
             placeholder="zipcode"
@@ -156,7 +156,7 @@ useEffect(() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 see_through">
           <label htmlFor="donationItem">Donation Item:</label>
           <input
             placeholder="Donation Item"
@@ -168,7 +168,7 @@ useEffect(() => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 see_through">
           <label htmlFor="number">Number:</label>
           <input
           // type = "number" 
@@ -188,7 +188,7 @@ useEffect(() => {
             
         </div>
 
-        <div className="flex-row space-between my-2">
+        <div className="flex-row space-between my-2 see_through">
           <label htmlFor="currentStatus">Current Status:</label>
 
           <DropdownButton title = {button} onSelect = {function (evt) {
@@ -268,7 +268,7 @@ useEffect(() => {
 
 
 
-        <div className="flex-row flex-end">
+        <div className="flex-row flex-end see_through">
           <button type="submit" >
             Submit
           </button>

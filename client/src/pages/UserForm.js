@@ -58,6 +58,7 @@ console.log("starting date is:", loadData.getLoad.dateStart)
 useEffect(() => {
   // console.log("starting date now is:", loadData.getLoad.dateStart.year)
   // startDate = new Date()
+
   setStartDate(
     new Date(loadData.getLoad.dateStart)
   )
@@ -66,9 +67,10 @@ useEffect(() => {
   )
   if(loadData.getLoad.rating_dock === true || loadData.getLoad.rating_dock === false){
     setDefaultRating(loadData.getLoad.rating_dock)
-  } else {
-    setDefaultRating(true)
+  } else if(loadData.getLoad.rating_dock === null) {
+    setDefaultRating()
   }
+  console.log("thumbs in use effect is:", thumbsUp)
   // console.log("start date now is:", startDate.getHours())
   // test1.setFullYear(1000)
   // test1.setHours(11)
@@ -134,7 +136,17 @@ const handleChange = event => {
   };
 
   const handleApprove = event => {
-    setThumbsUp(!thumbsUp)
+    // setThumbsUp(!thumbsUp)
+
+    if(event === "Approve"){
+      setThumbsUp(true)
+    } 
+    if (event === "Disapprove") {
+      setThumbsUp(false)
+    }
+    if(event === "No Rating"){
+      setThumbsUp()
+    }
     console.log("thumbs is:", thumbsUp)
   }
 
