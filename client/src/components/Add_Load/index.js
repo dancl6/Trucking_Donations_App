@@ -25,8 +25,8 @@ const {data} = useQuery(TRUCK_ID_IS);
 const [startDefault, setStartDefault] = useState(new Date());
 const [startDate, setStartDate] = useState(new Date());
 const [endDate, setEndDate] = useState(new Date());
-const [holdStartDate, setHoldStartDate] = useState()
-const [holdEndDate, setHoldEndDate] = useState()
+const [holdStartDate, setHoldStartDate] = useState(startDate.toISOString())
+const [holdEndDate, setHoldEndDate] = useState(endDate.toISOString())
 const [value, onChange] = useState('10:00');
 let test
 // let dateStart = {hour:"", minute:"", day:"", year:"", month:""}
