@@ -35,8 +35,8 @@ const {data} = useQuery(TRUCK_ID_IS);
 const [startDate, setStartDate] = useState(new Date(loadData.getLoad.dateStart));
 // const [startDate, setStartDate] = useState(new Date());
 const [endDate, setEndDate] = useState(new Date(loadData.getLoad.dateEnd));
-const [holdStartDate, setHoldStartDate] = useState()
-const [holdEndDate, setHoldEndDate] = useState()
+const [holdStartDate, setHoldStartDate] = useState(startDate.toISOString())
+const [holdEndDate, setHoldEndDate] = useState(endDate.toISOString())
 const [defaultRating, setDefaultRating] = useState()
 
 const [thumbsUp, setThumbsUp] = useState(defaultRating)
