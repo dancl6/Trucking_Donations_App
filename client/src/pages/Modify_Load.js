@@ -13,7 +13,7 @@ const Modify_Load = () => {
   const { loading: loadingLoad, data: loadData2 } = useQuery(GET_LOAD, {
     variables: { _id: id }
   });
-  console.log("load for this now is:", loadData2?.getLoad)
+  console.log("load for this now is:", loadData2?.getLoad, "id is:", id)
   const [updateLoad, { error }] = useMutation(UPDATE_LOAD);
   const [removeLoad, {error2}] = useMutation(REMOVE_LOAD)
   useEffect(() => {

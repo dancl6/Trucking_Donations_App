@@ -65,6 +65,10 @@ useEffect(() => {
   setEndDate(
     new Date(loadData.getLoad.dateEnd)
   )
+
+    console.log("the load data get load rating is:", loadData.getLoad)
+  
+
   if(loadData.getLoad.rating_dock === true || loadData.getLoad.rating_dock === false){
     setDefaultRating(loadData.getLoad.rating_dock)
   } else if(loadData.getLoad.rating_dock === null) {
@@ -79,9 +83,11 @@ useEffect(() => {
   // console.log("start date after setting is:", startDate.getFullYear())
 },[loadData])
 
-const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, dateEnd:loadData.getLoad.dateEnd, timeDuration: parseInt(loadData.getLoad.timeDuration) });
+const [formState, setFormState] = useState({streetAddress: loadData.getLoad.streetAddress, state: loadData.getLoad.state , zipcode: loadData.getLoad.zipcode , donationItem: loadData.getLoad.donationItem, number: parseInt(loadData.getLoad.number) , trucker: loadData.getLoad.trucker, currentStatus: loadData.getLoad.currentStatus, confirmed: JSON.parse(loadData.getLoad.confirmed), dateStart:loadData.getLoad.dateStart, dateEnd:loadData.getLoad.dateEnd});
 const [button, setButton] = useState(loadData?.getLoad.currentStatus);
 const [button2, setButton2] = useState(loadData?.getLoad.rating_dock)
+console.log("trucking trucker is:", loadData.getLoad.trucker._id)
+
 function parseISOString(s) {
   return moment(s).format('MMMM d, YYYY h:mm a')
   // console.log("date is this:", loadData.getLoad.dateStart)
@@ -89,18 +95,22 @@ function parseISOString(s) {
   // console.log("new date is this:",new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6])) )
   // return new Date(Date.UTC(b[0], --b[1], b[2], b[3], b[4], b[5], b[6]));
 }
+const testConsole = () => {
+  console.log("testing console")
+}
 const onSubmit = async(data2) => {
-  console.log("data 2 is on submit",data2, formState.streetAddress)
-console.log("testing one two", data?.trucker_Id.truck)
+  console.log("data 2 is on submit",data2, formState.streetAddress, "truck id is:",data.trucker_Id.truck)
+// console.log("testing one two", data?.trucker_Id.truck)
 
 
   try {
 //  console.log("trucking id is this:", data?.trucker_Id.truck,  "button value is:", button)
     console.log("hold start date is:", holdStartDate, "hold end date is:", holdEndDate)
+    console.log("thumbs in update load is:", thumbsUp)
     await updateLoad({
       // variables: { ...data }
       variables: {
-       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: data?.trucker_Id.truck,  rating: parseInt(data2.rating), confirmed: JSON.parse(formState.confirmed), rating_dock: thumbsUp, dateStart: holdStartDate,  dateEnd: holdEndDate 
+       LoadId: id, streetAddress: formState.streetAddress, state: formState.state, zipcode: formState.zipcode, donationItem: formState.donationItem, number: parseInt(data2.number),  currentStatus: button, trucker: loadData.getLoad.trucker._id,   confirmed: JSON.parse(formState.confirmed),  dateStart: holdStartDate,  dateEnd: holdEndDate 
       }
     })
   } catch (e) {
@@ -137,7 +147,7 @@ const handleChange = event => {
 
   const handleApprove = event => {
     // setThumbsUp(!thumbsUp)
-
+    console.log("event in thumbs is:", event)
     if(event === "Approve"){
       setThumbsUp(true)
     } 
@@ -145,7 +155,7 @@ const handleChange = event => {
       setThumbsUp(false)
     }
     if(event === "No Rating"){
-      setThumbsUp()
+      setThumbsUp(undefined)
     }
     console.log("thumbs is:", thumbsUp)
   }
@@ -211,7 +221,7 @@ const handleChange = event => {
             onChange={handleChange}
           />
         </div>
-        <div className="flex-row space-between my-2">
+        {/* <div className="flex-row space-between my-2">
           <label htmlFor="confirmed">Confirmed?:</label>
           <input
             ref = {register}
@@ -231,7 +241,7 @@ const handleChange = event => {
             // value={formState.streetAddress}
             onChange={handleChange}
           />
-        </div>
+        </div> */}
         <div className="flex-row space-between my-2">
           <label htmlFor="state">State:</label>
           <input
@@ -245,6 +255,7 @@ const handleChange = event => {
             onChange={handleChange}
           />
         </div>
+      <div>test {loadData.getLoad.rating_dock}</div>
         <div className="flex-row space-between my-2">
           <label htmlFor="zipcode">Zipcode:</label>
           <input
@@ -272,11 +283,11 @@ const handleChange = event => {
           />
         </div>
         
-        <button
-        onClick = {handleApprove}
+        {/* <button
+        // onClick = {handleApprove}
         >Rating     {approval}
 
-        </button>
+        </button> */}
     
         <div className="flex-row space-between my-2">
           <label htmlFor="number">Number:</label>
@@ -312,14 +323,26 @@ const handleChange = event => {
           </div>
         </div>
 
-        <div className="flex-row space-between my-2">
+        {/* <div className="flex-row space-between my-2">
           <label htmlFor="rating_dock">Rating:</label>
           
-          <DropdownButton title = {button2}  onClick = {handleApprove} 
+          <DropdownButton title = {button2}  
+          // onClick = {handleApprove} 
             onSelect = {function (evt) {
             console.log("the new and nice value is:", evt)
-              setThumbsUp(evt)
+            if(evt === "Approve"){
+              setThumbsUp(true)
+            }
+            if(evt === "Disapprove"){
+              setThumbsUp(false)
+            }
+            if(evt === "No Rating"){
+              setThumbsUp(undefined)
+            }
+              // setThumbsUp(evt)
              setButton2(evt)
+             testConsole()
+            //  handleApprove()
           }}
           ref = {register}
           {...register("rating_dock", {required: true})}
@@ -329,7 +352,7 @@ const handleChange = event => {
               <MenuItem eventKey = "Disapprove">👎</MenuItem>
               <MenuItem eventKey = "No Rating">No Rating</MenuItem>
           </DropdownButton>
-        </div>
+        </div> */}
 
         <div className="flex-row space-between my-2">
           <label htmlFor="currentStatus">Current Status:</label>
@@ -429,9 +452,7 @@ const handleChange = event => {
             {errors.rating ? <div>{errors.rating.message}</div> : null}
         </div>
 
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-hand-thumbs-up" viewBox="0 0 16 16">
-          <path d="M8.864.046C7.908-.193 7.02.53 6.956 1.466c-.072 1.051-.23 2.016-.428 2.59-.125.36-.479 1.013-1.04 1.639-.557.623-1.282 1.178-2.131 1.41C2.685 7.288 2 7.87 2 8.72v4.001c0 .845.682 1.464 1.448 1.545 1.07.114 1.564.415 2.068.723l.048.03c.272.165.578.348.97.484.397.136.861.217 1.466.217h3.5c.937 0 1.599-.477 1.934-1.064a1.86 1.86 0 0 0 .254-.912c0-.152-.023-.312-.077-.464.201-.263.38-.578.488-.901.11-.33.172-.762.004-1.149.069-.13.12-.269.159-.403.077-.27.113-.568.113-.857 0-.288-.036-.585-.113-.856a2.144 2.144 0 0 0-.138-.362 1.9 1.9 0 0 0 .234-1.734c-.206-.592-.682-1.1-1.2-1.272-.847-.282-1.803-.276-2.516-.211a9.84 9.84 0 0 0-.443.05 9.365 9.365 0 0 0-.062-4.509A1.38 1.38 0 0 0 9.125.111L8.864.046zM11.5 14.721H8c-.51 0-.863-.069-1.14-.164-.281-.097-.506-.228-.776-.393l-.04-.024c-.555-.339-1.198-.731-2.49-.868-.333-.036-.554-.29-.554-.55V8.72c0-.254.226-.543.62-.65 1.095-.3 1.977-.996 2.614-1.708.635-.71 1.064-1.475 1.238-1.978.243-.7.407-1.768.482-2.85.025-.362.36-.594.667-.518l.262.066c.16.04.258.143.288.255a8.34 8.34 0 0 1-.145 4.725.5.5 0 0 0 .595.644l.003-.001.014-.003.058-.014a8.908 8.908 0 0 1 1.036-.157c.663-.06 1.457-.054 2.11.164.175.058.45.3.57.65.107.308.087.67-.266 1.022l-.353.353.353.354c.043.043.105.141.154.315.048.167.075.37.075.581 0 .212-.027.414-.075.582-.05.174-.111.272-.154.315l-.353.353.353.354c.047.047.109.177.005.488a2.224 2.224 0 0 1-.505.805l-.353.353.353.354c.006.005.041.05.041.17a.866.866 0 0 1-.121.416c-.165.288-.503.56-1.066.56z"/>
-        </svg>
+
 
         <div className="flex-row flex-end">
           <button type="submit">
@@ -445,4 +466,4 @@ const handleChange = event => {
             }
 }
 
-// export default UserForm;
+export default UserForm;

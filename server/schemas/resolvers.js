@@ -295,7 +295,7 @@ const resolvers = {
             //   // }
             //   return {_id: args.LoadId}            
             // } else {
-              console.log("update load context user is :", context.user)
+              // console.log("update load context user is :", context.user)
               // if (context.user) {
                 await Load.findByIdAndUpdate({_id: args.LoadId},args, { new: true });
               // }

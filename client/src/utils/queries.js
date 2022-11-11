@@ -38,7 +38,8 @@ currentStatus
  dock_Requests
 state
     donationItem
-    rating
+    rating_dock
+    rating_trucker
 trucker {
   _id
 }

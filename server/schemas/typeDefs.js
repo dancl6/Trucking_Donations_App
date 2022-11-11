@@ -66,6 +66,8 @@ type LoadForQueries {
   rating_trucker: Boolean
   confirmed: Boolean
   dock_Requests: [String]
+  dateStart: String
+  dateEnd: String
   
 }
 
